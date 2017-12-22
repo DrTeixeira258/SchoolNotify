@@ -1,0 +1,16 @@
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Data.dll.config
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Data.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Data.pdb
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Domain.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\EntityFramework.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Domain.pdb
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\EntityFramework.xml
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\obj\Debug\Data.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Data\obj\Debug\Data.pdb

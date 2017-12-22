@@ -1,0 +1,6 @@
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Domain\bin\Debug\Domain.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Domain\bin\Debug\Domain.pdb
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Domain\obj\Debug\Domain.dll
+D:\David\Facu\7 Periodo\TCC\App\SchoolNotify\API\SchoolNotifyAPI\Domain\obj\Debug\Domain.pdb
