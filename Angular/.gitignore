@@ -20,6 +20,10 @@ npm-debug.log*
 coverage/
 dist/
 node_modules/
+functions/
+public/
+plugins/
+platforms/
 tmp/
 temp/
 hooks/
