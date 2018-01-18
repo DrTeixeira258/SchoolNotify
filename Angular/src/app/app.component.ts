@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { LoginPage } from '../components/principal/pages/login/login';
 import { SalaPage } from '../components/sala/sala';
 import { HomePage } from '../components/home/home';
+import { ResponsavelPage } from '../components/responsavel/responsavel';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,6 +28,10 @@ export class MyApp {
 
   home() {
     this.navCtrl.setRoot(HomePage);
+  }
+
+  responsavel() {
+    this.navCtrl.setRoot(ResponsavelPage);
   }
 
   sala() {

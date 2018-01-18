@@ -14,6 +14,7 @@
         <ion-item-sliding *ngFor="let sala of salas| async">
             <ion-item>
                 <h2>{{sala.nome}}</h2>
+                <p>{{sala.serie}}</p>
             </ion-item>
             <ion-item-options side="right">
                 <button ion-button color="secondary" (click)="modalEditarSala(sala)">

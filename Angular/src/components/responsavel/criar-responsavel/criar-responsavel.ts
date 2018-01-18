@@ -4,17 +4,17 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Uteis } from '../../uteis';
-import { Sala } from '../../../models/sala';
+import { Responsavel } from '../../../models/responsavel';
 
 @Component({
-    selector: 'criar-sala-page',
-    templateUrl: 'criar-sala.html',
+    selector: 'criar-responsavel-page',
+    templateUrl: 'criar-responsavel.html',
     providers: [AngularFireDatabase]
 })
 
-export class CriarSalaPage extends Uteis {
+export class CriarResponsavelPage extends Uteis {
 
-    sala: Sala = new Sala();
+    responsavel: Responsavel = new Responsavel();
 
     constructor(public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
@@ -23,8 +23,8 @@ export class CriarSalaPage extends Uteis {
         public navParams: NavParams,
         private angularFire: AngularFireDatabase) {
         super(loadingCtrl, alertCtrl);
-        if (this.navParams.get("sala"))
-            this.sala = this.navParams.get("sala");
+        if (this.navParams.get("responsavel"))
+            this.responsavel = this.navParams.get("responsavel");
     }
 
     ionViewWillEnter() {
@@ -36,10 +36,10 @@ export class CriarSalaPage extends Uteis {
 
     salvar() {
         this.criarLoader();
-        if (this.sala.$key) {
-            this.angularFire.list("sala").update(this.sala.$key, this.sala)
+        if (this.responsavel.$key) {
+            this.angularFire.list("responsavel").update(this.responsavel.$key, this.responsavel)
             .then(() => {
-                this.exibirMensagem("Sala Editada", "Sala editada com sucesso!");
+                this.exibirMensagem("Responsável Editado", "Responsável editado com sucesso!");
                 this.fecharLoader();
                 this.viewCtrl.dismiss();
             }),
@@ -48,14 +48,15 @@ export class CriarSalaPage extends Uteis {
                     this.fecharLoader();
                 };
         } else {
-            this.angularFire.list("sala").push(
+            this.angularFire.list("responsavel").push(
                 {
-                    nome: this.sala.nome,
-                    serie: this.sala.serie
+                    nome: this.responsavel.nome,
+                    email: this.responsavel.email,
+                    telefone: this.responsavel.telefone
                 }
             ).then((t: any) => {
                 console.log('dados gravados: ' + t.key);
-                this.exibirMensagem("Sala Criada", "Sala criada com sucesso!");
+                this.exibirMensagem("Responsável Criado", "Responsável criado com sucesso!");
                 this.fecharLoader();
                 this.viewCtrl.dismiss();
             }),

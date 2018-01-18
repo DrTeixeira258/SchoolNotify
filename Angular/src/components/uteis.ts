@@ -1,5 +1,4 @@
 import { LoadingController, AlertController, Loading, Alert } from "ionic-angular";
-import { LoginService } from "../services/login.service";
 
 export class Uteis {
 

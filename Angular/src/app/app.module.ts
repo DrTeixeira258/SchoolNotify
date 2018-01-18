@@ -14,6 +14,8 @@ import { LoginPage } from './../components/principal/pages/login/login';
 import { SalaPage } from '../components/sala/sala';
 import { CriarSalaPage } from '../components/sala/criar-sala/criar-sala';
 import { HomePage } from '../components/home/home';
+import { ResponsavelPage } from '../components/responsavel/responsavel';
+import { CriarResponsavelPage } from '../components/responsavel/criar-responsavel/criar-responsavel';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { HomePage } from '../components/home/home';
     HomePage,
     LoginPage,
     SalaPage,
-    CriarSalaPage
+    CriarSalaPage,
+    ResponsavelPage,
+    CriarResponsavelPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,9 @@ import { HomePage } from '../components/home/home';
     HomePage,
     LoginPage,
     SalaPage,
-    CriarSalaPage
+    CriarSalaPage,
+    ResponsavelPage,
+    CriarResponsavelPage
   ],
   providers: [
     StatusBar,

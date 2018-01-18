@@ -4,7 +4,6 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Uteis } from '../uteis';
-import { LoginPage } from '../principal/pages/login/login';
 
 @Component({
     selector: 'home-page',

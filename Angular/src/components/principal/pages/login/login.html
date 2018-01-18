@@ -1,21 +1,21 @@
 <ion-content padding class="login" scroll="false">
     <div class="spacer" style="height: 10%;"></div>
 
-    <!-- <ion-row>
+    <ion-row>
         <ion-col col-12 class="text-center">
-            <img src="assets/images/logo-vertical.png" class="w-50">
+            <img src="assets/images/logo.jpg" >
         </ion-col>
-    </ion-row> -->
+    </ion-row>
 
     <ion-list>
         <ion-item>
-            <ion-input type="text" placeholder="Usuário" [(ngModel)]="usuario.login"></ion-input>
+            <ion-input style="color: black" type="text" placeholder="Usuário" [(ngModel)]="usuario.login"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-input type="password" placeholder="Senha" [(ngModel)]="usuario.senha"></ion-input>
+            <ion-input style="color: black" type="password" placeholder="Senha" [(ngModel)]="usuario.senha"></ion-input>
         </ion-item>
     </ion-list>
 
-    <button ion-button (click)="(usuario.login != '' && usuario.senha != '') ? logar() : exibirMensagem('Campos obrigatórios','Informe um usuario e senha para entrar.')" color="hard-light" class="text-blue" block>Entrar</button>
+    <button ion-button (click)="(usuario.login != '' && usuario.senha != '') ? logar() : exibirMensagem('Campos obrigatórios','Informe um usuario e senha para entrar.')" color="dark-gray" class="text-blue" block>Entrar</button>
 </ion-content>

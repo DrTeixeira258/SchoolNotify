@@ -1,21 +1,21 @@
 .login{
         /* IE10+ */ 
-background-image: -ms-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
+// background-image: -ms-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
 
 /* Mozilla Firefox */ 
-background-image: -moz-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
+// background-image: -moz-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
 
 /* Opera */ 
-background-image: -o-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
+// background-image: -o-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
 
 /* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #ADBF37), color-stop(100, #08509C));
+// background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #ADBF37), color-stop(100, #08509C));
 
 /* Webkit (Chrome 11+) */ 
-background-image: -webkit-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
+// background-image: -webkit-linear-gradient(top left, #ADBF37 0%, #08509C 100%);
 
 /* W3C Markup */ 
-background-image: linear-gradient(to bottom right, #ADBF37 0%, #08509C 100%);
+// background-image: linear-gradient(to bottom right, #ADBF37 0%, #08509C 100%);
 }
 
 .login ion-item{
@@ -41,14 +41,14 @@ background-image: linear-gradient(to bottom right, #ADBF37 0%, #08509C 100%);
     box-shadow: inset 0 -1px 0 0 white !important;
 }
 .text-input::-moz-placeholder {
-    color: lightgray;
+    color: rgb(0, 0, 0);
   }
   
 .text-input:-ms-input-placeholder {
-    color: lightgray;
+    color: rgb(0, 0, 0);
   }
   
 .text-input::-webkit-input-placeholder {
     text-indent: 0;
-    color: lightgray;
+    color: rgb(0, 0, 0);
   }

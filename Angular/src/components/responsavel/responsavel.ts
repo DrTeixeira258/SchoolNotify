@@ -5,17 +5,17 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Uteis } from '../uteis';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
-import { CriarSalaPage } from './criar-sala/criar-sala';
+import { CriarResponsavelPage } from './criar-responsavel/criar-responsavel';
 
 @Component({
-    selector: 'sala-page',
-    templateUrl: 'sala.html',
+    selector: 'responsavel-page',
+    templateUrl: 'responsavel.html',
     providers: [AngularFireDatabase]
 })
 
-export class SalaPage extends Uteis {
+export class ResponsavelPage extends Uteis {
 
-    salas: FirebaseListObservable<any[]>;
+    responsaveis: FirebaseListObservable<any[]>;
 
     constructor(public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
@@ -24,30 +24,31 @@ export class SalaPage extends Uteis {
         public modalCtrl: ModalController,
         private angularFire: AngularFireDatabase) {
         super(loadingCtrl, alertCtrl);
-        this.salas = angularFire.list('sala');
+        this.responsaveis = angularFire.list('responsavel');
     }
 
     ionViewWillEnter() {
         this.splashScreen.hide();
     }
 
-    modalCriarSala() {
-        let modal = this.modalCtrl.create(CriarSalaPage);
+    modalCriarResponsavel() {
+        let modal = this.modalCtrl.create(CriarResponsavelPage);
         modal.present();
     }
 
-    modalEditarSala(sala) {
-        let modal = this.modalCtrl.create(CriarSalaPage,
+    modalEditarResponsavel(responsavel) {
+        let modal = this.modalCtrl.create(CriarResponsavelPage,
             {
-                sala: sala
+                responsavel: responsavel
             });
         modal.present();
     }
 
-    deletarSala(sala) {
-        this.angularFire.list("/sala").remove(sala)
+    deletarResponsavel(responsavel) {
+        this.criarLoader();
+        this.angularFire.list("/responsavel").remove(responsavel)
             .then(() => {
-                this.exibirMensagem("Sala Removida", "Sala removida com sucesso!");
+                this.exibirMensagem("Responsavel Removido", "Responsavel removido com sucesso!");
                 this.fecharLoader();
             }),
             (e: any) => {
