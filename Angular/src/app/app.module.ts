@@ -16,6 +16,8 @@ import { CriarSalaPage } from '../components/sala/criar-sala/criar-sala';
 import { HomePage } from '../components/home/home';
 import { ResponsavelPage } from '../components/responsavel/responsavel';
 import { CriarResponsavelPage } from '../components/responsavel/criar-responsavel/criar-responsavel';
+import { AlunoPage } from '../components/aluno/aluno';
+import { CriarAlunoPage } from '../components/aluno/criar-aluno/criar-aluno';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { CriarResponsavelPage } from '../components/responsavel/criar-responsave
     SalaPage,
     CriarSalaPage,
     ResponsavelPage,
-    CriarResponsavelPage
+    CriarResponsavelPage,
+    AlunoPage,
+    CriarAlunoPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { CriarResponsavelPage } from '../components/responsavel/criar-responsave
     SalaPage,
     CriarSalaPage,
     ResponsavelPage,
-    CriarResponsavelPage
+    CriarResponsavelPage,
+    AlunoPage,
+    CriarAlunoPage
   ],
   providers: [
     StatusBar,

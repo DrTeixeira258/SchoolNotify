@@ -5,6 +5,7 @@ import { LoginPage } from '../components/principal/pages/login/login';
 import { SalaPage } from '../components/sala/sala';
 import { HomePage } from '../components/home/home';
 import { ResponsavelPage } from '../components/responsavel/responsavel';
+import { AlunoPage } from '../components/aluno/aluno';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,6 +37,10 @@ export class MyApp {
 
   sala() {
     this.navCtrl.setRoot(SalaPage);
+  }
+
+  aluno() {
+    this.navCtrl.setRoot(AlunoPage);
   }
 
   sair() {

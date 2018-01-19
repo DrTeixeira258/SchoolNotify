@@ -1,7 +1,7 @@
 export class Responsavel {
     $key: string = "";
     nome: string = "";
-    telefone: number = 0;
+    telefone: number = null;
     email: string = "";
 
     constructor(values: Object = {}) {
