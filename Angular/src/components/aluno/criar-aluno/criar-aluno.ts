@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
-import { FirebaseListFactoryOpts } from 'angularfire2/database-deprecated/interfaces';
 import { Uteis } from '../../uteis';
 import { Aluno } from '../../../models/aluno';
+import * as firebase from 'firebase/app';
+import { FirebaseApp } from 'angularfire2/firebase.app.module';
 
 @Component({
     selector: 'criar-aluno-page',
@@ -24,6 +25,7 @@ export class CriarAlunoPage extends Uteis {
         public navCtrl: NavController,
         public viewCtrl: ViewController,
         public navParams: NavParams,
+        public fb: FirebaseApp,
         private angularFire: AngularFireDatabase) {
         super(loadingCtrl, alertCtrl);
         if (this.navParams.get("aluno"))
@@ -32,6 +34,7 @@ export class CriarAlunoPage extends Uteis {
     }
 
     ionViewWillEnter() {
+
     }
 
     dismiss() {
@@ -50,8 +53,11 @@ export class CriarAlunoPage extends Uteis {
     }
 
     salvar() {
+        console.log(this.aluno.$keyResponsavel);
 
-        console.log(this.aluno)
+        this.fb.database().ref('responsavel').orderByKey().equalTo(this.aluno.$keyResponsavel).on("child_added", function (snapshot) {
+            console.log(snapshot.val());
+        });
 
         // this.criarLoader();
         // if (this.aluno.$key) {
