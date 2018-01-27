@@ -7,8 +7,6 @@ import { Uteis } from '../uteis';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { CriarAlunoPage } from './criar-aluno/criar-aluno';
 
-// rootRef: const rootRef = this.angularFire.database().Ref();
-
 @Component({
     selector: 'aluno-page',
     templateUrl: 'aluno.html',
@@ -26,10 +24,10 @@ export class AlunoPage extends Uteis {
         public modalCtrl: ModalController,
         private angularFire: AngularFireDatabase) {
         super(loadingCtrl, alertCtrl);
+        this.alunos = this.angularFire.list('aluno');
     }
     
     ionViewWillEnter() {
-        this.alunos = this.angularFire.list('aluno');
         this.splashScreen.hide();
     }
 
@@ -39,6 +37,7 @@ export class AlunoPage extends Uteis {
     }
 
     modalEditarAluno(aluno) {
+        console.log("aluno: ",aluno);
         let modal = this.modalCtrl.create(CriarAlunoPage,
             {
                 aluno: aluno
@@ -46,7 +45,7 @@ export class AlunoPage extends Uteis {
         modal.present();
     }
 
-    deletarSala(aluno) {
+    deletarAluno(aluno) {
         this.angularFire.list("/aluno").remove(aluno)
             .then(() => {
                 this.exibirMensagem("Aluno Removido", "Aluno removido com sucesso!");

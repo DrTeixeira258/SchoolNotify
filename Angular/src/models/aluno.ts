@@ -3,8 +3,8 @@ import { Sala } from "./sala";
 
 export class Aluno {
     $key: string = "";
-    $keyResponsavel: string = "";
-    $keySala: string = "";
+    keyResponsavel: string = "";
+    keySala: string = "";
     nome: string = "";
     sexo: string = "";
     idade: number = null;

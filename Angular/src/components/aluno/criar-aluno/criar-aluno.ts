@@ -28,8 +28,10 @@ export class CriarAlunoPage extends Uteis {
         public fb: FirebaseApp,
         private angularFire: AngularFireDatabase) {
         super(loadingCtrl, alertCtrl);
-        if (this.navParams.get("aluno"))
+        if (this.navParams.get("aluno")){
             this.aluno = this.navParams.get("aluno");
+            console.log("criar-aluno: ", this.aluno)
+        }
         this.carregarSelects();
     }
 
@@ -48,50 +50,50 @@ export class CriarAlunoPage extends Uteis {
         this.fecharLoader();
     }
 
-    teste(responsavel) {
-        console.log(responsavel)
-    }
-
     salvar() {
-        console.log(this.aluno.$keyResponsavel);
+        this.criarLoader();
+        if (this.aluno.$key) {
+            this.angularFire.list("aluno").update(this.aluno.$key, this.aluno)
+                .then(() => {
+                    this.exibirMensagem("Aluno Editado", "Aluno editado com sucesso!");
+                    this.fecharLoader();
+                    this.viewCtrl.dismiss();
+                }),
+                (e: any) => {
+                    console.log(e.message);
+                    this.fecharLoader();
+                };
+        } else {
+            this.fb.database().ref('responsavel').orderByKey().equalTo(this.aluno.keyResponsavel).on("child_added", (snapshot) => {
+                this.aluno.responsavel = snapshot.val();
+            });
 
-        this.fb.database().ref('responsavel').orderByKey().equalTo(this.aluno.$keyResponsavel).on("child_added", function (snapshot) {
-            console.log(snapshot.val());
-        });
+            this.fb.database().ref('sala').orderByKey().equalTo(this.aluno.keySala).on("child_added", (snapshot) => {
+                this.aluno.sala = snapshot.val();
+            });
 
-        // this.criarLoader();
-        // if (this.aluno.$key) {
-        //     this.angularFire.list("aluno").update(this.aluno.$key, this.aluno)
-        //         .then(() => {
-        //             this.exibirMensagem("Aluno Editado", "Aluno editado com sucesso!");
-        //             this.fecharLoader();
-        //             this.viewCtrl.dismiss();
-        //         }),
-        //         (e: any) => {
-        //             console.log(e.message);
-        //             this.fecharLoader();
-        //         };
-        // } else {
-        //     this.angularFire.list("aluno").push(
-        //         {
-        //             responsavel: this.aluno.responsavel,
-        //             sala: this.aluno.sala,
-        //             nome: this.aluno.nome,
-        //             sexo: this.aluno.sexo,
-        //             idade: this.aluno.idade
-        //         }
-        //     )
-        //         .then((t: any) => {
-        //             console.log('dados gravados: ' + t.key);
-        //             this.exibirMensagem("Aluno Criado", "Aluno criado com sucesso!");
-        //             this.fecharLoader();
-        //             this.viewCtrl.dismiss();
-        //         }),
-        //         (e: any) => {
-        //             console.log(e.message);
-        //             this.fecharLoader();
-        //         };
-        // }
+            this.angularFire.list("aluno").push(
+                {
+                    nome: this.aluno.nome,
+                    sexo: this.aluno.sexo,
+                    idade: this.aluno.idade,
+                    keyResponsavel: this.aluno.keyResponsavel,
+                    keySala: this.aluno.keySala,
+                    responsavel: this.aluno.responsavel,
+                    sala: this.aluno.sala
+                }
+            )
+                .then((t: any) => {
+                    console.log('dados gravados: ' + t.key);
+                    this.exibirMensagem("Aluno Criado", "Aluno criado com sucesso!");
+                    this.fecharLoader();
+                    this.viewCtrl.dismiss();
+                }),
+                (e: any) => {
+                    console.log(e.message);
+                    this.fecharLoader();
+                };
+        }
     }
 
 }

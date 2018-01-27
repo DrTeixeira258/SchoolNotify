@@ -38,7 +38,7 @@
         <ion-list>
             <ion-item>
                 <ion-label>Responsavel</ion-label>
-                <ion-select [(ngModel)]="aluno.$keyResponsavel" okText="Selecionar" cancelText="Cancelar">
+                <ion-select [(ngModel)]="aluno.keyResponsavel" okText="Selecionar" cancelText="Cancelar">
                     <ion-option *ngFor="let responsavel of responsaveis| async" value="{{responsavel.$key}}">{{responsavel.nome}}</ion-option>
                 </ion-select>
             </ion-item>
@@ -47,7 +47,7 @@
         <ion-list>
             <ion-item>
                 <ion-label>Sala</ion-label>
-                <ion-select [(ngModel)]="aluno.$keySala" okText="Selecionar" cancelText="Cancelar">
+                <ion-select [(ngModel)]="aluno.keySala" okText="Selecionar" cancelText="Cancelar">
                     <ion-option *ngFor="let sala of salas| async" value="{{sala.$key}}">{{sala.nome}}</ion-option>
                 </ion-select>
             </ion-item>
