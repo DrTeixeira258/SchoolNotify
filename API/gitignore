@@ -13,9 +13,8 @@
 *.userprefs
 
 
-
-SchoolNotify.API/Web.config
-packages
+SchoolNotyfyAPI_NEW/SchoolNotify.API/Web.config
+SchoolNotyfyAPI_NEW/packages
 
 
 # Build results
