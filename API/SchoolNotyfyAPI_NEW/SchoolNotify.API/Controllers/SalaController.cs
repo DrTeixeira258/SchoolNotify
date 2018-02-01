@@ -2,9 +2,7 @@
 using SchoolNotify.Application.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -29,6 +27,51 @@ namespace SchoolNotify.API.Controllers
             try
             {
                 return Ok(await _salaAppService.ObterSalas());
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpGet]
+        [Route("Sala/ObterSalaPorId/{idSala}")]
+        [ResponseType(typeof(SalaViewModel))]
+        public async Task<IHttpActionResult> ObterSalaPorId(int idSala)
+        {
+            try
+            {
+                return Ok(await _salaAppService.ObterSalaPorId(idSala));
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpPost]
+        [Route("Sala/SalvarSala")]
+        [ResponseType(typeof(bool))]
+        public async Task<IHttpActionResult> SalvarSala(SalaViewModel sala)
+        {
+            try
+            {
+                return Ok(await _salaAppService.SalvarSala(sala));
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpPost]
+        [Route("Sala/DeletarSala")]
+        [ResponseType(typeof(bool))]
+        public async Task<IHttpActionResult> DeletarSala(SalaViewModel sala)
+        {
+            try
+            {
+                return Ok(await _salaAppService.DeletarSala(sala));
             }
             catch (Exception e)
             {

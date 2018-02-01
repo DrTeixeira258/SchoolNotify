@@ -191,6 +191,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CelulaController.cs" />
+    <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\ResponsavelController.cs" />
     <Compile Include="Controllers\SalaController.cs" />
     <Compile Include="Controllers\UploadImagemController.cs" />
     <Compile Include="Global.asax.cs">

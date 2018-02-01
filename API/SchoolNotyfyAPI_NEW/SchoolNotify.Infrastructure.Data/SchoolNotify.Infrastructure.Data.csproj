@@ -72,7 +72,10 @@
     <Compile Include="Context\SchoolNotifyContext.cs" />
     <Compile Include="EntityConfiguration\CelulaMap.cs" />
     <Compile Include="EntityConfiguration\CelulaUnidadeRelacionalMap.cs" />
+    <Compile Include="EntityConfiguration\ProfessorMap.cs" />
+    <Compile Include="EntityConfiguration\ResponsavelMap.cs" />
     <Compile Include="EntityConfiguration\SalaMap.cs" />
+    <Compile Include="EntityConfiguration\SalaProfessorRelacionalMap.cs" />
     <Compile Include="Files\FileDAO.cs" />
     <Compile Include="Files\Interfaces\IFileDAO.cs" />
     <Compile Include="Interfaces\Management\IContextManager.cs" />
@@ -83,6 +86,8 @@
     <Compile Include="Repositories\Base\BaseRepository.cs" />
     <Compile Include="Repositories\CelulaRepository.cs" />
     <Compile Include="Repositories\CelulaUnidadeRelacionalRepository.cs" />
+    <Compile Include="Repositories\ProfessorRepository.cs" />
+    <Compile Include="Repositories\ResponsavelRepository.cs" />
     <Compile Include="Repositories\SalaRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>

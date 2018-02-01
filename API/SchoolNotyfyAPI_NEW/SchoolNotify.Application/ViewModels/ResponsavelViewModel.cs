@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolNotify.Domain.Entities
+namespace SchoolNotify.Application.ViewModels
 {
-    public class Sala
+    public class ResponsavelViewModel
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Serie { get; set; }
-        public virtual ICollection<SalaProfessorRelacional> SalaProfessorRelacional { get; set; }
+        public string Email { get; set; }
+        public int Telefone { get; set; }
     }
 }

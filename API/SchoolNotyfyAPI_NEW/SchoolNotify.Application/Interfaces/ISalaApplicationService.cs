@@ -10,5 +10,8 @@ namespace SchoolNotify.Application.Interfaces
     public interface ISalaApplicationService
     {
         Task<IEnumerable<SalaViewModel>> ObterSalas();
+        Task<SalaViewModel> ObterSalaPorId(int idSala);
+        Task<bool> SalvarSala(SalaViewModel salaVM);
+        Task<bool> DeletarSala(SalaViewModel salaVM);
     }
 }

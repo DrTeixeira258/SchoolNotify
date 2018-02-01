@@ -39,11 +39,16 @@
   <ItemGroup>
     <Compile Include="Entities\Celula.cs" />
     <Compile Include="Entities\CelulaUnidadeRelacional.cs" />
+    <Compile Include="Entities\Professor.cs" />
+    <Compile Include="Entities\Responsavel.cs" />
     <Compile Include="Entities\Sala.cs" />
+    <Compile Include="Entities\SalaProfessorRelacional.cs" />
     <Compile Include="Enums\TipoPessoaEnum.cs" />
     <Compile Include="Interfaces\Repository\Base\IBaseRepository.cs" />
     <Compile Include="Interfaces\Repository\ICelulaRepository.cs" />
     <Compile Include="Interfaces\Repository\ICelulaUnidadeRelacionalRepository.cs" />
+    <Compile Include="Interfaces\Repository\IProfessorRepository.cs" />
+    <Compile Include="Interfaces\Repository\IResponsavelRepository.cs" />
     <Compile Include="Interfaces\Repository\ISalaRepository.cs" />
     <Compile Include="Interfaces\Specification\ISpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

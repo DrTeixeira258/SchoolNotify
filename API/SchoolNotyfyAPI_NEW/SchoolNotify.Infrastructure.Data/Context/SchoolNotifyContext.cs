@@ -17,7 +17,10 @@ namespace SchoolNotify.Infrastructure.Data.Context
         //public DbSet<Celula> Celula { get; set; }
         //public DbSet<CelulaUnidadeRelacional> CelulaUnidadeRelacional { get; set; }
 
+        public DbSet<Responsavel> Responsavel { get; set; }
         public DbSet<Sala> Sala { get; set; }
+        public DbSet<Professor> Professor { get; set; }
+        public DbSet<SalaProfessorRelacional> SalaProfessorRelacional { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,7 +35,10 @@ namespace SchoolNotify.Infrastructure.Data.Context
             //modelBuilder.Configurations.Add(new CelulaMap());
             //modelBuilder.Configurations.Add(new CelulaUnidadeRelacionalMap());
 
+            modelBuilder.Configurations.Add(new ResponsavelMap());
             modelBuilder.Configurations.Add(new SalaMap());
+            modelBuilder.Configurations.Add(new ProfessorMap());
+            modelBuilder.Configurations.Add(new SalaProfessorRelacionalMap());
             #endregion
 
             base.OnModelCreating(modelBuilder);

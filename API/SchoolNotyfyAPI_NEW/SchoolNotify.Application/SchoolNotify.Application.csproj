@@ -84,15 +84,21 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Interfaces\Base\IBaseApplicationService.cs" />
     <Compile Include="Interfaces\ICelulaApplicationService.cs" />
+    <Compile Include="Interfaces\IProfessorApplicationService.cs" />
+    <Compile Include="Interfaces\IResponsavelApplicationService.cs" />
     <Compile Include="Interfaces\ISalaApplicationService.cs" />
     <Compile Include="Interfaces\IUploadImagemApplicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Base\BaseApplicationService.cs" />
     <Compile Include="Services\CelulaApplicationService.cs" />
+    <Compile Include="Services\ProfessorApplicationService.cs" />
+    <Compile Include="Services\ResponsavelApplicationService.cs" />
     <Compile Include="Services\SalaApplicationService.cs" />
     <Compile Include="Services\UploadImagemApplicationService.cs" />
     <Compile Include="Validation\ValidationApplicationResult.cs" />
     <Compile Include="ViewModels\CelulaViewModel.cs" />
+    <Compile Include="ViewModels\ProfessorViewModel.cs" />
+    <Compile Include="ViewModels\ResponsavelViewModel.cs" />
     <Compile Include="ViewModels\SalaViewModel.cs" />
     <Compile Include="ViewModels\UploadImagemViewModel.cs" />
   </ItemGroup>

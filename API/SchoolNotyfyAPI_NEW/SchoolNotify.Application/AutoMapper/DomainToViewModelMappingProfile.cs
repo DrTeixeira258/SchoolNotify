@@ -13,6 +13,8 @@ namespace SchoolNotify.Application.AutoMapper
             #region SchoolNotify
             Mapper.CreateMap<Celula, CelulaViewModel>();
             Mapper.CreateMap<Sala, SalaViewModel>();
+            Mapper.CreateMap<Professor, ProfessorViewModel>();
+            Mapper.CreateMap<Responsavel, ResponsavelViewModel>();
             #endregion
         }
     }

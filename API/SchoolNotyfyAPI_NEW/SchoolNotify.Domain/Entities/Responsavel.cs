@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SchoolNotify.Domain.Entities
 {
-    public class Sala
+    public class Responsavel
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Serie { get; set; }
-        public virtual ICollection<SalaProfessorRelacional> SalaProfessorRelacional { get; set; }
+        public string Email { get; set; }
+        public int Telefone { get; set; }
     }
 }
