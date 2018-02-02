@@ -72,6 +72,7 @@
     <Compile Include="Context\SchoolNotifyContext.cs" />
     <Compile Include="EntityConfiguration\CelulaMap.cs" />
     <Compile Include="EntityConfiguration\CelulaUnidadeRelacionalMap.cs" />
+    <Compile Include="EntityConfiguration\AlunoMap.cs" />
     <Compile Include="EntityConfiguration\ProfessorMap.cs" />
     <Compile Include="EntityConfiguration\ResponsavelMap.cs" />
     <Compile Include="EntityConfiguration\SalaMap.cs" />

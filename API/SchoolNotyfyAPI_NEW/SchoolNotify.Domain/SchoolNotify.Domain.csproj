@@ -37,6 +37,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Aluno.cs" />
     <Compile Include="Entities\Celula.cs" />
     <Compile Include="Entities\CelulaUnidadeRelacional.cs" />
     <Compile Include="Entities\Professor.cs" />
