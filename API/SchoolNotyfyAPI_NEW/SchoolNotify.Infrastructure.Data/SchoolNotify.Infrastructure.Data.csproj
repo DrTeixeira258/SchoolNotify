@@ -81,6 +81,10 @@
     <Compile Include="Files\Interfaces\IFileDAO.cs" />
     <Compile Include="Interfaces\Management\IContextManager.cs" />
     <Compile Include="Interfaces\Management\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201802021530558_criacao banco.cs" />
+    <Compile Include="Migrations\201802021530558_criacao banco.Designer.cs">
+      <DependentUpon>201802021530558_criacao banco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FileItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +105,11 @@
       <Project>{59521cf6-5e75-4b85-b30d-8bccf9c2e7d6}</Project>
       <Name>SchoolNotify.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802021530558_criacao banco.resx">
+      <DependentUpon>201802021530558_criacao banco.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
