@@ -1,0 +1,30 @@
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <button menuClose ion-item (click)="home()">
+                Home
+            </button>
+            <button menuClose ion-item (click)="sala()">
+                Manter Sala
+            </button>
+            <button menuClose ion-item (click)="responsavel()">
+                Manter Responsável
+            </button>
+            <button menuClose ion-item (click)="aluno()">
+                Manter Aluno
+            </button>
+            <button menuClose ion-item (click)="sair()">
+                Deslogar
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>

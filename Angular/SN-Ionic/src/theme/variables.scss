@@ -1,0 +1,221 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  dark-gray:  #a9aaa8,
+  hard-light: white,
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+.text-blue{
+  color: #1F57A7 !important;
+}
+
+.text-green{
+  color: #A4C140 !important;
+}
+
+.text-gray{
+  color: gray !important;
+}
+.text-red{
+  color: red !important;
+}
+
+.text-left{
+  text-align: left !important;
+}
+
+.text-right{
+  text-align: right !important;
+}
+
+.text-justify{
+  text-align: justify !important;
+}
+
+.bg-red{
+  background-color: red !important;
+}
+
+.bg-green{
+  background-color: #A4C140 !important;
+}
+
+.bg-blue{
+  background-color:rgb(10, 110, 209) !important;
+}
+
+.bg-gray{
+  background-color: gray !important;
+}
+
+button{
+  box-shadow: none !important;
+}
+
+.mt-20{
+  margin-top: 20px !important;
+}
+
+.w-50{
+  width: 50%;
+}
+
+.h-35{
+  height: 35% !important;
+}
+
+.text-center{
+  text-align: center !important;
+}
+
+hr{
+  background-color: lightgray !important;
+}
+
+.d-grid{
+  display: grid !important;
+}
+
+.d-inline-box{
+  display: -webkit-inline-box !important;
+}
+
+.v-align-middle{
+  vertical-align: middle !important;
+}
+
+.img-perfil{
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid lightgray;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-perfil img{
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  margin: auto;
+}
+
+.title-page{
+  background: #1F57A7;
+  text-align: center;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 10px;
+  color: white !important;
+  text-transform: uppercase;
+}
+
+.toolbar-title{
+  color:white !important;
+}
+
+.range-md.range-has-pin{
+  padding-top: 0 !important;
+}
+
+.bt-black{
+  background: transparent !important;
+  border: thin solid black !important;
+  color: black !important;
+}
+
+.font-2-2{
+  font-size: 2.2em !important;
+}
+
+.m-auto{
+  margin: auto !important;
+}

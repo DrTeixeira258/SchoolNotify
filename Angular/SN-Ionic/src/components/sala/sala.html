@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title class="title">Sala</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h3>Salas</h3>
+    
+    <ion-list>
+        <ion-item-sliding *ngFor="let sala of salas| async">
+            <ion-item>
+                <h2>{{sala.nome}}</h2>
+                <p>{{sala.serie}}</p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="secondary" (click)="modalEditarSala(sala)">
+                    Editar
+                </button>
+                <button ion-button color="danger" (click)="deletarSala(sala)">
+                    Deletar
+                </button>
+            </ion-item-options>
+            <ion-item-options side="left">
+                <button ion-button color="primary">
+                    <ion-icon name="mail"></ion-icon>
+                    Cade?
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <ion-fab right bottom>
+        <button ion-fab color="secondary" (click)="modalCriarSala()">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+
+</ion-content>
