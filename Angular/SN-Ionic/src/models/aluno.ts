@@ -2,9 +2,9 @@ import { Responsavel } from "./responsavel";
 import { Sala } from "./sala";
 
 export class Aluno {
-    $key: string = "";
-    keyResponsavel: string = "";
-    keySala: string = "";
+    id: number = 0;
+    idResponsavel: number = 0;
+    idSala: number = 0;
     nome: string = "";
     sexo: string = "";
     idade: number = null;

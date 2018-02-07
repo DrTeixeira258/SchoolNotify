@@ -1,5 +1,5 @@
 export class Sala {
-    $key: string = "";
+    id: number = 0;
     nome: string = "";
     serie: string = "";
 

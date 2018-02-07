@@ -5,10 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 
-//FIREBASE
-import { FirebaseConfig } from '../environments/firebase.config';
-import { AngularFireModule } from 'angularfire2/index';
-
 import { MyApp } from './app.component';
 import { LoginPage } from './../components/principal/pages/login/login';
 import { SalaPage } from '../components/sala/sala';
@@ -35,8 +31,7 @@ import { CriarAlunoPage } from '../components/aluno/criar-aluno/criar-aluno';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(FirebaseConfig)
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -2,14 +2,14 @@ import { NavController, ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Uteis } from '../../uteis';
 import { Sala } from '../../../models/sala';
+import { SalaService } from '../../../services/sala.service';
 
 @Component({
     selector: 'criar-sala-page',
     templateUrl: 'criar-sala.html',
-    providers: [AngularFireDatabase]
+    providers: [SalaService]
 })
 
 export class CriarSalaPage extends Uteis {
@@ -21,7 +21,7 @@ export class CriarSalaPage extends Uteis {
         public navCtrl: NavController,
         public viewCtrl: ViewController,
         public navParams: NavParams,
-        private angularFire: AngularFireDatabase) {
+        private salaService: SalaService) {
         super(loadingCtrl, alertCtrl);
         if (this.navParams.get("sala"))
             this.sala = this.navParams.get("sala");
@@ -31,40 +31,24 @@ export class CriarSalaPage extends Uteis {
     }
 
     dismiss() {
-        this.viewCtrl.dismiss();
+        this.viewCtrl.dismiss(false);
     }
 
     salvar() {
         this.criarLoader();
-        if (this.sala.$key) {
-            this.angularFire.list("sala").update(this.sala.$key, this.sala)
-            .then(() => {
-                this.exibirMensagem("Sala Editada", "Sala editada com sucesso!");
+        this.salaService.salvarSala(this.sala).subscribe(
+            data => {
+                if (data)
+                    this.exibirMensagem("Sucesso!", "Operação realizada com sucesso!");
+            },
+            error => {
+                this.exibirMensagem("Ops!", "Ocorreu um erro ao realizar a operação.");
+            },
+            () => {
                 this.fecharLoader();
-                this.viewCtrl.dismiss();
-            }),
-                (e: any) => {
-                    console.log(e.message);
-                    this.fecharLoader();
-                };
-        } else {
-            this.angularFire.list("sala").push(
-                {
-                    nome: this.sala.nome,
-                    serie: this.sala.serie
-                }
-            ).then((t: any) => {
-                console.log('dados gravados: ' + t.key);
-                this.exibirMensagem("Sala Criada", "Sala criada com sucesso!");
-                this.fecharLoader();
-                this.viewCtrl.dismiss();
-            }),
-                (e: any) => {
-                    console.log(e.message);
-                    this.fecharLoader();
-                };
-        }
-
+                this.viewCtrl.dismiss(true)
+            }
+        );
     }
 
 }

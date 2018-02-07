@@ -4,27 +4,21 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Uteis } from '../uteis';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { CriarAlunoPage } from './criar-aluno/criar-aluno';
 
 @Component({
     selector: 'aluno-page',
-    templateUrl: 'aluno.html',
-    providers: [AngularFireDatabase]
+    templateUrl: 'aluno.html'
 })
 
 export class AlunoPage extends Uteis {
-
-    alunos: FirebaseListObservable<any[]>;
 
     constructor(public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public navCtrl: NavController,
         public splashScreen: SplashScreen,
-        public modalCtrl: ModalController,
-        private angularFire: AngularFireDatabase) {
+        public modalCtrl: ModalController) {
         super(loadingCtrl, alertCtrl);
-        this.alunos = this.angularFire.list('aluno');
     }
     
     ionViewWillEnter() {
@@ -46,15 +40,15 @@ export class AlunoPage extends Uteis {
     }
 
     deletarAluno(aluno) {
-        this.angularFire.list("/aluno").remove(aluno)
-            .then(() => {
-                this.exibirMensagem("Aluno Removido", "Aluno removido com sucesso!");
-                this.fecharLoader();
-            }),
-            (e: any) => {
-                console.log(e.message);
-                this.fecharLoader();
-            };
+        // this.angularFire.list("/aluno").remove(aluno)
+        //     .then(() => {
+        //         this.exibirMensagem("Aluno Removido", "Aluno removido com sucesso!");
+        //         this.fecharLoader();
+        //     }),
+        //     (e: any) => {
+        //         console.log(e.message);
+        //         this.fecharLoader();
+        //     };
     }
 
 }
