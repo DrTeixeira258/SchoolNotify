@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Uteis } from '../../uteis';
-import { Aluno } from '../../../models/aluno';
+import { Aluno } from '../../../models/aluno.model';
 
 @Component({
     selector: 'criar-aluno-page',

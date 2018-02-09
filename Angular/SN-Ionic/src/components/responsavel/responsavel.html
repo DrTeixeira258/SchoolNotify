@@ -11,23 +11,23 @@
         <h3>Responsáveis</h3>
         
         <ion-list>
-            <ion-item-sliding *ngFor="let responsavel of responsaveis| async">
+            <ion-item-sliding #slidingItem *ngFor="let responsavel of responsaveis">
                 <ion-item>
                     <h2>{{responsavel.nome}}</h2>
                     <p>{{responsavel.telefone}}</p>
                 </ion-item>
-                <ion-item-options side="right">
-                    <button ion-button color="secondary" (click)="modalEditarResponsavel(responsavel)">
+                <ion-item-options side="right" (ionSwipe)="prepararDeletarResponsavel(responsavel)">
+                    <button ion-button color="secondary" (click)="modalEditarResponsavel(responsavel); slidingItem.close()">
                         Editar
                     </button>
-                    <button ion-button color="danger" (click)="deletarResponsavel(responsavel)">
+                    <button ion-button expandable color="danger" (click)="prepararDeletarResponsavel(responsavel); slidingItem.close()">
                         Deletar
                     </button>
                 </ion-item-options>
                 <ion-item-options side="left">
                     <button ion-button color="primary">
                         <ion-icon name="mail"></ion-icon>
-                        Cade?
+                        FON
                     </button>
                 </ion-item-options>
             </ion-item-sliding>

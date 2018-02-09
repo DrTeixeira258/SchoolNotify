@@ -1,5 +1,5 @@
-import { Responsavel } from "./responsavel";
-import { Sala } from "./sala";
+import { Responsavel } from "./responsavel.model";
+import { Sala } from "./sala.model";
 
 export class Aluno {
     id: number = 0;

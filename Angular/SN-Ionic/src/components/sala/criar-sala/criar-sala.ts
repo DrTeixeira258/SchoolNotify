@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Uteis } from '../../uteis';
-import { Sala } from '../../../models/sala';
+import { Sala } from '../../../models/sala.model';
 import { SalaService } from '../../../services/sala.service';
 
 @Component({

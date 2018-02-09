@@ -3,11 +3,13 @@ import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Uteis } from '../../uteis';
-import { Responsavel } from '../../../models/responsavel';
+import { Responsavel } from '../../../models/responsavel.model';
+import { ResponsavelService } from '../../../services/responsavel.service';
 
 @Component({
     selector: 'criar-responsavel-page',
-    templateUrl: 'criar-responsavel.html'
+    templateUrl: 'criar-responsavel.html',
+    providers: [ResponsavelService]
 })
 
 export class CriarResponsavelPage extends Uteis {
@@ -18,7 +20,8 @@ export class CriarResponsavelPage extends Uteis {
         public alertCtrl: AlertController,
         public navCtrl: NavController,
         public viewCtrl: ViewController,
-        public navParams: NavParams) {
+        public navParams: NavParams,
+        private responsavelService: ResponsavelService) {
         super(loadingCtrl, alertCtrl);
         if (this.navParams.get("responsavel"))
             this.responsavel = this.navParams.get("responsavel");
@@ -28,21 +31,24 @@ export class CriarResponsavelPage extends Uteis {
     }
 
     dismiss() {
-        this.viewCtrl.dismiss();
+        this.viewCtrl.dismiss(false);
     }
 
     salvar() {
-        // this.criarLoader();
-        //     this.angularFire.list("responsavel").update(this.responsavel.$key, this.responsavel)
-        //     .then(() => {
-        //         this.exibirMensagem("Responsável Editado", "Responsável editado com sucesso!");
-        //         this.fecharLoader();
-        //         this.viewCtrl.dismiss();
-        //     }),
-        //         (e: any) => {
-        //             console.log(e.message);
-        //             this.fecharLoader();
-        //         };
+        this.criarLoader();
+        this.responsavelService.salvarResponsavel(this.responsavel).subscribe(
+            data => {
+                if (data)
+                    this.exibirMensagem("Sucesso!", "Operação realizada com sucesso!");
+            },
+            error => {
+                this.exibirMensagem("Ops!", "Ocorreu um erro ao realizar a operação.");
+            },
+            () => {
+                this.fecharLoader();
+                this.viewCtrl.dismiss(true)
+            }
+        );
     }
 
 }

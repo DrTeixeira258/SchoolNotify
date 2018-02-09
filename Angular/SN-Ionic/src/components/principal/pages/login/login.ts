@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Uteis } from '../../../uteis';
-import { Usuario } from '../../../../models/usuario';
+import { Usuario } from '../../../../models/usuario.model';
 import { HomePage } from '../../../home/home';
 
 @Component({

@@ -5,7 +5,7 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Uteis } from '../uteis';
 import { CriarSalaPage } from './criar-sala/criar-sala';
-import { Sala } from '../../models/sala';
+import { Sala } from '../../models/sala.model';
 import { SalaService } from '../../services/sala.service';
 
 @Component({
@@ -57,7 +57,7 @@ export class SalaPage extends Uteis {
         modal.onWillDismiss(data => {
             if (data)
                 this.obterSalas();
-        })
+        });
     }
 
     modalEditarSala(sala) {
@@ -70,7 +70,7 @@ export class SalaPage extends Uteis {
         modal.onWillDismiss(data => {
             if (data)
                 this.obterSalas();
-        })
+        });
     }
 
     prepararDeletarSala(sala) {

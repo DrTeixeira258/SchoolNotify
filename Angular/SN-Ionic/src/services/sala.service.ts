@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { BaseService } from './base.service';
 import "rxjs/Rx";
-import { Sala } from '../models/sala';
+import { Sala } from '../models/sala.model';
 
 @Injectable()
 export class SalaService extends BaseService {
