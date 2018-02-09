@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios">Cancelar</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title class="title">Professor</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <h3>Cadastro de professor</h3>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Matrícula</ion-label>
+            <ion-input type="text" [(ngModel)]="professor.matricula"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="professor.nome"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>E-mail</ion-label>
+            <ion-input type="text" [(ngModel)]="professor.email"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-row class="mt-20">
+        <ion-col>
+            <button ion-button (click)="salvar()" block>
+                Salvar
+            </button>
+        </ion-col>
+    </ion-row>

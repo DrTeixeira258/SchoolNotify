@@ -14,6 +14,8 @@ import { ResponsavelPage } from '../components/responsavel/responsavel';
 import { CriarResponsavelPage } from '../components/responsavel/criar-responsavel/criar-responsavel';
 import { AlunoPage } from '../components/aluno/aluno';
 import { CriarAlunoPage } from '../components/aluno/criar-aluno/criar-aluno';
+import { ProfessorPage } from '../components/professor/professor';
+import { CriarProfessorPage } from '../components/professor/criar-professor/criar-professor';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { CriarAlunoPage } from '../components/aluno/criar-aluno/criar-aluno';
     ResponsavelPage,
     CriarResponsavelPage,
     AlunoPage,
-    CriarAlunoPage
+    CriarAlunoPage,
+    ProfessorPage,
+    CriarProfessorPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { CriarAlunoPage } from '../components/aluno/criar-aluno/criar-aluno';
     ResponsavelPage,
     CriarResponsavelPage,
     AlunoPage,
-    CriarAlunoPage
+    CriarAlunoPage,
+    ProfessorPage,
+    CriarProfessorPage
   ],
   providers: [
     StatusBar,

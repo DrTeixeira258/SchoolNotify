@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title class="title">Professor</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h3>Professores</h3>
+    
+    <ion-list>
+        <ion-item-sliding #slidingItem *ngFor="let professor of professores">
+            <ion-item>
+                <h2>{{professor.nome}}</h2>
+                <p>{{professor.matricula}}</p>
+            </ion-item>
+            <ion-item-options side="right" (ionSwipe)="prepararDeletarProfessor(professor)">
+                <button ion-button color="secondary" (click)="modalEditarProfessor(professor); slidingItem.close()">
+                    Editar
+                </button>
+                <button ion-button expandable color="danger" (click)="prepararDeletarProfessor(professor); slidingItem.close()">
+                    Deletar
+                </button>
+            </ion-item-options>
+            <ion-item-options side="left">
+                <button ion-button color="primary">
+                    <ion-icon name="mail"></ion-icon>
+                    FON
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <ion-fab right bottom>
+        <button ion-fab color="secondary" (click)="modalCriarProfessor()">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+
+</ion-content>
