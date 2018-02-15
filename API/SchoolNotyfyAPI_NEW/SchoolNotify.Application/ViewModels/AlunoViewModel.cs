@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolNotify.Domain.Entities
+namespace SchoolNotify.Application.ViewModels
 {
-    public class Aluno
+    public class AlunoViewModel
     {
         public int Id { get; set; }
         public int IdResponsavel { get; set; }
@@ -14,7 +14,7 @@ namespace SchoolNotify.Domain.Entities
         public string Nome { get; set; }
         public int Matricula { get; set; }
 
-        public virtual Responsavel Responsavel { get; set; }
-        public virtual Sala Sala { get; set; }
+        public SalaViewModel Sala { get; set; }
+        public ResponsavelViewModel Responsavel { get; set; }
     }
 }

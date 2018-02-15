@@ -15,10 +15,13 @@ namespace SchoolNotify.Application.Services
     public class SalaApplicationService : BaseApplicationService, ISalaApplicationService
     {
         private readonly ISalaRepository _salaRepository;
+        private readonly ISalaProfessorRelacionalRepository _salaProfessorRelacionalRepository;
 
-        public SalaApplicationService(ISalaRepository salaRepository)
+        public SalaApplicationService(ISalaRepository salaRepository,
+                                      ISalaProfessorRelacionalRepository salaProfessorRelacionalRepository)
         {
             _salaRepository = salaRepository;
+            _salaProfessorRelacionalRepository = salaProfessorRelacionalRepository;
         }
 
         public async Task<IEnumerable<SalaViewModel>> ObterSalas()
@@ -36,16 +39,31 @@ namespace SchoolNotify.Application.Services
             try
             {
                 var sala = Mapper.Map<Sala>(salaVM);
+                var idsProfessores = salaVM.IdsProfessores;
+
                 await BeginTransaction();
                 if (sala.Id == 0)
                 {
-                    await Task.Run(() => _salaRepository.Add(sala));
+                    sala = await Task.Run(() => _salaRepository.AddReturn(sala));
                 }
                 else
                 {
                     await Task.Run(() => _salaRepository.Update(sala));
                 }
                 await Commit();
+
+                foreach (int idProfessor in idsProfessores)
+                {
+                    SalaProfessorRelacional salaProfessor = await _salaProfessorRelacionalRepository.ObterSalaProfessorRelacionalPorIdSalaEProfessor(sala.Id, idProfessor);
+                    if (salaProfessor == null)
+                    {
+                        salaProfessor.IdProfessor = idProfessor;
+                        salaProfessor.IdSala = sala.Id;
+                        await BeginTransaction();
+                        await Task.Run(() => _salaProfessorRelacionalRepository.Add(salaProfessor));
+                        await Commit();
+                    }
+                }
                 return true;
             }
             catch (Exception e)

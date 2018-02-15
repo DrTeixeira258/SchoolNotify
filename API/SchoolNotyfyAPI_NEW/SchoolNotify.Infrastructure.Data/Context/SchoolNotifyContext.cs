@@ -20,6 +20,7 @@ namespace SchoolNotify.Infrastructure.Data.Context
         public DbSet<Responsavel> Responsavel { get; set; }
         public DbSet<Sala> Sala { get; set; }
         public DbSet<Professor> Professor { get; set; }
+        public DbSet<Aluno> Aluno { get; set; }
         public DbSet<SalaProfessorRelacional> SalaProfessorRelacional { get; set; }
 
 
@@ -38,6 +39,7 @@ namespace SchoolNotify.Infrastructure.Data.Context
             modelBuilder.Configurations.Add(new ResponsavelMap());
             modelBuilder.Configurations.Add(new SalaMap());
             modelBuilder.Configurations.Add(new ProfessorMap());
+            modelBuilder.Configurations.Add(new AlunoMap());
             modelBuilder.Configurations.Add(new SalaProfessorRelacionalMap());
             #endregion
 

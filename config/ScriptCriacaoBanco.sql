@@ -41,13 +41,13 @@ create table Aluno
 (
 	id int identity(1,1) primary key,
 	idResponsavel int not null,
-	idSalaProfessorRelacional int not null,
+	idSala int not null,
 	nome varchar(100) not null,
 	matricula int not null,
 	
 	CONSTRAINT FK_Responsavel_Aluno FOREIGN KEY (idResponsavel)
 	REFERENCES Responsavel (id),
-	CONSTRAINT FK_SalaProfessorRelacional_Aluno FOREIGN KEY (idSalaProfessorRelacional)
-	REFERENCES SalaProfessorRelacional (id)
+	CONSTRAINT FK_Sala_Aluno FOREIGN KEY (idSala)
+	REFERENCES Sala (id)
 )
 GO

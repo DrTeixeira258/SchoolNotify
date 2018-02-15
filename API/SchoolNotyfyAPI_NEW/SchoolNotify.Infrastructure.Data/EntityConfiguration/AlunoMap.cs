@@ -18,13 +18,20 @@ namespace SchoolNotify.Infrastructure.Data.EntityConfiguration
 
             Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+            Property(x => x.Nome)
+                .IsRequired()
+                .HasMaxLength(150);
+
+            Property(x => x.Matricula)
+                .IsRequired();
+
             HasRequired(x => x.Responsavel)
                .WithMany(x => x.Alunos)
                .HasForeignKey(x => x.IdResponsavel);
 
-            HasRequired(x => x.SalaProfessorRelacional)
+            HasRequired(x => x.Sala)
                .WithMany(x => x.Alunos)
-               .HasForeignKey(x => x.IdSalaProfessorRelacional);
+               .HasForeignKey(x => x.IdSala);
         }
     }
 }

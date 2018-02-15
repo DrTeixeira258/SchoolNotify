@@ -13,6 +13,5 @@ namespace SchoolNotify.Domain.Entities
         public virtual Sala Sala { get; set; }
         public int IdProfessor { get; set; }
         public virtual Professor Professor { get; set; }
-        public virtual ICollection<Aluno> Alunos { get; set; }
     }
 }
