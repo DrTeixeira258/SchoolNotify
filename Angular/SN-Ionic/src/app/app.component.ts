@@ -6,6 +6,7 @@ import { SalaPage } from '../components/sala/sala';
 import { HomePage } from '../components/home/home';
 import { ResponsavelPage } from '../components/responsavel/responsavel';
 import { AlunoPage } from '../components/aluno/aluno';
+import { ProfessorPage } from '../components/professor/professor';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +30,10 @@ export class MyApp {
 
   home() {
     this.navCtrl.setRoot(HomePage);
+  }
+
+  professor() {
+    this.navCtrl.setRoot(ProfessorPage);
   }
 
   responsavel() {
