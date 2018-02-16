@@ -1,0 +1,40 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="green">
+                        <h4 class="title">Cadastrar Sala</h4>
+                        <!-- <p class="category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-content">
+                        <form (submit)="salvar()">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating" [ngClass]="{'has-success': sala.nome, 'input-error': !sala.nome}">
+                                        <label class="control-label">Nome</label>
+                                        <input type="text" name="nome" class="form-control" [(ngModel)]="sala.nome">
+                                        <span class="material-icons form-control-feedback">{{sala.nome ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating" [ngClass]="{'has-success': sala.serie, 'input-error': !sala.serie}">
+                                        <label class="control-label">Serie</label>
+                                        <input type="text" name="serie" class="form-control" [(ngModel)]="sala.serie">
+                                        <span class="material-icons form-control-feedback">{{sala.serie ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success pull-right">Salvar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

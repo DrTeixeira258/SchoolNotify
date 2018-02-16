@@ -1,0 +1,12 @@
+.input-error > input {
+    background-image: linear-gradient(#ff0000, #ff0000), linear-gradient(#D2D2D2, #D2D2D2) !important;
+}
+
+.input-error > label {
+    color: #ff0000 !important;
+}
+
+.input-error > span {
+    opacity: 1 !important;
+    color: red !important;
+}
