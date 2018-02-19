@@ -31,10 +31,14 @@
                             <div class="row">
                                 <div class="col-6">
                                     <mat-form-field>
-                                        <mat-select placeholder="Favorite food">
-                                            <mat-option *ngFor="let food of toppingList" [value]="food">
-                                                {{ food }}
-                                            </mat-option>
+                                        <mat-select placeholder="fon" name="professores" [(ngModel)]="sala.idsProfessores" multiple>
+                                            <mat-select-trigger>
+                                                {{sala.idsProfessores.length >= 1 ? toppingList[0] : ''}}
+                                                <span *ngIf="sala.idsProfessores?.length > 1" class="example-additional-selection">
+                                                    (+{{sala.idsProfessores.length - 1}} outros)
+                                                </span>
+                                            </mat-select-trigger>
+                                            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
