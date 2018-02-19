@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Sala } from 'models/sala.model';
 import { SalaService } from 'services/sala.service';
+// import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'criar-sala',
@@ -11,6 +12,9 @@ import { SalaService } from 'services/sala.service';
 export class CriarSalaComponent implements OnInit {
 
   sala: Sala = new Sala();
+  // toppings = new FormControl();
+
+  toppingList = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   constructor(private salaService: SalaService) { }
 

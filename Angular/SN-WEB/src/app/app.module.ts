@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -31,15 +34,17 @@ import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.compon
     NotificationsComponent,
     UpgradeComponent,
     CriarSalaComponent
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ComponentsModule,
-RouterModule,
-    AppRoutingModule
+    RouterModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
