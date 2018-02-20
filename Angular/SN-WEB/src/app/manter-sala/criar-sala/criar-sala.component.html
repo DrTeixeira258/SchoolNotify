@@ -22,24 +22,28 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group form-black label-floating" [ngClass]="{'has-success': sala.serie, 'input-error': !sala.serie}">
-                                        <label class="control-label">Serie</label>
+                                        <label class="control-label">Série</label>
                                         <input type="text" name="serie" class="form-control" [(ngModel)]="sala.serie">
                                         <span class="material-icons form-control-feedback">{{sala.serie ? 'done' : 'clear'}}</span>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-6">
                                     <mat-form-field>
-                                        <mat-select placeholder="fon" name="professores" [(ngModel)]="sala.idsProfessores" multiple>
+                                        <mat-select placeholder="Professores" name="professores" [(ngModel)]="sala.idsProfessores" [required]="true" multiple>
                                             <mat-select-trigger>
-                                                {{sala.idsProfessores.length >= 1 ? toppingList[0] : ''}}
+                                                {{sala.idsProfessores.length >= 1 ? obterNomeProfessor(sala.idsProfessores[0]) : ''}}
                                                 <span *ngIf="sala.idsProfessores?.length > 1" class="example-additional-selection">
-                                                    (+{{sala.idsProfessores.length - 1}} outros)
+                                                    (+{{sala.idsProfessores.length - 1}} outro(s))
                                                 </span>
                                             </mat-select-trigger>
-                                            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                                            <mat-option *ngFor="let professor of professores" [value]="professor.id">{{professor.nome}}</mat-option>
                                         </mat-select>
+                                        <mat-error>
+                                            Selecione pelo menos um professor!
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
