@@ -17,7 +17,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'icons', title: 'Icons',  icon:'bubble_chart', class: '', material: true, classOption: '' },
     { path: 'maps', title: 'Maps',  icon:'location_on', class: '', material: true, classOption: '' },
     { path: 'notifications', title: 'Notifications',  icon:'notifications', class: '', material: true, classOption: '' },
-    { path: 'sala', title: 'Criar Sala',  icon:'', class: '', material: false, classOption: 'fa fa-group' },
+    { path: 'sala', title: 'Salas',  icon:'', class: '', material: false, classOption: 'fa fa-group' },
     { path: 'upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro', material: true, classOption: '' },
 ];
 

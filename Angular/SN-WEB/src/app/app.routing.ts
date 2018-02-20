@@ -12,6 +12,7 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.component';
+import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
 
 const routes: Routes =[
     { path: '',               redirectTo: 'dashboard', pathMatch: 'full' },
@@ -23,7 +24,9 @@ const routes: Routes =[
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'sala',           component: CriarSalaComponent}
+    { path: 'sala',           component: ListarSalaComponent},
+    { path: 'criar-sala',     component: CriarSalaComponent},
+    { path: 'criar-sala/:idSala',     component: CriarSalaComponent}
 ];
 
 @NgModule({

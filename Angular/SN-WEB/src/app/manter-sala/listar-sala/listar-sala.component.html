@@ -1,0 +1,40 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="green">
+                        <h4 class="title">Sala</h4>
+                        <p class="category">Salas cadastradas</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-danger">
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Série</th>
+                                <th class="text-center">N° Professores</th>
+                                <th>Ações</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let sala of salas">
+                                    <td class="text-center">{{sala.nome}}</td>
+                                    <td class="text-center">{{sala.serie}}</td>
+                                    <td class="text-center text-danger">{{sala.idsProfessores?.length}}</td>
+                                    <td>
+                                        <i class="material-icons mouse-pointer" title="Editar" (click)="editarSala(sala.id)">edit</i>
+                                        <i class="material-icons mouse-pointer" title="Excluir" (click)="deletar(sala)">delete</i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-3 pull-right">
+                                <button class="btn btn-success pull-right" (click)="criarSala()">Nova Sala</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

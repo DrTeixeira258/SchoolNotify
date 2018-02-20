@@ -21,6 +21,7 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.component';
+import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.compon
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    CriarSalaComponent
+    CriarSalaComponent,
+    ListarSalaComponent
   ],
   imports: [
     BrowserModule,

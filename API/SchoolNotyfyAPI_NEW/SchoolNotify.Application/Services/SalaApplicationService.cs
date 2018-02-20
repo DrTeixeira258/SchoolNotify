@@ -26,12 +26,34 @@ namespace SchoolNotify.Application.Services
 
         public async Task<IEnumerable<SalaViewModel>> ObterSalas()
         {
-            return Mapper.Map<IEnumerable<SalaViewModel>>(await _salaRepository.GetAll());
+            var salaDB = await _salaRepository.GetAllReadOnly(new[] { "SalaProfessorRelacional" });
+            var salasVM = Mapper.Map<IEnumerable<SalaViewModel>>(salaDB);
+            List<int> idsProfessores = new List<int>();
+
+            for (int i = 0; i < salasVM.ToList().Count; i++)
+            {
+                foreach(var sala in salaDB.ElementAt(i).SalaProfessorRelacional)
+                {
+                    idsProfessores.Add(sala.IdProfessor);
+                }
+                salasVM.ElementAt(i).IdsProfessores = idsProfessores;
+                idsProfessores = new List<int>();
+            }
+            return salasVM;
         }
 
         public async Task<SalaViewModel> ObterSalaPorId(int idSala)
         {
-            return Mapper.Map<SalaViewModel>(await _salaRepository.GetById(idSala));
+            var salaDB = await _salaRepository.Get(x => x.Id == idSala, new[] { "SalaProfessorRelacional" });
+            var salaVM =  Mapper.Map<SalaViewModel>(salaDB.FirstOrDefault());
+            List<int> idsProfessores = new List<int>();
+
+            foreach (var sala in salaDB.FirstOrDefault().SalaProfessorRelacional)
+            {
+                idsProfessores.Add(sala.IdProfessor);
+            }
+            salaVM.IdsProfessores = idsProfessores;
+            return salaVM;
         }
 
         public async Task<bool> SalvarSala(SalaViewModel salaVM)
