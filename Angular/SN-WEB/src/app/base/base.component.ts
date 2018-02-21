@@ -31,4 +31,20 @@ export abstract class BaseComponent {
                 }
             });
     }
+
+    showNotificationValidation() {
+        $.notify({
+            icon: "",
+            message: "Preencha todos os campos obrigatórios"
+
+        },
+            {
+                type: "warning",
+                timer: 2000,
+                placement: {
+                    from: "top",
+                    align: "right"
+                }
+            });
+    }
 }

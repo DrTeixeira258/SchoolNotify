@@ -1,10 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
 .mouse-pointer {
     cursor: pointer;
 }
 
 .opacity-03 {
     opacity: 0.3;
+}
+
+.input-error > input {
+    background-image: linear-gradient(#ff0000, #ff0000), linear-gradient(#D2D2D2, #D2D2D2) !important;
+}
+
+.input-error > label {
+    color: #ff0000 !important;
+}
+
+.input-error > span {
+    opacity: 1 !important;
+    color: red !important;
 }

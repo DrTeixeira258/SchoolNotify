@@ -13,20 +13,25 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.component';
 import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
+import { ListarProfessorComponent } from 'app/manter-professor/listar-professor/listar-professor.component';
+import { CriarProfessorComponent } from 'app/manter-professor/criar-professor/criar-professor.component';
 
 const routes: Routes =[
-    { path: '',               redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'sala',           component: ListarSalaComponent},
-    { path: 'criar-sala',     component: CriarSalaComponent},
-    { path: 'criar-sala/:idSala',     component: CriarSalaComponent}
+    { path: '',                              redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard',                     component: DashboardComponent },
+    { path: 'user-profile',                  component: UserProfileComponent },
+    { path: 'table-list',                    component: TableListComponent },
+    { path: 'typography',                    component: TypographyComponent },
+    { path: 'icons',                         component: IconsComponent },
+    { path: 'maps',                          component: MapsComponent },
+    { path: 'notifications',                 component: NotificationsComponent },
+    { path: 'upgrade',                       component: UpgradeComponent },
+    { path: 'sala',                          component: ListarSalaComponent},
+    { path: 'criar-sala',                    component: CriarSalaComponent},
+    { path: 'criar-sala/:idSala',            component: CriarSalaComponent},
+    { path: 'professor',                     component: ListarProfessorComponent},
+    { path: 'criar-professor',               component: CriarProfessorComponent},
+    { path: 'criar-professor/:idProfessor',  component: CriarProfessorComponent},
 ];
 
 @NgModule({

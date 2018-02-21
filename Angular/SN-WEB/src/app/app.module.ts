@@ -22,6 +22,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.component';
 import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
+import { ListarProfessorComponent } from 'app/manter-professor/listar-professor/listar-professor.component';
+import { CriarProfessorComponent } from 'app/manter-professor/criar-professor/criar-professor.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.com
     NotificationsComponent,
     UpgradeComponent,
     CriarSalaComponent,
-    ListarSalaComponent
+    ListarSalaComponent,
+    ListarProfessorComponent,
+    CriarProfessorComponent
   ],
   imports: [
     BrowserModule,

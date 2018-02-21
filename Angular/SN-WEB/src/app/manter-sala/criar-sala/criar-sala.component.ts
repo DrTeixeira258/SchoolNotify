@@ -5,7 +5,6 @@ import { Sala } from 'models/sala.model';
 import { Professor } from 'models/professor.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from 'app/base/base.component';
-declare var $: any;
 
 @Component({
   selector: 'criar-sala',
@@ -25,7 +24,6 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
     super();
-
   }
 
   ngOnInit() {
@@ -34,7 +32,7 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
       this.idSala = +params['idSala']; // (+) converts string 'id' to a number
 
       if (this.idSala) {
-        this.obterProfessor();
+        this.obterSalaPorId();
       }
     });
   }
@@ -54,7 +52,7 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
     );
   }
 
-  obterProfessor() {
+  obterSalaPorId() {
     this.activeLoader = true;
     this.salaService.obterSalaPorId(this.idSala).subscribe(
       data => {

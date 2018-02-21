@@ -1,0 +1,46 @@
+<div class="loader" *ngIf="activeLoader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+</div>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" [ngClass]="{'opacity-03' : activeLoader}">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="green">
+                        <h4 class="title">Professor</h4>
+                        <p class="category">Professores cadastrados</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-danger">
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Matricula</th>
+                                <th class="text-center">E-Mail</th>
+                                <th>Ações</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let professor of professores">
+                                    <td class="text-center">{{professor.nome}}</td>
+                                    <td class="text-center">{{professor.matricula}}</td>
+                                    <td class="text-center">{{professor.email}}</td>
+                                    <td>
+                                        <i class="material-icons mouse-pointer" title="Editar" (click)="editarProfessor(professor.id)">edit</i>
+                                        <i class="material-icons mouse-pointer" title="Excluir" (click)="deletar(professor)">delete</i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-3 pull-right">
+                                <button class="btn btn-success pull-right" (click)="criarProfessor()">Novo Professor</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

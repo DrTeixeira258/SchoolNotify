@@ -58,6 +58,7 @@ export class ListarSalaComponent extends BaseComponent implements OnInit {
             },
             () => {
                 this.activeLoader = false;
+                this.buscarSalas();
             }
         );
     }

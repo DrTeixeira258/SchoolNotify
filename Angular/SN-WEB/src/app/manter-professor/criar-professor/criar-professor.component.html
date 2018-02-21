@@ -1,0 +1,57 @@
+<div class="loader" *ngIf="activeLoader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+</div>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" [ngClass]="{'opacity-03' : activeLoader}">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="green">
+                        <h4 class="title">Cadastrar Professor</h4>
+                        <!-- <p class="category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-content">
+                        <form (submit)="salvar()">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating" [ngClass]="{'has-success': professor.matricula, 'input-error  is-empty': !professor.matricula}">
+                                        <label class="control-label">Matrícula</label>
+                                        <input type="number" name="matricula" class="form-control" [(ngModel)]="professor.matricula">
+                                        <span class="material-icons form-control-feedback">{{professor.matricula ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating" [ngClass]="{'has-success': professor.nome, 'input-error  is-empty': !professor.nome}">
+                                        <label class="control-label">Nome</label>
+                                        <input type="text" name="nome" class="form-control" [(ngModel)]="professor.nome">
+                                        <span class="material-icons form-control-feedback">{{professor.nome ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating" [ngClass]="{'has-success': professor.email, 'input-error  is-empty': !professor.email}">
+                                        <label class="control-label">E-Mail</label>
+                                        <input type="email" name="email" class="form-control" [(ngModel)]="professor.email">
+                                        <span class="material-icons form-control-feedback">{{professor.email ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success pull-right">Salvar</button>
+                            <button type="button" class="btn btn-success pull-right" (click)="voltar()">Voltar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
