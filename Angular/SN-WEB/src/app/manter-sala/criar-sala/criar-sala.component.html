@@ -1,6 +1,12 @@
+<div class="loader" *ngIf="activeLoader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+</div>
+
 <div class="main-content">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" [ngClass]="{'opacity-03' : activeLoader}">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="green">

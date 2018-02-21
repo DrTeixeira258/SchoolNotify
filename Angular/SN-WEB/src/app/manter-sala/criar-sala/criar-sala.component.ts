@@ -4,6 +4,8 @@ import { ProfessorService } from './../../../services/professor.service';
 import { Sala } from 'models/sala.model';
 import { Professor } from 'models/professor.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BaseComponent } from 'app/base/base.component';
+declare var $: any;
 
 @Component({
   selector: 'criar-sala',
@@ -11,17 +13,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./criar-sala.component.scss'],
   providers: [SalaService, ProfessorService]
 })
-export class CriarSalaComponent implements OnInit {
+export class CriarSalaComponent extends BaseComponent implements OnInit {
 
-  @ViewChild('teste') teste : ElementRef;
   sala: Sala = new Sala();
   professores: Professor[] = [];
   idSala: number = null;
+  activeLoader: boolean = false;
 
   constructor(private salaService: SalaService,
     private professorService: ProfessorService,
     private router: Router,
     private route: ActivatedRoute) {
+    super();
 
   }
 
@@ -37,24 +40,41 @@ export class CriarSalaComponent implements OnInit {
   }
 
   obterProfessores() {
+    this.activeLoader = true;
     this.professorService.obterProfessores().subscribe(
       data => {
         this.professores = data;
+      },
+      error => {
+        this.showNotification("top", "right", false);
+      },
+      () => {
+        this.activeLoader = false;
       }
     );
   }
 
   obterProfessor() {
+    this.activeLoader = true;
     this.salaService.obterSalaPorId(this.idSala).subscribe(
       data => {
         this.sala = data;
+      },
+      error => {
+        this.showNotification("top", "right", false);
+      },
+      () => {
+        this.activeLoader = false;
       }
     );
   }
 
   obterNomeProfessor(id: number) {
-    let nomeProfessor = this.professores.find(x => x.id == id).nome;
-    return nomeProfessor;
+    let professor = this.professores.find(x => x.id == id);
+    if (professor)
+      return professor.nome;
+    return "";
+
   }
 
   validar() {
@@ -70,15 +90,25 @@ export class CriarSalaComponent implements OnInit {
 
   salvar() {
     console.log(this.sala);
+    this.activeLoader = true;
     if (this.validar()) {
+      setTimeout(() => {
+        this.activeLoader = false;
+        this.showNotification("top", "right", true);
+      }, 2000);
       // this.salaService.salvarSala(this.sala).subscribe(
       //   data => {
-      //     alert("Sala Salva!");
+      //     this.sala = new Sala();
       //   },
       //   error => {
-      //     alert("Erro!")
+      //     this.showNotification("top", "right", false);
+      //   },
+      //   () => {
+      //     this.showNotification("top", "right", true);
+      //     this.activeLoader = false;
       //   }
       // );
     }
   }
+
 }
