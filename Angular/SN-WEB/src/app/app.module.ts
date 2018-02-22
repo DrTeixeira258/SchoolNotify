@@ -24,6 +24,7 @@ import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.compon
 import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
 import { ListarProfessorComponent } from 'app/manter-professor/listar-professor/listar-professor.component';
 import { CriarProfessorComponent } from 'app/manter-professor/criar-professor/criar-professor.component';
+import { ListarResponsavelComponent } from 'app/mante-responsavel/listar-responsavel/listar-responsavel.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CriarProfessorComponent } from 'app/manter-professor/criar-professor/cr
     CriarSalaComponent,
     ListarSalaComponent,
     ListarProfessorComponent,
-    CriarProfessorComponent
+    CriarProfessorComponent,
+    ListarResponsavelComponent
   ],
   imports: [
     BrowserModule,
