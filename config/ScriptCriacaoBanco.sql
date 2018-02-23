@@ -44,6 +44,8 @@ create table Aluno
 	idSala int not null,
 	nome varchar(100) not null,
 	matricula int not null,
+	idade int not null,
+	sexo varchar(10) not null,
 	
 	CONSTRAINT FK_Responsavel_Aluno FOREIGN KEY (idResponsavel)
 	REFERENCES Responsavel (id),

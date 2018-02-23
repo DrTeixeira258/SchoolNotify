@@ -22,7 +22,14 @@ namespace SchoolNotify.Infrastructure.Data.EntityConfiguration
                 .IsRequired()
                 .HasMaxLength(150);
 
+            Property(x => x.Sexo)
+                .IsRequired()
+                .HasMaxLength(10);
+
             Property(x => x.Matricula)
+                .IsRequired();
+
+            Property(x => x.Idade)
                 .IsRequired();
 
             HasRequired(x => x.Responsavel)

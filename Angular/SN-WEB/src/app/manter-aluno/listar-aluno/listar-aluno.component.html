@@ -10,32 +10,34 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="green">
-                        <h4 class="title">Responsável</h4>
-                        <p class="category">Resposaveis cadastrados</p>
+                        <h4 class="title">Aluno</h4>
+                        <p class="category">Alunos cadastrados</p>
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table">
                             <thead class="text-danger">
+                                <th class="text-center">Matricula</th>
                                 <th class="text-center">Nome</th>
-                                <th class="text-center">Telefone</th>
-                                <th class="text-center">E-Mail</th>
+                                <th class="text-center">Responsável</th>
+                                <th class="text-center">Sala</th>
                                 <th>Ações</th>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let responsavel of responsaveis">
-                                    <td class="text-center">{{responsavel.nome}}</td>
-                                    <td class="text-center">{{responsavel.telefone}}</td>
-                                    <td class="text-center">{{responsavel.email}}</td>
+                                <tr *ngFor="let aluno of alunos">
+                                    <td class="text-center">{{aluno.matricula}}</td>
+                                    <td class="text-center">{{aluno.nome}}</td>
+                                    <td class="text-center">{{aluno.responsavel.nome}}</td>
+                                    <td class="text-center">{{aluno.sala.nome}}</td>
                                     <td>
-                                        <i class="material-icons mouse-pointer" title="Editar" (click)="editarResponsavel(responsavel.id)">edit</i>
-                                        <i class="material-icons mouse-pointer" title="Excluir" (click)="deletar(responsavel)">delete</i>
+                                        <i class="material-icons mouse-pointer" title="Editar" (click)="editarAluno(aluno.id)">edit</i>
+                                        <i class="material-icons mouse-pointer" title="Excluir" (click)="deletar(aluno)">delete</i>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="row">
                             <div class="col-md-3 pull-right">
-                                <button class="btn btn-success pull-right" (click)="criarResponsavel()">Novo Responsável</button>
+                                <button class="btn btn-success pull-right" (click)="criarAluno()">Novo Aluno</button>
                             </div>
                         </div>
                     </div>

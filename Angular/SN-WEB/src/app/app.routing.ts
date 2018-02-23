@@ -15,23 +15,33 @@ import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.compon
 import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
 import { ListarProfessorComponent } from 'app/manter-professor/listar-professor/listar-professor.component';
 import { CriarProfessorComponent } from 'app/manter-professor/criar-professor/criar-professor.component';
+import { ListarResponsavelComponent } from 'app/mante-responsavel/listar-responsavel/listar-responsavel.component';
+import { CriarResponsavelComponent } from 'app/mante-responsavel/criar-responsavel/criar-responsavel.component';
+import { ListarAlunoComponent } from 'app/manter-aluno/listar-aluno/listar-aluno.component';
+import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.component';
 
 const routes: Routes =[
-    { path: '',                              redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'dashboard',                     component: DashboardComponent },
-    { path: 'user-profile',                  component: UserProfileComponent },
-    { path: 'table-list',                    component: TableListComponent },
-    { path: 'typography',                    component: TypographyComponent },
-    { path: 'icons',                         component: IconsComponent },
-    { path: 'maps',                          component: MapsComponent },
-    { path: 'notifications',                 component: NotificationsComponent },
-    { path: 'upgrade',                       component: UpgradeComponent },
-    { path: 'sala',                          component: ListarSalaComponent},
-    { path: 'criar-sala',                    component: CriarSalaComponent},
-    { path: 'criar-sala/:idSala',            component: CriarSalaComponent},
-    { path: 'professor',                     component: ListarProfessorComponent},
-    { path: 'criar-professor',               component: CriarProfessorComponent},
-    { path: 'criar-professor/:idProfessor',  component: CriarProfessorComponent},
+    { path: '',                                  redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard',                         component: DashboardComponent },
+    { path: 'user-profile',                      component: UserProfileComponent },
+    { path: 'table-list',                        component: TableListComponent },
+    { path: 'typography',                        component: TypographyComponent },
+    { path: 'icons',                             component: IconsComponent },
+    { path: 'maps',                              component: MapsComponent },
+    { path: 'notifications',                     component: NotificationsComponent },
+    { path: 'upgrade',                           component: UpgradeComponent },
+    { path: 'sala',                              component: ListarSalaComponent},
+    { path: 'criar-sala',                        component: CriarSalaComponent},
+    { path: 'criar-sala/:idSala',                component: CriarSalaComponent},
+    { path: 'professor',                         component: ListarProfessorComponent},
+    { path: 'criar-professor',                   component: CriarProfessorComponent},
+    { path: 'criar-professor/:idProfessor',      component: CriarProfessorComponent},
+    { path: 'responsavel',                       component: ListarResponsavelComponent},
+    { path: 'criar-responsavel',                 component: CriarResponsavelComponent},
+    { path: 'criar-responsavel/:idResponsavel',  component: CriarResponsavelComponent},
+    { path: 'aluno',                             component: ListarAlunoComponent},
+    { path: 'criar-aluno',                       component: CriarAlunoComponent},
+    { path: 'criar-aluno/:idAluno',              component: CriarAlunoComponent},
 ];
 
 @NgModule({

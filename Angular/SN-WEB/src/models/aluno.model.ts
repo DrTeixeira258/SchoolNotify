@@ -3,8 +3,9 @@ import { Sala } from "./sala.model";
 
 export class Aluno {
     id: number = 0;
-    idResponsavel: number = 0;
-    idSala: number = 0;
+    idResponsavel: number = null;
+    idSala: number = null;
+    matricula: number = null;
     nome: string = "";
     sexo: string = "";
     idade: number = null;

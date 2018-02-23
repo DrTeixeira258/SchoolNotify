@@ -23,7 +23,14 @@ namespace SchoolNotify.Application.Services
 
         public async Task<IEnumerable<AlunoViewModel>> ObterAlunos()
         {
-            return Mapper.Map<IEnumerable<AlunoViewModel>>(await _alunoRepository.GetAll());
+            var alunos = await _alunoRepository.GetAllReadOnly(new[] { "Sala","Responsavel" });
+            foreach (var aluno in alunos)
+            {
+                aluno.Responsavel.Alunos = null;
+                aluno.Sala.Alunos = null;
+            }
+            
+            return Mapper.Map<IEnumerable<AlunoViewModel>>(alunos);
         }
 
         public async Task<AlunoViewModel> ObterAlunoPorId(int idAluno)

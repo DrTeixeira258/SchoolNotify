@@ -1,0 +1,101 @@
+<div class="loader" *ngIf="activeLoader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+</div>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" [ngClass]="{'opacity-03' : activeLoader}">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="green">
+                        <h4 class="title">Cadastrar Aluno</h4>
+                        <!-- <p class="category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-content">
+                        <form (submit)="salvar()">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating" [ngClass]="{'has-success': aluno.matricula, 'input-error  is-empty': !aluno.matricula}">
+                                        <label class="control-label">Matrícula</label>
+                                        <input type="number" name="matricula" class="form-control" [(ngModel)]="aluno.matricula">
+                                        <span class="material-icons form-control-feedback">{{aluno.matricula ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="teste form-group form-black label-floating" [ngClass]="{'has-success': aluno.nome, 'input-error is-empty': !aluno.nome}">
+                                        <label class="control-label">Nome</label>
+                                        <input type="text" name="nome" class="form-control" [(ngModel)]="aluno.nome">
+                                        <span class="material-icons form-control-feedback">{{aluno.nome ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="teste form-group form-black label-floating" [ngClass]="{'has-success': aluno.idade, 'input-error is-empty': !aluno.idade}">
+                                        <label class="control-label">Idade</label>
+                                        <input type="number" name="idade" class="form-control" [(ngModel)]="aluno.idade">
+                                        <span class="material-icons form-control-feedback">{{aluno.idade ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label style="color: black">Sexo:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="sexo" value="M" [(ngModel)]="aluno.sexo" required> Masculino
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="sexo" value="F" [(ngModel)]="aluno.sexo" required> Feminino
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <mat-select placeholder="Selecione a sala" name="sala" [(ngModel)]="aluno.idSala" [required]="true">
+                                            <mat-option *ngFor="let sala of salas" [value]="sala.id">
+                                                {{sala.nome}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="!aluno.idSala">Escolha uma sala</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <mat-select placeholder="Selecione o responsável" name="responsavel" [(ngModel)]="aluno.idResponsavel" [required]="true">
+                                            <mat-option *ngFor="let responsavel of responsaveis" [value]="responsavel.id">
+                                                {{responsavel.nome}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="!aluno.idResponsavel">Escolha um responsável</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success pull-right">Salvar</button>
+                            <button type="button" class="btn btn-success pull-right" (click)="voltar()">Voltar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
