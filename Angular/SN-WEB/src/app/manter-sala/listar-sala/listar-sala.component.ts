@@ -32,6 +32,7 @@ export class ListarSalaComponent extends BaseComponent implements OnInit {
             },
             error => {
                 this.showNotification("top", "right", false);
+                this.activeLoader = false;
             },
             () => {
                 this.activeLoader = false;
@@ -55,6 +56,7 @@ export class ListarSalaComponent extends BaseComponent implements OnInit {
             },
             error => {
                 this.showNotification("top", "right", false);
+                this.activeLoader = false;
             },
             () => {
                 this.activeLoader = false;

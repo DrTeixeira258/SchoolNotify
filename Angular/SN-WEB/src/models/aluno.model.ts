@@ -10,8 +10,8 @@ export class Aluno {
     sexo: string = "";
     idade: number = null;
 
-    responsavel: Responsavel = new Responsavel();
-    sala: Sala = new Sala();
+    responsavel: Responsavel = null;
+    sala: Sala = null;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

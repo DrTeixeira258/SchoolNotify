@@ -45,6 +45,7 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
       },
       error => {
         this.showNotification("top", "right", false);
+        this.activeLoader = false;
       },
       () => {
         this.activeLoader = false;
@@ -60,6 +61,7 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
       },
       error => {
         this.showNotification("top", "right", false);
+        this.activeLoader = false;
       },
       () => {
         this.activeLoader = false;
@@ -87,25 +89,23 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
   }
 
   salvar() {
-    console.log(this.sala);
-    this.activeLoader = true;
     if (this.validar()) {
-      setTimeout(() => {
-        this.activeLoader = false;
-        this.showNotification("top", "right", true);
-      }, 2000);
-      // this.salaService.salvarSala(this.sala).subscribe(
-      //   data => {
-      //     this.sala = new Sala();
-      //   },
-      //   error => {
-      //     this.showNotification("top", "right", false);
-      //   },
-      //   () => {
-      //     this.showNotification("top", "right", true);
-      //     this.activeLoader = false;
-      //   }
-      // );
+      this.activeLoader = true;
+      this.salaService.salvarSala(this.sala).subscribe(
+        data => {
+          this.sala = new Sala();
+        },
+        error => {
+          this.showNotification("top", "right", false);
+          this.activeLoader = false;
+        },
+        () => {
+          this.showNotification("top", "right", true);
+          this.activeLoader = false;
+        }
+      );
+    } else {
+      this.showNotificationValidation();
     }
   }
 

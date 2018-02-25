@@ -49,6 +49,21 @@ namespace SchoolNotify.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("Sala/ObterSalasComProfessores")]
+        [ResponseType(typeof(IEnumerable<SalaViewModel>))]
+        public async Task<IHttpActionResult> ObterSalasComProfessores()
+        {
+            try
+            {
+                return Ok(await _salaAppService.ObterSalasComProfessores());
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
         [HttpPost]
         [Route("Sala/SalvarSala")]
         [ResponseType(typeof(bool))]

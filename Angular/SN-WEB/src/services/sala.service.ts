@@ -24,6 +24,12 @@ export class SalaService extends BaseService {
             .catch(this.handleError);
     }
 
+    public obterSalasComProfessores() : Observable<Sala[]> {
+        return this.http.get(this.apiControllerUrl + 'ObterSalasComProfessores/', this.requestOptions)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
     public salvarSala(sala: Sala) : Observable<boolean> {
         return this.http.post(this.apiControllerUrl + 'SalvarSala/', sala, this.requestOptions)
             .map(res => res.json())

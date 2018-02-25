@@ -32,7 +32,7 @@ namespace SchoolNotify.Application.Services
 
             for (int i = 0; i < salasVM.ToList().Count; i++)
             {
-                foreach(var sala in salaDB.ElementAt(i).SalaProfessorRelacional)
+                foreach (var sala in salaDB.ElementAt(i).SalaProfessorRelacional)
                 {
                     idsProfessores.Add(sala.IdProfessor);
                 }
@@ -45,7 +45,7 @@ namespace SchoolNotify.Application.Services
         public async Task<SalaViewModel> ObterSalaPorId(int idSala)
         {
             var salaDB = await _salaRepository.Get(x => x.Id == idSala, new[] { "SalaProfessorRelacional" });
-            var salaVM =  Mapper.Map<SalaViewModel>(salaDB.FirstOrDefault());
+            var salaVM = Mapper.Map<SalaViewModel>(salaDB.FirstOrDefault());
             List<int> idsProfessores = new List<int>();
 
             foreach (var sala in salaDB.FirstOrDefault().SalaProfessorRelacional)
@@ -56,13 +56,27 @@ namespace SchoolNotify.Application.Services
             return salaVM;
         }
 
+        public async Task<IEnumerable<SalaViewModel>> ObterSalasComProfessores()
+        {
+            var salasBD = await _salaProfessorRelacionalRepository.GetAllReadOnly(new[] { "Sala" });
+            var salas = salasBD.Select(x => x.Sala).Distinct(new SalasComparer());
+            List<SalaViewModel> salasVM = new List<SalaViewModel>();
+
+            foreach (var sala in salas)
+            {
+                salasVM.Add(Mapper.Map<SalaViewModel>(sala));
+            }
+
+            return salasVM;
+        }
+
         public async Task<bool> SalvarSala(SalaViewModel salaVM)
         {
             try
             {
                 var sala = Mapper.Map<Sala>(salaVM);
                 var idsProfessores = salaVM.IdsProfessores;
-
+                //Salvar Sala
                 await BeginTransaction();
                 if (sala.Id == 0)
                 {
@@ -73,18 +87,25 @@ namespace SchoolNotify.Application.Services
                     await Task.Run(() => _salaRepository.Update(sala));
                 }
                 await Commit();
-
+                //Deletar SalaProfessorRelacional
+                var salasProfessoresRalacionais = await _salaProfessorRelacionalRepository.Get(x => x.IdSala == sala.Id);
+                foreach (var relacional in salasProfessoresRalacionais)
+                {
+                    await BeginTransaction();
+                    await Task.Run(() => _salaProfessorRelacionalRepository.Delete(relacional));
+                    await Commit();
+                }
+                //Inserir SalaProfessorRelacional
                 foreach (int idProfessor in idsProfessores)
                 {
-                    SalaProfessorRelacional salaProfessor = await _salaProfessorRelacionalRepository.ObterSalaProfessorRelacionalPorIdSalaEProfessor(sala.Id, idProfessor);
-                    if (salaProfessor == null)
+                    SalaProfessorRelacional salaProfessor = new SalaProfessorRelacional
                     {
-                        salaProfessor.IdProfessor = idProfessor;
-                        salaProfessor.IdSala = sala.Id;
-                        await BeginTransaction();
-                        await Task.Run(() => _salaProfessorRelacionalRepository.Add(salaProfessor));
-                        await Commit();
-                    }
+                        IdProfessor = idProfessor,
+                        IdSala = sala.Id
+                    };
+                    await BeginTransaction();
+                    await Task.Run(() => _salaProfessorRelacionalRepository.Add(salaProfessor));
+                    await Commit();
                 }
                 return true;
             }
@@ -112,6 +133,26 @@ namespace SchoolNotify.Application.Services
                 throw e;
             }
 
+        }
+    }
+
+    public class SalasComparer : IEqualityComparer<Sala>
+    {
+        public bool Equals(Sala x, Sala y)
+        {
+            if (x.Id == y.Id)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int GetHashCode(Sala obj)
+        {
+            return obj.Id.GetHashCode();
         }
     }
 }

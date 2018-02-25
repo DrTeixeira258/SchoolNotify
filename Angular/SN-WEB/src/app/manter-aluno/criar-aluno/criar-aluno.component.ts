@@ -59,7 +59,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
 
     obterSalas() {
         this.activeLoader = true;
-        this.salaService.obterSalas().subscribe(
+        this.salaService.obterSalasComProfessores().subscribe(
             data => {
                 this.salas = data;
             },
