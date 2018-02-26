@@ -7,7 +7,6 @@ using SchoolNotify.Domain.Interfaces.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SchoolNotify.Application.Services
@@ -16,12 +15,15 @@ namespace SchoolNotify.Application.Services
     {
         private readonly ISalaRepository _salaRepository;
         private readonly ISalaProfessorRelacionalRepository _salaProfessorRelacionalRepository;
+        private readonly IAlunoRepository _alunoRepository;
 
         public SalaApplicationService(ISalaRepository salaRepository,
-                                      ISalaProfessorRelacionalRepository salaProfessorRelacionalRepository)
+                                      ISalaProfessorRelacionalRepository salaProfessorRelacionalRepository,
+                                      IAlunoRepository alunoRepository)
         {
             _salaRepository = salaRepository;
             _salaProfessorRelacionalRepository = salaProfessorRelacionalRepository;
+            _alunoRepository = alunoRepository;
         }
 
         public async Task<IEnumerable<SalaViewModel>> ObterSalas()
@@ -121,18 +123,40 @@ namespace SchoolNotify.Application.Services
             try
             {
                 var sala = Mapper.Map<Sala>(salaVM);
+                if (await ValidarExcluirSala(sala.Id))
+                {
+                    var relacionais = await _salaProfessorRelacionalRepository.Get(x => x.IdSala == sala.Id);
 
-                await BeginTransaction();
-                await Task.Run(() => _salaRepository.Delete(sala));
-                await Commit();
+                    foreach (var relacional in relacionais)
+                    {
+                        await BeginTransaction();
+                        await Task.Run(() => _salaProfessorRelacionalRepository.Delete(relacional));
+                        await Commit();
+                    }
 
-                return true;
+                    await BeginTransaction();
+                    await Task.Run(() => _salaRepository.Delete(sala));
+                    await Commit();
+
+                    return true;
+                }
+                return false;
             }
             catch (Exception e)
             {
                 throw e;
             }
 
+        }
+
+        private async Task<bool> ValidarExcluirSala(int idSala)
+        {
+            var alunos = await _alunoRepository.Get(x => x.IdSala == idSala);
+            if (!alunos.Any())
+            {
+                return true;
+            }
+            return false;
         }
     }
 
