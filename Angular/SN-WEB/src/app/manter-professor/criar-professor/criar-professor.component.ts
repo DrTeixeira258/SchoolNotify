@@ -40,6 +40,7 @@ export class CriarProfessorComponent extends BaseComponent implements OnInit {
                 this.professor = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
@@ -67,11 +68,12 @@ export class CriarProfessorComponent extends BaseComponent implements OnInit {
                     this.professor = new Professor();
                 },
                 error => {
+                    this.activeLoader = false;
                     this.showNotification("top", "right", false);
                 },
                 () => {
-                    this.showNotification("top", "right", true);
                     this.activeLoader = false;
+                    this.showNotification("top", "right", true);
                 }
             );
         } else {

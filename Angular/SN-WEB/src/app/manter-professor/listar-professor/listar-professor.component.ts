@@ -32,6 +32,7 @@ export class ListarProfessorComponent extends BaseComponent implements OnInit {
                 this.professores = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
@@ -58,6 +59,7 @@ export class ListarProfessorComponent extends BaseComponent implements OnInit {
                     this.showCustomNotification("warning", "O professor não pode ser deletado porque esta vinculado a uma sala que possui alunos.")
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {

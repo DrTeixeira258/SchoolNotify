@@ -31,6 +31,7 @@ export class ListarAlunoComponent extends BaseComponent implements OnInit {
                 this.alunos = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
@@ -54,6 +55,7 @@ export class ListarAlunoComponent extends BaseComponent implements OnInit {
                 this.showNotification("top", "right", true);
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {

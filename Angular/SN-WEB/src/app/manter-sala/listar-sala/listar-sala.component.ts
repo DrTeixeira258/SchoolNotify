@@ -31,8 +31,8 @@ export class ListarSalaComponent extends BaseComponent implements OnInit {
                 this.salas = data;
             },
             error => {
-                this.showNotification("top", "right", false);
                 this.activeLoader = false;
+                this.showNotification("top", "right", false);
             },
             () => {
                 this.activeLoader = false;
@@ -58,8 +58,8 @@ export class ListarSalaComponent extends BaseComponent implements OnInit {
                     this.showCustomNotification("warning","A sala não pode ser deletada porque existe(m) aluno(s) vinculado(s) a ela.")
             },
             error => {
-                this.showNotification("top", "right", false);
                 this.activeLoader = false;
+                this.showNotification("top", "right", false);
             },
             () => {
                 this.activeLoader = false;

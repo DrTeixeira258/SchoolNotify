@@ -50,12 +50,12 @@
                                     <label style="color: black">Sexo:</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="radio">
+                                    <div class="radio" [ngClass]="aluno.sexo ? 'radio-valid' : 'radio-invalid'">
                                         <label>
                                             <input type="radio" name="sexo" value="M" [(ngModel)]="aluno.sexo" required> Masculino
                                         </label>
                                     </div>
-                                    <div class="radio">
+                                    <div class="radio" [ngClass]="aluno.sexo ? 'radio-valid' : 'radio-invalid'">
                                         <label>
                                             <input type="radio" name="sexo" value="F" [(ngModel)]="aluno.sexo" required> Feminino
                                         </label>

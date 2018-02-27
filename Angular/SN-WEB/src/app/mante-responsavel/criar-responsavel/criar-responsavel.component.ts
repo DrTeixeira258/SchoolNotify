@@ -39,6 +39,7 @@ export class CriarResponsavelComponent extends BaseComponent implements OnInit {
                 this.responsavel = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
@@ -66,11 +67,12 @@ export class CriarResponsavelComponent extends BaseComponent implements OnInit {
                     this.responsavel = new Responsavel();
                 },
                 error => {
+                    this.activeLoader = false;
                     this.showNotification("top", "right", false);
                 },
                 () => {
-                    this.showNotification("top", "right", true);
                     this.activeLoader = false;
+                    this.showNotification("top", "right", true);
                 }
             );
         } else {

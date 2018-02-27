@@ -44,8 +44,8 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
         this.professores = data;
       },
       error => {
-        this.showNotification("top", "right", false);
         this.activeLoader = false;
+        this.showNotification("top", "right", false);
       },
       () => {
         this.activeLoader = false;
@@ -60,8 +60,8 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
         this.sala = data;
       },
       error => {
-        this.showNotification("top", "right", false);
         this.activeLoader = false;
+        this.showNotification("top", "right", false);
       },
       () => {
         this.activeLoader = false;
@@ -96,12 +96,12 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
           this.sala = new Sala();
         },
         error => {
-          this.showNotification("top", "right", false);
           this.activeLoader = false;
+          this.showNotification("top", "right", false);
         },
         () => {
-          this.showNotification("top", "right", true);
           this.activeLoader = false;
+          this.showNotification("top", "right", true);
         }
       );
     } else {

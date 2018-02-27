@@ -31,3 +31,23 @@ input[type=number] {
     opacity: 1 !important;
     color: red !important;
 }
+
+.radio-invalid label .circle {
+    border: 1px solid rgb(255, 0, 0) !important;
+}
+
+.radio-valid label .circle {
+    border: 1px solid rgb(82, 175, 80) !important;
+}
+
+.radio-invalid label {
+    color: rgb(255, 0, 82) !important;
+}
+
+.radio-valid label {
+    color: rgb(76, 175, 80) !important;
+}
+
+.radio-valid input[type=radio]:checked ~ .check {
+    background-color: #52af50;
+}

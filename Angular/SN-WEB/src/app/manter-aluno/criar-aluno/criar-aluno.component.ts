@@ -49,6 +49,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
                 this.responsaveis = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
@@ -64,6 +65,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
                 this.salas = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
@@ -79,6 +81,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
                 this.aluno = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
@@ -111,8 +114,8 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
                     this.showNotification("top", "right", false);
                 },
                 () => {
-                    this.showNotification("top", "right", true);
                     this.activeLoader = false;
+                    this.showNotification("top", "right", true);
                 }
             );
         } else {

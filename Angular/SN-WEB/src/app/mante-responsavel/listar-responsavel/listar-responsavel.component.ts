@@ -31,6 +31,7 @@ export class ListarResponsavelComponent extends BaseComponent implements OnInit 
                 this.responsaveis = data;
             },
             error => {
+                this.activeLoader = false;
                 this.showNotification("top", "right", false);
             },
             () => {
