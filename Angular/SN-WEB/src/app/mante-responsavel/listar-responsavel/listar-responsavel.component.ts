@@ -51,7 +51,10 @@ export class ListarResponsavelComponent extends BaseComponent implements OnInit 
         this.activeLoader = true;
         this.responsavelService.deletarResponsavel(responsavel).subscribe(
             data => {
-                this.showNotification("top", "right", true);
+                if (data)
+                    this.showNotification("top", "right", true);
+                else 
+                    this.showCustomNotification("warning","O reponável não pode ser deletado porque ele possui aluno(s).")
             },
             error => {
                 this.showNotification("top", "right", false);

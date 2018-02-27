@@ -15,10 +15,13 @@ namespace SchoolNotify.Application.Services
     public class ResponsavelApplicationService : BaseApplicationService, IResponsavelApplicationService
     {
         private readonly IResponsavelRepository _responsavelRepository;
+        private readonly IAlunoRepository _alunoRepository;
 
-        public ResponsavelApplicationService(IResponsavelRepository responsavelRepository)
+        public ResponsavelApplicationService(IResponsavelRepository responsavelRepository,
+                                             IAlunoRepository alunoRepository)
         {
             _responsavelRepository = responsavelRepository;
+            _alunoRepository = alunoRepository;
         }
 
         public async Task<IEnumerable<ResponsavelViewModel>> ObterResponsaveis()
@@ -60,18 +63,30 @@ namespace SchoolNotify.Application.Services
             try
             {
                 var responsavel = Mapper.Map<Responsavel>(responsavelVM);
-
-                await BeginTransaction();
-                await Task.Run(() => _responsavelRepository.Delete(responsavel));
-                await Commit();
-
-                return true;
+                if (await ValidarDeletarResponsavel(responsavel.Id))
+                {
+                    await BeginTransaction();
+                    await Task.Run(() => _responsavelRepository.Delete(responsavel));
+                    await Commit();
+                    return true;
+                }
+                return false;
             }
             catch (Exception e)
             {
                 throw e;
             }
 
+        }
+
+        public async Task<bool> ValidarDeletarResponsavel(int responsavelId)
+        {
+            var alunos = await _alunoRepository.Get(x => x.IdResponsavel == responsavelId);
+            if (!alunos.Any())
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
