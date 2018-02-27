@@ -43,6 +43,8 @@ namespace SchoolNotify.Application.Services
             try
             {
                 Aluno aluno = Mapper.Map<Aluno>(alunoVM);
+                aluno.Sala = null;
+                aluno.Responsavel = null;
 
                 await BeginTransaction();
                 if (aluno.Id == 0)

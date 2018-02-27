@@ -15,10 +15,16 @@ namespace SchoolNotify.Application.Services
     public class ProfessorApplicationService : BaseApplicationService, IProfessorApplicationService
     {
         private readonly IProfessorRepository _professorRepository;
+        private readonly ISalaProfessorRelacionalRepository _salaProfessorRelacionalRepository;
+        private readonly ISalaApplicationService _salaApplicationService;
 
-        public ProfessorApplicationService(IProfessorRepository professorRepository)
+        public ProfessorApplicationService(IProfessorRepository professorRepository,
+                                           ISalaProfessorRelacionalRepository salaProfessorRelacionalRepository,
+                                           ISalaApplicationService salaApplicationService)
         {
             _professorRepository = professorRepository;
+            _salaProfessorRelacionalRepository = salaProfessorRelacionalRepository;
+            _salaApplicationService = salaApplicationService;
         }
 
         public async Task<IEnumerable<ProfessorViewModel>> ObterProfessores()
@@ -60,18 +66,42 @@ namespace SchoolNotify.Application.Services
             try
             {
                 var professor = Mapper.Map<Professor>(professorVM);
+                var relacionais = await _salaProfessorRelacionalRepository.Get(x => x.IdProfessor == professor.Id, new[] { "Sala" });
+                if (await ValidarDeletarProfessor(professor, relacionais))
+                {
+                    foreach (var relacional in relacionais)
+                    {
+                        await BeginTransaction();
+                        await Task.Run(() => _salaProfessorRelacionalRepository.Delete(relacional));
+                        await Commit();
+                    }
 
-                await BeginTransaction();
-                await Task.Run(() => _professorRepository.Delete(professor));
-                await Commit();
+                    await BeginTransaction();
+                    await Task.Run(() => _professorRepository.Delete(professor));
+                    await Commit();
 
-                return true;
+                    return true;
+                }
+                return false;
             }
             catch (Exception e)
             {
                 throw e;
             }
+        }
 
+        public async Task<bool> ValidarDeletarProfessor(Professor professor, IEnumerable<SalaProfessorRelacional> relacionais)
+        {
+            var salas = relacionais.Select(x => x.Sala).Distinct(new SalasComparer());
+
+            foreach (var sala in salas)
+            {
+                if (!await _salaApplicationService.ValidarExcluirSala(sala.Id))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

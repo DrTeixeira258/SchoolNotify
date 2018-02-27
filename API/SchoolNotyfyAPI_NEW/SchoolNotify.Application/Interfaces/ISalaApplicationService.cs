@@ -14,5 +14,6 @@ namespace SchoolNotify.Application.Interfaces
         Task<IEnumerable<SalaViewModel>> ObterSalasComProfessores();
         Task<bool> SalvarSala(SalaViewModel salaVM);
         Task<bool> DeletarSala(SalaViewModel salaVM);
+        Task<bool> ValidarExcluirSala(int idSala);
     }
 }

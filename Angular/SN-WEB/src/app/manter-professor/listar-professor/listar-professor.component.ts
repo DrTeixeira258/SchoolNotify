@@ -52,7 +52,10 @@ export class ListarProfessorComponent extends BaseComponent implements OnInit {
         this.activeLoader = true;
         this.professorService.deletarProfessor(professor).subscribe(
             data => {
-                this.showNotification("top", "right", true);
+                if (data)
+                    this.showNotification("top", "right", true);
+                else
+                    this.showCustomNotification("warning", "O professor não pode ser deletado porque esta vinculado a uma sala que possui alunos.")
             },
             error => {
                 this.showNotification("top", "right", false);

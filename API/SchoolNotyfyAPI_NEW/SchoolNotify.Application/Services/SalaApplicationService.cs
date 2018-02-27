@@ -60,8 +60,8 @@ namespace SchoolNotify.Application.Services
 
         public async Task<IEnumerable<SalaViewModel>> ObterSalasComProfessores()
         {
-            var salasBD = await _salaProfessorRelacionalRepository.GetAllReadOnly(new[] { "Sala" });
-            var salas = salasBD.Select(x => x.Sala).Distinct(new SalasComparer());
+            var relacionais = await _salaProfessorRelacionalRepository.GetAllReadOnly(new[] { "Sala" });
+            var salas = relacionais.Select(x => x.Sala).Distinct(new SalasComparer());
             List<SalaViewModel> salasVM = new List<SalaViewModel>();
 
             foreach (var sala in salas)
@@ -149,7 +149,7 @@ namespace SchoolNotify.Application.Services
 
         }
 
-        private async Task<bool> ValidarExcluirSala(int idSala)
+        public async Task<bool> ValidarExcluirSala(int idSala)
         {
             var alunos = await _alunoRepository.Get(x => x.IdSala == idSala);
             if (!alunos.Any())

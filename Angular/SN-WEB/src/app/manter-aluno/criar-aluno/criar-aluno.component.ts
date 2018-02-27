@@ -107,6 +107,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
                     this.aluno = new Aluno();
                 },
                 error => {
+                    this.activeLoader = false;
                     this.showNotification("top", "right", false);
                 },
                 () => {

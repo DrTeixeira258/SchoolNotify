@@ -52,7 +52,10 @@ export class ListarSalaComponent extends BaseComponent implements OnInit {
         this.activeLoader = true;
         this.salaService.deletarSala(sala).subscribe(
             data => {
-                this.showNotification("top", "right", true);
+                if (data)
+                    this.showNotification("top", "right", true);
+                else 
+                    this.showCustomNotification("warning","A sala não pode ser deletada porque existe(m) aluno(s) vinculado(s) a ela.")
             },
             error => {
                 this.showNotification("top", "right", false);

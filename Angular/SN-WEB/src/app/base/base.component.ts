@@ -47,4 +47,20 @@ export abstract class BaseComponent {
                 }
             });
     }
+
+    showCustomNotification(tipo: string, mensagem: string) {
+        $.notify({
+            icon: "",
+            message: mensagem
+
+        },
+            {
+                type: tipo,
+                timer: 2000,
+                placement: {
+                    from: "top",
+                    align: "right"
+                }
+            });
+    }
 }
