@@ -19,9 +19,11 @@ import { ListarResponsavelComponent } from 'app/mante-responsavel/listar-respons
 import { CriarResponsavelComponent } from 'app/mante-responsavel/criar-responsavel/criar-responsavel.component';
 import { ListarAlunoComponent } from 'app/manter-aluno/listar-aluno/listar-aluno.component';
 import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.component';
+import { LoginComponent } from 'app/login/login.component';
 
 const routes: Routes =[
-    { path: '',                                  redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '',                                  redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login',                             component: LoginComponent },
     { path: 'dashboard',                         component: DashboardComponent },
     { path: 'user-profile',                      component: UserProfileComponent },
     { path: 'table-list',                        component: TableListComponent },

@@ -20,6 +20,7 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { LoginComponent } from 'app/login/login.component';
 import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.component';
 import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
 import { ListarProfessorComponent } from 'app/manter-professor/listar-professor/listar-professor.component';
@@ -40,6 +41,7 @@ import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.co
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    LoginComponent,
     CriarSalaComponent,
     ListarSalaComponent,
     ListarProfessorComponent,

@@ -117,7 +117,7 @@
         display: block;
         top: 0;
         left: 0;
-        background-size: cover;
+        background-size: 100% 101%;
         background-position: center center;
 
         &:after{
@@ -128,7 +128,7 @@
             content: "";
             display: block;
             background: #FFFFFF;
-            opacity: .8;
+            opacity: .7;
         }
     }
 
