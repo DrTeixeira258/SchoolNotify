@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,12 +18,11 @@ import { ListarResponsavelComponent } from 'app/mante-responsavel/listar-respons
 import { CriarResponsavelComponent } from 'app/mante-responsavel/criar-responsavel/criar-responsavel.component';
 import { ListarAlunoComponent } from 'app/manter-aluno/listar-aluno/listar-aluno.component';
 import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.component';
-import { LoginComponent } from 'app/login/login.component';
 
 const routes: Routes =[
-    { path: '',                                  redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login',                             component: LoginComponent },
-    { path: 'dashboard',                         component: DashboardComponent },
+  // { path: '',                                  redirectTo: 'dashboard', pathMatch: 'full' },
+  // { path: 'dashboard',                         component: DashboardComponent },
+    { path: '',                                  component: DashboardComponent },
     { path: 'user-profile',                      component: UserProfileComponent },
     { path: 'table-list',                        component: TableListComponent },
     { path: 'typography',                        component: TypographyComponent },
@@ -49,8 +47,7 @@ const routes: Routes =[
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   exports: [
   ],

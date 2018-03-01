@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,6 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
-import { LoginComponent } from 'app/login/login.component';
 import { CriarSalaComponent } from 'app/manter-sala/criar-sala/criar-sala.component';
 import { ListarSalaComponent } from 'app/manter-sala/listar-sala/listar-sala.component';
 import { ListarProfessorComponent } from 'app/manter-professor/listar-professor/listar-professor.component';
@@ -41,7 +40,6 @@ import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.co
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    LoginComponent,
     CriarSalaComponent,
     ListarSalaComponent,
     ListarProfessorComponent,
@@ -52,14 +50,14 @@ import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.co
     CriarAlunoComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
+    // BrowserAnimationsModule,
+    // NoopAnimationsModule,
     MatSelectModule
   ],
   providers: [],
