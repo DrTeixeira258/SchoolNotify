@@ -42,11 +42,11 @@ export class ListarProfessorComponent extends BaseComponent implements OnInit {
     }
 
     criarProfessor() {
-        this.router.navigate(['criar-professor'], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-professor'], { skipLocationChange: true });
     }
 
     editarProfessor(idProfessor) {
-        this.router.navigate(['criar-professor', idProfessor], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-professor', idProfessor], { skipLocationChange: true });
     }
 
     deletar(professor) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'models/usuario.model';
 
 @Component({
   selector: 'login',
@@ -13,7 +14,4 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  teste() {
-    this.router.navigate(['/dashboard']);
-  }
 }

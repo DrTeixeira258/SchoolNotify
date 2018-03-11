@@ -4,11 +4,14 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from 'login/login.component';
+import { LoginPageComponent } from 'login/login-page/login-page.component';
 
 
 const routes: Routes =[
-    { path: '', component: LoginComponent },
-    { path: 'dashboard', loadChildren: 'app/app.module#AppModule'},
+    { path: '', component: LoginPageComponent },
+    // { path: '**', component: LoginPageComponent },
+    { path: 'apps', loadChildren: 'app/app.module#AppModule'},
+    
 ];
 
 @NgModule({

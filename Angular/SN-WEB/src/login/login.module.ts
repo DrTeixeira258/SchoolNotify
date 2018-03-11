@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from 'login/login.component';
 
 import { LoginRoutingModule } from 'login/login.routing';
+import { LoginPageComponent } from 'login/login-page/login-page.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

@@ -10,18 +10,18 @@ declare interface RouteInfo {
     classOption: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', material: true, classOption: '' },
-    { path: 'user-profile', title: 'User Profile',  icon:'person', class: '', material: true, classOption: '' },
-    // { path: 'table-list', title: 'Table List',  icon:'content_paste', class: '', material: true, classOption: '' },
-    // { path: 'typography', title: 'Typography',  icon:'library_books', class: '', material: true, classOption: '' },
-    // { path: 'icons', title: 'Icons',  icon:'bubble_chart', class: '', material: true, classOption: '' },
-    // { path: 'maps', title: 'Maps',  icon:'location_on', class: '', material: true, classOption: '' },
-    // { path: 'notifications', title: 'Notifications',  icon:'notifications', class: '', material: true, classOption: '' },
-    // { path: 'upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro', material: true, classOption: '' },
-    { path: 'sala', title: 'Salas',  icon:'library_books', class: '', material: true, classOption: '' },
-    { path: 'professor', title: 'Professores',  icon:'', class: '', material: false, classOption: 'fa fa-group' },
-    { path: 'responsavel', title: 'Responsáveis',  icon:'person', class: '', material: true, classOption: '' },
-    { path: 'aluno', title: 'Alunos',  icon:'person', class: '', material: true, classOption: '' },
+    { path: '../dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', material: true, classOption: '' },
+    { path: '../user-profile', title: 'User Profile',  icon:'person', class: '', material: true, classOption: '' },
+    // { path: '../table-list', title: 'Table List',  icon:'content_paste', class: '', material: true, classOption: '' },
+    // { path: '../typography', title: 'Typography',  icon:'library_books', class: '', material: true, classOption: '' },
+    // { path: '../icons', title: 'Icons',  icon:'bubble_chart', class: '', material: true, classOption: '' },
+    // { path: '../maps', title: 'Maps',  icon:'location_on', class: '', material: true, classOption: '' },
+    // { path: '../notifications', title: 'Notifications',  icon:'notifications', class: '', material: true, classOption: '' },
+    // { path: '../upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro', material: true, classOption: '' },
+    { path: '../sala', title: 'Salas',  icon:'library_books', class: '', material: true, classOption: '' },
+    { path: '../professor', title: 'Professores',  icon:'', class: '', material: false, classOption: 'fa fa-group' },
+    { path: '../responsavel', title: 'Responsáveis',  icon:'person', class: '', material: true, classOption: '' },
+    { path: '../aluno', title: 'Alunos',  icon:'person', class: '', material: true, classOption: '' },
 ];
 
 @Component({

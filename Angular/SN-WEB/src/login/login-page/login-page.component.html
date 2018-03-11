@@ -1,0 +1,49 @@
+<a>
+    <img [ngClass]="{'schoolD' : activeLoader, 'schoolA' : !activeLoader}" class="img" src="../../assets/img/school.gif" />
+</a>
+
+<div class="loader" *ngIf="activeLoader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+</div>
+
+<div class="main-content" [ngClass]="{'opacity-03' : activeLoader}">
+    <div class="container-fluid">
+        <div class="row outer">
+            <div class="col-md-4 inner">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a>
+                            <img class="img" src="../assets/img/logo.jpg" />
+                        </a>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-8" style="left: 20%;">
+                                <div class="form-group form-black label-floating" [ngClass]="{'has-success': usuario.login, 'input-error  is-empty': !usuario.login}">
+                                    <label class="control-label">Login</label>
+                                    <input type="text" name="login" class="form-control" [(ngModel)]="usuario.login">
+                                    <span class="material-icons form-control-feedback">{{usuario.login ? 'done' : 'clear'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8" style="left: 20%;">
+                                <div class="form-group form-black label-floating" [ngClass]="{'has-success': usuario.senha, 'input-error  is-empty': !usuario.senha}">
+                                    <label class="control-label">Senha</label>
+                                    <input type="text" name="nome" class="form-control" [(ngModel)]="usuario.senha">
+                                    <span class="material-icons form-control-feedback">{{usuario.senha ? 'done' : 'clear'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-success btn-round" [disabled]="validar()" (click)="teste()">Entrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

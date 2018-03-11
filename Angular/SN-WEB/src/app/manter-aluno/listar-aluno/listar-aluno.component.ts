@@ -41,11 +41,11 @@ export class ListarAlunoComponent extends BaseComponent implements OnInit {
     }
 
     criarAluno() {
-        this.router.navigate(['criar-aluno'], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-aluno'], { skipLocationChange: true });
     }
 
     editarAluno(idAluno) {
-        this.router.navigate(['criar-aluno', idAluno], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-aluno', idAluno], { skipLocationChange: true });
     }
 
     deletar(aluno) {
