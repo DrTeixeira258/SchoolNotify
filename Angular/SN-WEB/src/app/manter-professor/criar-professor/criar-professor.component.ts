@@ -57,7 +57,7 @@ export class CriarProfessorComponent extends BaseComponent implements OnInit {
     }
 
     voltar() {
-        this.router.navigate(["professor"]);
+        this.router.navigate(["../professor"]);
     }
 
     salvar() {

@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  urlSchoolNotifyAPI: 'http://localhost:11989/api/',
+  urlSchoolNotifyAPI: 'http://localhost:4356/api/',
 };

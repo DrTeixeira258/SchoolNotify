@@ -1,3 +1,9 @@
+CREATE DATABASE SchoolNotify
+GO
+
+USE SchoolNotify
+GO
+
 create table Sala 
 (
 	id int identity(1,1) primary key,
@@ -19,7 +25,7 @@ create table Professor
 (
 	id int identity(1,1) primary key,
 	nome varchar(150) not null,
-	matricula int not null,
+	matricula int unique not null,
 	email varchar(50)
 )
 GO
@@ -43,7 +49,7 @@ create table Aluno
 	idResponsavel int not null,
 	idSala int not null,
 	nome varchar(100) not null,
-	matricula int not null,
+	matricula int unique not null,
 	idade int not null,
 	sexo varchar(10) not null,
 	
@@ -52,4 +58,19 @@ create table Aluno
 	CONSTRAINT FK_Sala_Aluno FOREIGN KEY (idSala)
 	REFERENCES Sala (id)
 )
+GO
+
+create table Usuario
+(
+	id int identity(1,1) primary key,
+	login varchar(50) not null,
+	senha varchar(50) not null,
+	telefone int null,
+	responsavel bit null,
+	professor bit null,
+	admin bit null
+)
+GO
+
+insert into Usuario values('admin','admin',null,0,0,1)
 GO

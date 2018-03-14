@@ -89,6 +89,7 @@
     <Compile Include="Interfaces\IResponsavelApplicationService.cs" />
     <Compile Include="Interfaces\ISalaApplicationService.cs" />
     <Compile Include="Interfaces\IUploadImagemApplicationService.cs" />
+    <Compile Include="Interfaces\IUsuarioApplicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AlunoApplicationService.cs" />
     <Compile Include="Services\Base\BaseApplicationService.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Services\ResponsavelApplicationService.cs" />
     <Compile Include="Services\SalaApplicationService.cs" />
     <Compile Include="Services\UploadImagemApplicationService.cs" />
+    <Compile Include="Services\UsuarioApplicationService.cs" />
     <Compile Include="Validation\ValidationApplicationResult.cs" />
     <Compile Include="ViewModels\AlunoViewModel.cs" />
     <Compile Include="ViewModels\CelulaViewModel.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="ViewModels\ResponsavelViewModel.cs" />
     <Compile Include="ViewModels\SalaViewModel.cs" />
     <Compile Include="ViewModels\UploadImagemViewModel.cs" />
+    <Compile Include="ViewModels\UsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AutoMapper\CustomProfiles\ViewModelToModel\" />

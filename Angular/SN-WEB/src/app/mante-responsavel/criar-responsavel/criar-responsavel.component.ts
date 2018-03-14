@@ -56,7 +56,7 @@ export class CriarResponsavelComponent extends BaseComponent implements OnInit {
     }
 
     voltar() {
-        this.router.navigate(["responsavel"]);
+        this.router.navigate(["../responsavel"]);
     }
 
     salvar() {

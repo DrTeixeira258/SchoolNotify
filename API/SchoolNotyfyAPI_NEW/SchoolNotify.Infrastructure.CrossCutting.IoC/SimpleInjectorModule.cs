@@ -23,6 +23,7 @@ namespace SchoolNotify.Infrastructure.CrossCutting.IoC
             container.Register<ISalaApplicationService, SalaApplicationService>(Lifestyle.Scoped);
             container.Register<IProfessorApplicationService, ProfessorApplicationService>(Lifestyle.Scoped);
             container.Register<IAlunoApplicationService, AlunoApplicationService>(Lifestyle.Scoped);
+            container.Register<IUsuarioApplicationService, UsuarioApplicationService>(Lifestyle.Scoped);
             #endregion
 
             #region Service
@@ -38,6 +39,7 @@ namespace SchoolNotify.Infrastructure.CrossCutting.IoC
             container.Register<ISalaProfessorRelacionalRepository, SalaProfessorRelacionalRepository>(Lifestyle.Scoped);
             container.Register<IProfessorRepository, ProfessorRepository>(Lifestyle.Scoped);
             container.Register<IAlunoRepository, AlunoRepository>(Lifestyle.Scoped);
+            container.Register<IUsuarioRepository, UsuarioRepository>(Lifestyle.Scoped);
             #endregion
 
             #region Data Config
