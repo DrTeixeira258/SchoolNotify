@@ -39,7 +39,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-black label-floating" [ngClass]="{'has-success': responsavel.telefone, 'input-error  is-empty': !responsavel.telefone}">
                                         <label class="control-label">Telefone</label>
-                                        <input type="number" name="telefone" class="form-control" [(ngModel)]="responsavel.telefone">
+                                        <input type="text" name="telefone" class="form-control" [textMask]="{mask: mask}" [(ngModel)]="responsavel.telefone">
                                         <span class="material-icons form-control-feedback">{{responsavel.telefone ? 'done' : 'clear'}}</span>
                                     </div>
                                 </div>

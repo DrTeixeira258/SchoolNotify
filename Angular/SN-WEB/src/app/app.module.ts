@@ -6,12 +6,11 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { MatSelectModule } from '@angular/material/select';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
 import { AppComponent } from './app.component';
-
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
@@ -56,6 +55,7 @@ import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.co
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    TextMaskModule,
     // BrowserAnimationsModule,
     // NoopAnimationsModule,
     MatSelectModule

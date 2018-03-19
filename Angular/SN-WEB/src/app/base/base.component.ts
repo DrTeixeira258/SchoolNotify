@@ -3,7 +3,14 @@ declare var $: any;
 
 export abstract class BaseComponent {
 
+    public mask = ['(', /[0-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+
     constructor() { }
+
+    converterTelefone(telefone: string) {
+        let telefoneAux: number = Number.parseInt(telefone.replace("(","").replace(")","").replace(" ","").replace("-",""));
+        return telefoneAux;
+    }
 
     showNotification(from?: string, align?: string, sucesso?: boolean) {
         let mensagem = '';

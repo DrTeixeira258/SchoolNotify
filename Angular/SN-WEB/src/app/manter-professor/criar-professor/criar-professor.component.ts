@@ -61,6 +61,7 @@ export class CriarProfessorComponent extends BaseComponent implements OnInit {
     }
 
     salvar() {
+        this.professor.telefone = this.converterTelefone(this.professor.telefone.toString());
         if (this.validar()) {
             this.activeLoader = true;
             this.professorService.salvarProfessor(this.professor).subscribe(

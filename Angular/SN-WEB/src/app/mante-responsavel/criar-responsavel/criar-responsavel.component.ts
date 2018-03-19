@@ -60,6 +60,7 @@ export class CriarResponsavelComponent extends BaseComponent implements OnInit {
     }
 
     salvar() {
+        this.responsavel.telefone = this.converterTelefone(this.responsavel.telefone.toString());
         if (this.validar()) {
             this.activeLoader = true;
             this.responsavelService.salvarResponsavel(this.responsavel).subscribe(
@@ -79,5 +80,7 @@ export class CriarResponsavelComponent extends BaseComponent implements OnInit {
             this.showNotificationValidation();
         }
     }
+
+    
 
 }
