@@ -26,7 +26,8 @@ create table Professor
 	id int identity(1,1) primary key,
 	nome varchar(150) not null,
 	matricula int unique not null,
-	email varchar(50)
+	email varchar(50),
+	telefone int not null
 )
 GO
 

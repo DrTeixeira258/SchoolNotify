@@ -27,6 +27,9 @@ namespace SchoolNotify.Infrastructure.Data.EntityConfiguration
             Property(x => x.Matricula)
                 .IsRequired();
 
+            Property(x => x.Telefone)
+                .IsRequired();
+
             Property(x => x.Email)
                 .IsRequired()
                 .HasMaxLength(50);

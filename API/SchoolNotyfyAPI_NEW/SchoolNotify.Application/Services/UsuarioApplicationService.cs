@@ -32,9 +32,9 @@ namespace SchoolNotify.Application.Services
         {
             var usuario = Mapper.Map<Usuario>(usuarioVM);
             var responsavel = await _responsavelRepository.GetReadOnly(x => x.Telefone == usuario.Telefone);
-            //var professor = await _professorRepository.GetReadOnly(x => x.Telefone == usuario.Telefone);
-            //if (professor.Any())
-            //    usuario.Professor = true;
+            var professor = await _professorRepository.GetReadOnly(x => x.Telefone == usuario.Telefone);
+            if (professor.Any())
+                usuario.Professor = true;
             if (responsavel.Any())
                 usuario.Responsavel = true;
 
@@ -46,6 +46,48 @@ namespace SchoolNotify.Application.Services
                 return true;
             }
             return false;
+        }
+
+        public async Task ValidarExclusaoUsuario(int telefone)
+        {
+            int perfis = 0;
+            var usuario = (await _usuarioRepository.GetReadOnly(x => x.Telefone == telefone)).FirstOrDefault();
+
+            if (usuario.Professor == true)
+                perfis++;
+            if (usuario.Responsavel == true)
+                perfis++;
+
+            if (perfis == 1)
+            {
+                await BeginTransaction();
+                await Task.Run(() => _usuarioRepository.Delete(usuario));
+                await Commit();
+            }
+        }
+
+        public async Task ValidarExistenciaUsuario(int telefone, string perfil)
+        {
+            var usuarios = (await _usuarioRepository.Get(x => x.Telefone == telefone));
+            var usuario = new Usuario();
+            if (usuarios.Any() == true)
+            {
+                usuario = usuarios.FirstOrDefault();
+                if (perfil == "Responsavel")
+                {
+                    if (usuario.Responsavel == false)
+                        usuario.Responsavel = true;
+                }
+                else
+                {
+                    if (usuario.Professor == false)
+                        usuario.Professor = true;
+                }
+
+                await BeginTransaction();
+                await Task.Run(() => _usuarioRepository.Update(usuario));
+                await Commit();
+            }
         }
     }
 }

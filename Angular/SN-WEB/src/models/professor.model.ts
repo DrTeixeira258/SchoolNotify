@@ -3,6 +3,7 @@ export class Professor {
     nome: string = "";
     matricula: number = null;
     email: string = "";
+    telefone: number = null;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

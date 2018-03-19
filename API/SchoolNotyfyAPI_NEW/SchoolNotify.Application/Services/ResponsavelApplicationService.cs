@@ -16,12 +16,15 @@ namespace SchoolNotify.Application.Services
     {
         private readonly IResponsavelRepository _responsavelRepository;
         private readonly IAlunoRepository _alunoRepository;
+        private readonly IUsuarioApplicationService _usuarioApplicationService;
 
         public ResponsavelApplicationService(IResponsavelRepository responsavelRepository,
-                                             IAlunoRepository alunoRepository)
+                                             IAlunoRepository alunoRepository,
+                                             IUsuarioApplicationService usuarioApplicationService)
         {
             _responsavelRepository = responsavelRepository;
             _alunoRepository = alunoRepository;
+            _usuarioApplicationService = usuarioApplicationService;
         }
 
         public async Task<IEnumerable<ResponsavelViewModel>> ObterResponsaveis()
@@ -39,16 +42,19 @@ namespace SchoolNotify.Application.Services
             try
             {
                 var responsavel = Mapper.Map<Responsavel>(responsavelVM);
-                await BeginTransaction();
                 if (responsavel.Id == 0)
                 {
+                    await BeginTransaction();
                     await Task.Run(() => _responsavelRepository.Add(responsavel));
+                    await Commit();
+                    await _usuarioApplicationService.ValidarExistenciaUsuario(responsavel.Telefone, "Responsavel");
                 }
                 else
                 {
+                    await BeginTransaction();
                     await Task.Run(() => _responsavelRepository.Update(responsavel));
+                    await Commit();
                 }
-                await Commit();
                 return true;
             }
             catch (Exception e)
@@ -65,6 +71,8 @@ namespace SchoolNotify.Application.Services
                 var responsavel = Mapper.Map<Responsavel>(responsavelVM);
                 if (await ValidarDeletarResponsavel(responsavel.Id))
                 {
+                    await _usuarioApplicationService.ValidarExclusaoUsuario(responsavel.Telefone);
+
                     await BeginTransaction();
                     await Task.Run(() => _responsavelRepository.Delete(responsavel));
                     await Commit();

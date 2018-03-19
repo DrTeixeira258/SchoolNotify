@@ -17,14 +17,17 @@ namespace SchoolNotify.Application.Services
         private readonly IProfessorRepository _professorRepository;
         private readonly ISalaProfessorRelacionalRepository _salaProfessorRelacionalRepository;
         private readonly ISalaApplicationService _salaApplicationService;
+        private readonly IUsuarioApplicationService _usuarioApplicationService;
 
         public ProfessorApplicationService(IProfessorRepository professorRepository,
                                            ISalaProfessorRelacionalRepository salaProfessorRelacionalRepository,
-                                           ISalaApplicationService salaApplicationService)
+                                           ISalaApplicationService salaApplicationService,
+                                           IUsuarioApplicationService usuarioApplicationService)
         {
             _professorRepository = professorRepository;
             _salaProfessorRelacionalRepository = salaProfessorRelacionalRepository;
             _salaApplicationService = salaApplicationService;
+            _usuarioApplicationService = usuarioApplicationService;
         }
 
         public async Task<IEnumerable<ProfessorViewModel>> ObterProfessores()
@@ -42,16 +45,19 @@ namespace SchoolNotify.Application.Services
             try
             {
                 var professor = Mapper.Map<Professor>(professorVM);
-                await BeginTransaction();
                 if (professor.Id == 0)
                 {
+                    await BeginTransaction();
                     await Task.Run(() => _professorRepository.Add(professor));
+                    await Commit();
+                    await _usuarioApplicationService.ValidarExistenciaUsuario(professor.Telefone, "Professor");
                 }
                 else
                 {
+                    await BeginTransaction();
                     await Task.Run(() => _professorRepository.Update(professor));
+                    await Commit();
                 }
-                await Commit();
                 return true;
             }
             catch (Exception e)
@@ -75,6 +81,8 @@ namespace SchoolNotify.Application.Services
                         await Task.Run(() => _salaProfessorRelacionalRepository.Delete(relacional));
                         await Commit();
                     }
+
+                    await _usuarioApplicationService.ValidarExclusaoUsuario(professor.Telefone);
 
                     await BeginTransaction();
                     await Task.Run(() => _professorRepository.Delete(professor));
