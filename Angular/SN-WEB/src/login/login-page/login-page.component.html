@@ -33,7 +33,7 @@
                             <div class="col-md-8" style="left: 20%;">
                                 <div class="form-group form-black label-floating" [ngClass]="{'has-success': usuario.senha, 'input-error  is-empty': !usuario.senha}">
                                     <label class="control-label">Senha</label>
-                                    <input type="text" name="nome" class="form-control" [(ngModel)]="usuario.senha">
+                                    <input type="password" name="nome" class="form-control" [(ngModel)]="usuario.senha" (keypress)="onKeyPress($event)">
                                     <span class="material-icons form-control-feedback">{{usuario.senha ? 'done' : 'clear'}}</span>
                                 </div>
                             </div>

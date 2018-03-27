@@ -42,7 +42,7 @@
         a:hover,
         a:focus,
         a:active {
-            background-color: $brand-primary;
+            background-color: #4caf50;
             color: #FFFFFF;
         }
     }
@@ -57,7 +57,7 @@
             a:hover,
             a:focus,
             a:active {
-                background-color: $brand-primary;
+                background-color: #4caf50;
                 color: #FFFFFF;
                 @include shadow-big-color($brand-primary);
             }

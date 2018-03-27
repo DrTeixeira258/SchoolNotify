@@ -85,7 +85,7 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
   }
 
   voltar() {
-    this.router.navigate(["../sala"]);
+    this.router.navigate(["apps/sala"]);
   }
 
   salvar() {

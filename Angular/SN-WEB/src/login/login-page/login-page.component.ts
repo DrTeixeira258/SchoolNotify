@@ -17,23 +17,29 @@ export class LoginPageComponent extends BaseComponent implements OnInit {
 
   constructor(private router: Router, private usuarioService: UsuarioService) {
     super();
- }
+  }
 
   ngOnInit() {
+  }
+
+  onKeyPress(tecla) {
+    if (tecla.code == "Enter")
+      this.logar();
   }
 
   logar() {
     this.activeLoader = true;
     this.usuarioService.logar(this.usuario).subscribe(
       data => {
-        if(data)
+        if (data)
           this.router.navigate(['/apps/dashboard']);
-        else
-          this.showCustomNotification("warning","Login e/ou Senha incorreto(s).")
-        this.activeLoader = false;
+        else {
+          this.showCustomNotification("warning", "Login e/ou Senha incorreto(s).")
+          this.activeLoader = false;
+        }
       },
       error => {
-        this.showNotification("top","right",false);
+        this.showNotification("top", "right", false);
         this.activeLoader = false;
       }
     );

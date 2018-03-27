@@ -99,7 +99,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
     }
 
     voltar() {
-        this.router.navigate(["../aluno"]);
+        this.router.navigate(["apps/aluno"]);
     }
 
     salvar() {

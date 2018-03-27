@@ -31,6 +31,7 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  teste = null;
 
   constructor() { }
 
