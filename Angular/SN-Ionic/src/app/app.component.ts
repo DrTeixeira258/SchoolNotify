@@ -18,13 +18,25 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar
-    // , private navCtrl: NavController
-  ) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+  constructor(public platform: Platform, statusBar: StatusBar) {
+    // platform.ready().then(() => {
+    //   // Okay, so the platform is ready and our plugins are available.
+    //   // Here you can do any higher level native things you might need.
+    //   statusBar.styleDefault();
+    // });
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      let funcaoRetorno = (data) => {
+        console.log('Notificações: ' + JSON.stringify(data));
+      };
+
+      window["plugins"].OneSignal.startInit("c2efd703-7e75-475b-a138-52a1d18d571d",
+        "873655996905")
+        .handleNotificationOpened(funcaoRetorno)
+        .endInit();
     });
   }
 
@@ -51,4 +63,5 @@ export class MyApp {
   sair() {
     this.navCtrl.setRoot(LoginPage);
   }
+
 }
