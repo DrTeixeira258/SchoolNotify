@@ -11,11 +11,11 @@ namespace SchoolNotify.Infrastructure.Data.Repositories
 {
     public class UsuarioRepository : BaseRepository<Usuario>, IUsuarioRepository
     {
-        public async Task<bool> Logar(Usuario usuario)
+        public async Task<Usuario> Logar(Usuario usuario)
         {
             try
             {
-                var result = (await GetReadOnly(x => x.Login == usuario.Login && x.Senha == usuario.Senha)).Any();
+                var result = (await GetReadOnly(x => x.Login == usuario.Login && x.Senha == usuario.Senha)).FirstOrDefault();
                 return result;
             }
             catch (Exception e)

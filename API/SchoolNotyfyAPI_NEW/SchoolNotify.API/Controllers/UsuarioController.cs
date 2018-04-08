@@ -22,7 +22,7 @@ namespace SchoolNotify.API.Controllers
 
         [HttpPost]
         [Route("Usuario/Logar")]
-        [ResponseType(typeof(bool))]
+        [ResponseType(typeof(object))]
         public async Task<IHttpActionResult> Logar(UsuarioViewModel usuario)
         {
             try

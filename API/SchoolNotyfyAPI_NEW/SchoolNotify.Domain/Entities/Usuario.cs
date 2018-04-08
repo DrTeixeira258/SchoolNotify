@@ -11,7 +11,7 @@ namespace SchoolNotify.Domain.Entities
         public int Id { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
-        public int? Telefone { get; set; }
+        public long? Telefone { get; set; }
         public bool? Responsavel { get; set; }
         public bool? Professor { get; set; }
         public bool? Admin { get; set; }

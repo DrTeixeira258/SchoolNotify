@@ -17,7 +17,7 @@ create table Responsavel
 	id int identity(1,1) primary key,
 	nome varchar(150) not null,
 	email varchar(50) not null,
-	telefone int not null
+	telefone bigint not null
 )
 GO 
 
@@ -27,7 +27,7 @@ create table Professor
 	nome varchar(150) not null,
 	matricula int unique not null,
 	email varchar(50),
-	telefone int not null
+	telefone bigint not null
 )
 GO
 
@@ -66,7 +66,7 @@ create table Usuario
 	id int identity(1,1) primary key,
 	login varchar(50) not null,
 	senha varchar(50) not null,
-	telefone int null,
+	telefone bigint null,
 	responsavel bit null,
 	professor bit null,
 	admin bit null

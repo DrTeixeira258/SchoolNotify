@@ -16,21 +16,25 @@
                     <div class="card-content table-responsive">
                         <table class="table">
                             <thead class="text-danger">
-                                <th class="text-center">Matricula</th>
                                 <th class="text-center">Nome</th>
+                                <th class="text-center">Matricula</th>
                                 <th class="text-center">Responsável</th>
                                 <th class="text-center">Sala</th>
                                 <th>Ações</th>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let aluno of alunos">
-                                    <td class="text-center">{{aluno.matricula}}</td>
                                     <td class="text-center">{{aluno.nome}}</td>
+                                    <td class="text-center">{{aluno.matricula}}</td>
                                     <td class="text-center">{{aluno.responsavel.nome}}</td>
                                     <td class="text-center">{{aluno.sala.nome}}</td>
                                     <td>
-                                        <i class="material-icons mouse-pointer" title="Editar" (click)="editarAluno(aluno.id)">edit</i>
-                                        <i class="material-icons mouse-pointer" title="Excluir" (click)="deletar(aluno)">delete</i>
+                                        <button type="button" rel="tooltip" title="Editar" (click)="editarAluno(aluno.id)" class="btn btn-primary btn-simple btn-xs pl-pr-0">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button type="button" rel="tooltip" title="Excluir" (click)="deletar(aluno)" class="btn btn-danger btn-simple btn-xs pl-pr-0">
+                                            <i class="material-icons">close</i>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

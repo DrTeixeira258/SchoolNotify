@@ -10,6 +10,6 @@ namespace SchoolNotify.Domain.Interfaces.Repository
 {
     public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
-        Task<bool> Logar(Usuario usuario);
+        Task<Usuario> Logar(Usuario usuario);
     }
 }

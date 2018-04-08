@@ -18,14 +18,42 @@ namespace SchoolNotify.Application.Services
         private readonly IProfessorRepository _professorRepository;
         private readonly IResponsavelRepository _responsavelRepository;
 
-        public UsuarioApplicationService(IUsuarioRepository usuarioRepository)
+        public UsuarioApplicationService(IUsuarioRepository usuarioRepository, 
+            IProfessorRepository professorRepository,
+            IResponsavelRepository responsavelRepository)
         {
             _usuarioRepository = usuarioRepository;
+            _professorRepository = professorRepository;
+            _responsavelRepository = responsavelRepository;
         }
 
-        public async Task<bool> Logar(UsuarioViewModel usuario)
+        public async Task<UsuarioViewModel> Logar(UsuarioViewModel usuarioVM)
         {
-            return await _usuarioRepository.Logar(Mapper.Map<Usuario>(usuario));
+            var usuario = Mapper.Map<UsuarioViewModel>(await _usuarioRepository.Logar(Mapper.Map<Usuario>(usuarioVM)));
+            if (usuario != null)
+            {
+                if (usuarioVM.Professor == true)
+                {
+                    usuario.Nome = (await _professorRepository.GetReadOnly(x => x.Telefone == usuarioVM.Telefone)).FirstOrDefault().Nome;
+                }
+                else if (usuarioVM.Responsavel == true)
+                {
+                    usuario.Nome = (await _responsavelRepository.GetReadOnly(x => x.Telefone == usuarioVM.Telefone)).FirstOrDefault().Nome;
+                }
+                else
+                {
+                    usuario.Nome = "Administrador";
+                }
+                usuario.Senha = "";
+                usuario.Login = "";
+                return usuario;
+            }
+            else
+            {
+                return null;
+            }
+
+
         }
 
         public async Task<bool> Cadastrar(UsuarioViewModel usuarioVM)
@@ -48,7 +76,7 @@ namespace SchoolNotify.Application.Services
             return false;
         }
 
-        public async Task ValidarExclusaoUsuario(int telefone)
+        public async Task ValidarExclusaoUsuario(long telefone)
         {
             int perfis = 0;
             var usuario = (await _usuarioRepository.GetReadOnly(x => x.Telefone == telefone)).FirstOrDefault();
@@ -66,7 +94,7 @@ namespace SchoolNotify.Application.Services
             }
         }
 
-        public async Task ValidarExistenciaUsuario(int telefone, string perfil)
+        public async Task ValidarExistenciaUsuario(long telefone, string perfil)
         {
             var usuarios = (await _usuarioRepository.Get(x => x.Telefone == telefone));
             var usuario = new Usuario();

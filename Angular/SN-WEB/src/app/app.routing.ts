@@ -19,78 +19,79 @@ import { ListarResponsavelComponent } from 'app/mante-responsavel/listar-respons
 import { CriarResponsavelComponent } from 'app/mante-responsavel/criar-responsavel/criar-responsavel.component';
 import { ListarAlunoComponent } from 'app/manter-aluno/listar-aluno/listar-aluno.component';
 import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.component';
+import { LoginGuard } from 'app/guard/login.guard';
 
 const routes: Routes = [
 
   {
     path: '', children: [
       {
-        path: 'user-profile', component: AppComponent, children: [
+        path: 'user-profile', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: UserProfileComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'dashboard', component: AppComponent, children: [
+        path: 'dashboard', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: DashboardComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'sala', component: AppComponent, children: [
+        path: 'sala', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: ListarSalaComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-sala', component: AppComponent, children: [
+        path: 'criar-sala', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarSalaComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-sala/:idSala', component: AppComponent, children: [
+        path: 'criar-sala/:idSala', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarSalaComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'professor', component: AppComponent, children: [
+        path: 'professor', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: ListarProfessorComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-professor', component: AppComponent, children: [
+        path: 'criar-professor', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarProfessorComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-professor/:idProfessor', component: AppComponent, children: [
+        path: 'criar-professor/:idProfessor', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarProfessorComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'responsavel', component: AppComponent, children: [
+        path: 'responsavel', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: ListarResponsavelComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-responsavel', component: AppComponent, children: [
+        path: 'criar-responsavel', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarResponsavelComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-responsavel/:idResponsavel', component: AppComponent, children: [
+        path: 'criar-responsavel/:idResponsavel', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarResponsavelComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'aluno', component: AppComponent, children: [
+        path: 'aluno', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: ListarAlunoComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-aluno', component: AppComponent, children: [
+        path: 'criar-aluno', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarAlunoComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-aluno/:idAluno', component: AppComponent, children: [
+        path: 'criar-aluno/:idAluno', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarAlunoComponent, outlet: 'components' },
         ]
       },

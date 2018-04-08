@@ -27,6 +27,8 @@ import { ListarResponsavelComponent } from 'app/mante-responsavel/listar-respons
 import { CriarResponsavelComponent } from 'app/mante-responsavel/criar-responsavel/criar-responsavel.component';
 import { ListarAlunoComponent } from 'app/manter-aluno/listar-aluno/listar-aluno.component';
 import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.component';
+import { LoginGuard } from 'app/guard/login.guard';
+import { UsuarioService } from 'services/usuario.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.co
     // NoopAnimationsModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [LoginGuard,UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

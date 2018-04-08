@@ -27,8 +27,12 @@
                                     <td class="text-center">{{responsavel.telefone}}</td>
                                     <td class="text-center">{{responsavel.email}}</td>
                                     <td>
-                                        <i class="material-icons mouse-pointer" title="Editar" (click)="editarResponsavel(responsavel.id)">edit</i>
-                                        <i class="material-icons mouse-pointer" title="Excluir" (click)="deletar(responsavel)">delete</i>
+                                        <button type="button" rel="tooltip" title="Editar" (click)="editarResponsavel(responsavel.id)" class="btn btn-primary btn-simple btn-xs pl-pr-0">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button type="button" rel="tooltip" title="Excluir" (click)="deletar(responsavel)" class="btn btn-danger btn-simple btn-xs pl-pr-0">
+                                            <i class="material-icons">close</i>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

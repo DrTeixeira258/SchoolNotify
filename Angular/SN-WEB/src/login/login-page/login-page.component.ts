@@ -31,8 +31,12 @@ export class LoginPageComponent extends BaseComponent implements OnInit {
     this.activeLoader = true;
     this.usuarioService.logar(this.usuario).subscribe(
       data => {
-        if (data)
+        if (data){
+          localStorage.setItem("nomeUsuario",data.nome);
+          localStorage.setItem("nu",btoa(this.usuario.login));
+          localStorage.setItem("su",btoa(this.usuario.senha));
           this.router.navigate(['/apps/dashboard']);
+        }
         else {
           this.showCustomNotification("warning", "Login e/ou Senha incorreto(s).")
           this.activeLoader = false;

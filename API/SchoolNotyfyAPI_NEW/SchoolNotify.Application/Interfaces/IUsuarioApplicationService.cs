@@ -9,9 +9,9 @@ namespace SchoolNotify.Application.Interfaces
 {
     public interface IUsuarioApplicationService
     {
-        Task<bool> Logar(UsuarioViewModel usuario);
+        Task<UsuarioViewModel> Logar(UsuarioViewModel usuario);
         Task<bool> Cadastrar(UsuarioViewModel usuarioVM);
-        Task ValidarExclusaoUsuario(int telefone);
-        Task ValidarExistenciaUsuario(int telefone, string perfil);
+        Task ValidarExclusaoUsuario(long telefone);
+        Task ValidarExistenciaUsuario(long telefone, string perfil);
     }
 }
