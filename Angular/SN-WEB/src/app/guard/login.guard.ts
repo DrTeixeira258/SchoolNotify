@@ -16,7 +16,6 @@ export class LoginGuard implements CanActivate {
         let usuario: Usuario = new Usuario();
         usuario.login = atob(localStorage.getItem("nu"));
         usuario.senha = atob(localStorage.getItem("su"));
-        debugger
         return this.usuarioService.logar(usuario).map(
             data => {
                 if (data) {

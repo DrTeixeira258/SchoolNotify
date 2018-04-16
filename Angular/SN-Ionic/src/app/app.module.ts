@@ -16,6 +16,10 @@ import { AlunoPage } from '../components/aluno/aluno';
 import { CriarAlunoPage } from '../components/aluno/criar-aluno/criar-aluno';
 import { ProfessorPage } from '../components/professor/professor';
 import { CriarProfessorPage } from '../components/professor/criar-professor/criar-professor';
+import { SalasPage } from '../components/notificacao/salas/salas';
+import { NotificacaoPage } from '../components/notificacao/notificacao';
+import { CriarNotificacaoPage } from '../components/notificacao/criar-notificacao/criar-notificacao';
+import { AlunosPage } from '../components/notificacao/alunos/alunos';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { CriarProfessorPage } from '../components/professor/criar-professor/cria
     AlunoPage,
     CriarAlunoPage,
     ProfessorPage,
-    CriarProfessorPage
+    CriarProfessorPage,
+    NotificacaoPage,
+    CriarNotificacaoPage,
+    SalasPage,
+    AlunosPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +57,11 @@ import { CriarProfessorPage } from '../components/professor/criar-professor/cria
     AlunoPage,
     CriarAlunoPage,
     ProfessorPage,
-    CriarProfessorPage
+    CriarProfessorPage,
+    NotificacaoPage,
+    CriarNotificacaoPage,
+    SalasPage,
+    AlunosPage
   ],
   providers: [
     StatusBar,

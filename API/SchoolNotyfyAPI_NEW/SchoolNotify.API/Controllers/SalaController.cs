@@ -64,6 +64,21 @@ namespace SchoolNotify.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("Sala/ObterSalasPorIdProfessor/{idProfessor}")]
+        [ResponseType(typeof(IEnumerable<SalaViewModel>))]
+        public async Task<IHttpActionResult> ObterSalasPorIdProfessor(int idProfessor)
+        {
+            try
+            {
+                return Ok(await _salaAppService.ObterSalasPorIdProfessor(idProfessor));
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
         [HttpPost]
         [Route("Sala/SalvarSala")]
         [ResponseType(typeof(bool))]

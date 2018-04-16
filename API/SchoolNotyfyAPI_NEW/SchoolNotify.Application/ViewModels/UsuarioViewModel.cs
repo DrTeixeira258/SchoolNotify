@@ -9,6 +9,8 @@ namespace SchoolNotify.Application.ViewModels
     public class UsuarioViewModel
     {
         public int Id { get; set; }
+        public int IdProfessor { get; set; }
+        public int IdResponsavel { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
         public long? Telefone { get; set; }

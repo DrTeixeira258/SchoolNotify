@@ -79,5 +79,36 @@ namespace SchoolNotify.API.Controllers
                 return InternalServerError(e);
             }
         }
+
+
+        [HttpGet]
+        [Route("Responsavel/BuscarTelefonesResponsaveis/{idSala}")]
+        [ResponseType(typeof(IEnumerable<ResponsavelViewModel>))]
+        public async Task<IHttpActionResult> BuscarTelefonesResponsaveis(int idSala)
+        {
+            try
+            {
+                return Ok(await _responsavelAppService.BuscarTelefonesResponsaveis(idSala));
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpGet]
+        [Route("Responsavel/BuscarTelefoneResponsavel/{idAluno}")]
+        [ResponseType(typeof(IEnumerable<ResponsavelViewModel>))]
+        public async Task<IHttpActionResult> BuscarTelefoneResponsavel(int idAluno)
+        {
+            try
+            {
+                return Ok(await _responsavelAppService.BuscarTelefoneResponsavel(idAluno));
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
     }
 }

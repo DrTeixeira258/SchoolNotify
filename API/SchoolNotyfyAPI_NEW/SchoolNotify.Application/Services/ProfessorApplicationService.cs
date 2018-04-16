@@ -75,14 +75,14 @@ namespace SchoolNotify.Application.Services
                 var relacionais = await _salaProfessorRelacionalRepository.Get(x => x.IdProfessor == professor.Id, new[] { "Sala" });
                 if (await ValidarDeletarProfessor(professor, relacionais))
                 {
+                    await _usuarioApplicationService.ValidarExclusaoUsuario(professor.Telefone, "P");
+
                     foreach (var relacional in relacionais)
                     {
                         await BeginTransaction();
                         await Task.Run(() => _salaProfessorRelacionalRepository.Delete(relacional));
                         await Commit();
                     }
-
-                    await _usuarioApplicationService.ValidarExclusaoUsuario(professor.Telefone);
 
                     await BeginTransaction();
                     await Task.Run(() => _professorRepository.Delete(professor));

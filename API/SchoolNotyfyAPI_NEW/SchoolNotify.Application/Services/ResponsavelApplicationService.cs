@@ -17,14 +17,17 @@ namespace SchoolNotify.Application.Services
         private readonly IResponsavelRepository _responsavelRepository;
         private readonly IAlunoRepository _alunoRepository;
         private readonly IUsuarioApplicationService _usuarioApplicationService;
+        private readonly ISalaRepository _salaRepository;
 
         public ResponsavelApplicationService(IResponsavelRepository responsavelRepository,
                                              IAlunoRepository alunoRepository,
-                                             IUsuarioApplicationService usuarioApplicationService)
+                                             IUsuarioApplicationService usuarioApplicationService,
+                                             ISalaRepository salaRepository)
         {
             _responsavelRepository = responsavelRepository;
             _alunoRepository = alunoRepository;
             _usuarioApplicationService = usuarioApplicationService;
+            _salaRepository = salaRepository;
         }
 
         public async Task<IEnumerable<ResponsavelViewModel>> ObterResponsaveis()
@@ -71,7 +74,7 @@ namespace SchoolNotify.Application.Services
                 var responsavel = Mapper.Map<Responsavel>(responsavelVM);
                 if (await ValidarDeletarResponsavel(responsavel.Id))
                 {
-                    await _usuarioApplicationService.ValidarExclusaoUsuario(responsavel.Telefone);
+                    await _usuarioApplicationService.ValidarExclusaoUsuario(responsavel.Telefone, "R");
 
                     await BeginTransaction();
                     await Task.Run(() => _responsavelRepository.Delete(responsavel));
@@ -95,6 +98,18 @@ namespace SchoolNotify.Application.Services
                 return true;
             }
             return false;
+        }
+
+        public async Task<IEnumerable<long>> BuscarTelefonesResponsaveis(int idSala)
+        {
+            var telResponsaveis = (await _salaRepository.GetReadOnly(x => x.Id == idSala, new string[]{ "Alunos.Responsavel" })).FirstOrDefault().Alunos.Select(y => y.Responsavel.Telefone);
+            return telResponsaveis;
+        }
+
+        public async Task<long> BuscarTelefoneResponsavel(int idAluno)
+        {
+            var telResponsavel = (await _alunoRepository.GetReadOnly(x => x.Id == idAluno, new string[] { "Responsavel" })).FirstOrDefault().Responsavel.Telefone;
+            return telResponsavel;
         }
     }
 }

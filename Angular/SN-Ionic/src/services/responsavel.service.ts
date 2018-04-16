@@ -23,6 +23,18 @@ export class ResponsavelService extends BaseService {
             .catch(this.handleError);
     }
 
+    public buscarTelefonesResponsaveis(idSala: number) {
+        return this.http.get(this.apiControllerUrl + 'buscarTelefonesResponsaveis/' + idSala, this.requestOptions)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    public buscarTelefoneResponsavel(idAluno: number) {
+        return this.http.get(this.apiControllerUrl + 'BuscarTelefoneResponsavel/' + idAluno, this.requestOptions)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
     public salvarResponsavel(responsavel: Responsavel) {
         return this.http.post(this.apiControllerUrl + 'SalvarResponsavel/', responsavel, this.requestOptions)
             .map(res => res.json())

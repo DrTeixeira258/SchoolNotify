@@ -18,7 +18,7 @@ namespace SchoolNotify.Application.Services
         private readonly IProfessorRepository _professorRepository;
         private readonly IResponsavelRepository _responsavelRepository;
 
-        public UsuarioApplicationService(IUsuarioRepository usuarioRepository, 
+        public UsuarioApplicationService(IUsuarioRepository usuarioRepository,
             IProfessorRepository professorRepository,
             IResponsavelRepository responsavelRepository)
         {
@@ -32,13 +32,17 @@ namespace SchoolNotify.Application.Services
             var usuario = Mapper.Map<UsuarioViewModel>(await _usuarioRepository.Logar(Mapper.Map<Usuario>(usuarioVM)));
             if (usuario != null)
             {
-                if (usuarioVM.Professor == true)
+                if (usuario.Professor == true)
                 {
-                    usuario.Nome = (await _professorRepository.GetReadOnly(x => x.Telefone == usuarioVM.Telefone)).FirstOrDefault().Nome;
+                    var professor = (await _professorRepository.GetReadOnly(x => x.Telefone == usuario.Telefone)).FirstOrDefault();
+                    usuario.IdProfessor = professor.Id;
+                    usuario.Nome = professor.Nome;
                 }
-                else if (usuarioVM.Responsavel == true)
+                else if (usuario.Responsavel == true)
                 {
-                    usuario.Nome = (await _responsavelRepository.GetReadOnly(x => x.Telefone == usuarioVM.Telefone)).FirstOrDefault().Nome;
+                    var responsavel = (await _responsavelRepository.GetReadOnly(x => x.Telefone == usuario.Telefone)).FirstOrDefault();
+                    usuario.IdResponsavel = responsavel.Id;
+                    usuario.Nome = responsavel.Nome;
                 }
                 else
                 {
@@ -52,8 +56,6 @@ namespace SchoolNotify.Application.Services
             {
                 return null;
             }
-
-
         }
 
         public async Task<bool> Cadastrar(UsuarioViewModel usuarioVM)
@@ -76,21 +78,35 @@ namespace SchoolNotify.Application.Services
             return false;
         }
 
-        public async Task ValidarExclusaoUsuario(long telefone)
+        public async Task ValidarExclusaoUsuario(long telefone, string perfil)
         {
             int perfis = 0;
             var usuario = (await _usuarioRepository.GetReadOnly(x => x.Telefone == telefone)).FirstOrDefault();
 
-            if (usuario.Professor == true)
-                perfis++;
-            if (usuario.Responsavel == true)
-                perfis++;
-
-            if (perfis == 1)
+            if (usuario != null)
             {
-                await BeginTransaction();
-                await Task.Run(() => _usuarioRepository.Delete(usuario));
-                await Commit();
+                if (usuario.Professor == true)
+                    perfis++;
+                if (usuario.Responsavel == true)
+                    perfis++;
+
+                if (perfis == 1)
+                {
+                    await BeginTransaction();
+                    await Task.Run(() => _usuarioRepository.Delete(usuario));
+                    await Commit();
+                }
+                else
+                {
+                    if (perfil == "P")
+                        usuario.Professor = false;
+                    else
+                        usuario.Responsavel = false;
+
+                    await BeginTransaction();
+                    await Task.Run(() => _usuarioRepository.Update(usuario));
+                    await Commit();
+                }
             }
         }
 

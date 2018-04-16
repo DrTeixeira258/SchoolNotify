@@ -72,6 +72,12 @@ namespace SchoolNotify.Application.Services
             return salasVM;
         }
 
+        public async Task<IEnumerable<SalaViewModel>> ObterSalasPorIdProfessor(int idProfessor)
+        {
+            var salas = (await _salaProfessorRelacionalRepository.GetReadOnly(x => x.IdProfessor == idProfessor, new string[] { "Sala" })).Select(x => x.Sala);
+            return Mapper.Map<IEnumerable<SalaViewModel>>(salas);
+        }
+
         public async Task<bool> SalvarSala(SalaViewModel salaVM)
         {
             try

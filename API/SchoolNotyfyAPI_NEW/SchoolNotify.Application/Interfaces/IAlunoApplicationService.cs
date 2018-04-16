@@ -10,6 +10,7 @@ namespace SchoolNotify.Application.Interfaces
     public interface IAlunoApplicationService
     {
         Task<IEnumerable<AlunoViewModel>> ObterAlunos();
+        Task<IEnumerable<AlunoViewModel>> ObterAlunosPorProfessor(int idProfessor);
         Task<AlunoViewModel> ObterAlunoPorId(int idAluno);
         Task<bool> SalvarAluno(AlunoViewModel alunoVM);
         Task<bool> DeletarAluno(AlunoViewModel alunoVM);

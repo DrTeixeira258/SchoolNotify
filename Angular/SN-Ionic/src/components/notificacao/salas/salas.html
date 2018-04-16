@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title class="title">Criar Notificacao</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h3>Salas</h3>
+
+    <ion-list no-lines>
+        <ion-item *ngFor="let sala of salas">
+            <!-- <ion-thumbnail item-start>
+                <img src="img/thumbnail-totoro.png">
+            </ion-thumbnail> -->
+            <h2>{{sala.nome}}</h2>
+            <p>{{sala.serie}}</p>
+            <button ion-button clear item-end (click)="modalCriarNotificacao(sala.id)">Selecionar</button>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

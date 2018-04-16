@@ -23,11 +23,26 @@ namespace SchoolNotify.API.Controllers
         [HttpGet]
         [Route("Aluno/ObterTodos")]
         [ResponseType(typeof(IEnumerable<AlunoViewModel>))]
-        public async Task<IHttpActionResult> GetObterTodos()
+        public async Task<IHttpActionResult> ObterTodos()
         {
             try
             {
                 return Ok(await _alunoAppService.ObterAlunos());
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpGet]
+        [Route("Aluno/ObterAlunosPorProfessor/{idProfessor}")]
+        [ResponseType(typeof(IEnumerable<AlunoViewModel>))]
+        public async Task<IHttpActionResult> ObterAlunosPorProfessor(int idProfessor)
+        {
+            try
+            {
+                return Ok(await _alunoAppService.ObterAlunosPorProfessor(idProfessor));
             }
             catch (Exception e)
             {

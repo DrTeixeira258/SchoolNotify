@@ -15,10 +15,12 @@ namespace SchoolNotify.Application.Services
     public class AlunoApplicationService : BaseApplicationService, IAlunoApplicationService
     {
         private readonly IAlunoRepository _alunoRepository;
+        private readonly IProfessorRepository _professorRepository;
 
-        public AlunoApplicationService(IAlunoRepository alunoRepository)
+        public AlunoApplicationService(IAlunoRepository alunoRepository, IProfessorRepository professorRepository)
         {
             _alunoRepository = alunoRepository;
+            _professorRepository = professorRepository;
         }
 
         public async Task<IEnumerable<AlunoViewModel>> ObterAlunos()
@@ -31,6 +33,14 @@ namespace SchoolNotify.Application.Services
             }
             
             return Mapper.Map<IEnumerable<AlunoViewModel>>(alunos);
+        }
+
+        public async Task<IEnumerable<AlunoViewModel>> ObterAlunosPorProfessor(int idProfessor)
+        {
+            var alunos = (await _professorRepository.GetReadOnly(x => x.Id == idProfessor, new string[] { "SalaProfessorRelacional.Sala", "SalaProfessorRelacional.Sala.Alunos" })).FirstOrDefault()
+                .SalaProfessorRelacional.Select(y => y.Sala).SelectMany(z => z.Alunos);
+            var alunosVM = Mapper.Map<IEnumerable<AlunoViewModel>>(alunos);
+            return alunosVM;
         }
 
         public async Task<AlunoViewModel> ObterAlunoPorId(int idAluno)

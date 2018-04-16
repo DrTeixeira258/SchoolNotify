@@ -6,10 +6,12 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 import { Uteis } from '../../../uteis';
 import { Usuario } from '../../../../models/usuario.model';
 import { HomePage } from '../../../home/home';
+import { UsuarioService } from '../../../../services/usuario.service';
 
 @Component({
     selector: 'page-login',
-    templateUrl: 'login.html'
+    templateUrl: 'login.html',
+    providers: [UsuarioService]
 })
 
 export class LoginPage extends Uteis {
@@ -20,7 +22,8 @@ export class LoginPage extends Uteis {
         public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public navCtrl: NavController,
-        public splashScreen: SplashScreen) {
+        public splashScreen: SplashScreen,
+        private usuarioService: UsuarioService) {
         super(loadingCtrl, alertCtrl);
     }
 
@@ -30,8 +33,21 @@ export class LoginPage extends Uteis {
 
     private logar() {
         this.criarLoader();
-        this.navCtrl.setRoot(HomePage);
-        this.fecharLoader();
+        this.usuarioService.logar(this.usuario).subscribe(
+            data => {
+                if (data) {
+                    localStorage.setItem("usuario", JSON.stringify(data));
+                    this.fecharLoader();
+                    this.navCtrl.setRoot(HomePage);
+                } else {
+                    this.exibirMensagem("Login", "Usuario e/ou senha incorreto(s).");
+                }
+            },
+            error => {
+                this.fecharLoader();
+                this.exibirMensagem("Login", "Nao foi possivel efetuar o login.");
+            }
+        );
     }
 
 }

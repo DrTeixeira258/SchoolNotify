@@ -13,5 +13,7 @@ namespace SchoolNotify.Application.Interfaces
         Task<ResponsavelViewModel> ObterResponsavelPorId(int idResponsavel);
         Task<bool> SalvarResponsavel(ResponsavelViewModel responsavelVM);
         Task<bool> DeletarResponsavel(ResponsavelViewModel responsavelVM);
+        Task<IEnumerable<long>> BuscarTelefonesResponsaveis(int idSala);
+        Task<long> BuscarTelefoneResponsavel(int idAluno);
     }
 }

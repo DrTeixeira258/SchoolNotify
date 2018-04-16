@@ -2,11 +2,11 @@ import { Responsavel } from "./responsavel.model";
 import { Sala } from "./sala.model";
 
 export class Aluno {
-    id: number = 0;
-    idResponsavel: number = 0;
-    idSala: number = 0;
-    nome: string = "";
-    sexo: string = "";
+    id: number = null;
+    idResponsavel: number = null;
+    idSala: number = null;
+    nome: string = null;
+    sexo: string = null;
     idade: number = null;
 
     responsavel: Responsavel = new Responsavel();

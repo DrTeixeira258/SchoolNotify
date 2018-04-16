@@ -11,7 +11,7 @@ namespace SchoolNotify.Application.Interfaces
     {
         Task<UsuarioViewModel> Logar(UsuarioViewModel usuario);
         Task<bool> Cadastrar(UsuarioViewModel usuarioVM);
-        Task ValidarExclusaoUsuario(long telefone);
+        Task ValidarExclusaoUsuario(long telefone, string perfil);
         Task ValidarExistenciaUsuario(long telefone, string perfil);
     }
 }

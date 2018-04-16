@@ -7,6 +7,7 @@ import { HomePage } from '../components/home/home';
 import { ResponsavelPage } from '../components/responsavel/responsavel';
 import { AlunoPage } from '../components/aluno/aluno';
 import { ProfessorPage } from '../components/professor/professor';
+import { NotificacaoPage } from '../components/notificacao/notificacao';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,12 +20,12 @@ export class MyApp {
   rootPage: any = LoginPage;
 
   constructor(public platform: Platform, statusBar: StatusBar) {
-    // platform.ready().then(() => {
-    //   // Okay, so the platform is ready and our plugins are available.
-    //   // Here you can do any higher level native things you might need.
-    //   statusBar.styleDefault();
-    // });
-    this.initializeApp();
+    platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      statusBar.styleDefault();
+    });
+    // this.initializeApp();
   }
 
   initializeApp() {
@@ -58,6 +59,10 @@ export class MyApp {
 
   aluno() {
     this.navCtrl.setRoot(AlunoPage);
+  }
+
+  notificacao() {
+    this.navCtrl.setRoot(NotificacaoPage);
   }
 
   sair() {
