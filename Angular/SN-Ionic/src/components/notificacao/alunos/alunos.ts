@@ -58,10 +58,10 @@ export class AlunosPage extends Uteis {
         );
     }
 
-    modalCriarNotificacao(idAluno) {
+    modalCriarNotificacao(aluno: Aluno) {
         let modal = this.modalCtrl.create(CriarNotificacaoPage,
             {
-                idAluno: idAluno
+                aluno: aluno
             });
         modal.present();
     }

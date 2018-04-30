@@ -1,32 +1,23 @@
 <ion-menu [content]="content">
+
     <ion-header>
-        <ion-toolbar>
+        <ion-toolbar color="sn-green">
             <ion-title>Menu</ion-title>
         </ion-toolbar>
     </ion-header>
 
-    <ion-content>
-        <ion-list>
-            <button menuClose ion-item (click)="home()">
-                Home
-            </button>
-            <!-- <button menuClose ion-item (click)="professor()">
-                Manter Professor
-            </button>
-            <button menuClose ion-item (click)="sala()">
-                Manter Sala
-            </button>
-            <button menuClose ion-item (click)="responsavel()">
-                Manter Responsável
-            </button>
-            <button menuClose ion-item (click)="aluno()">
-                Manter Aluno
-            </button> -->
-            <button menuClose ion-item (click)="notificacao()">
-                Notificacao
-            </button>
-            <button menuClose ion-item (click)="sair()">
-                Deslogar
+    <ion-content class="outer-content" style="background-color: white">
+        <ion-list text-wrap>
+            <ion-item class="text-center" *ngIf="buscarUsuario">
+                <ion-avatar>
+                    <!-- <img [src]="participanteLogado.imagem"> -->
+                    <ion-icon style="font-size: 4.2em;" ios="ios-contact" md="md-contact"></ion-icon>
+                </ion-avatar>
+                <h2>{{buscarUsuario.nome}}</h2>
+                <p>{{buscarUsuario.telefone?.toString() | phone}}</p>
+            </ion-item>
+            <button menuClose ion-item *ngFor="let page of pages" (click)="goTo(page.component)">
+                {{page.title}}
             </button>
         </ion-list>
     </ion-content>

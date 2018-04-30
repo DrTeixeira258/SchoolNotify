@@ -1,8 +1,8 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="sn-green">
         <ion-buttons start>
             <button ion-button (click)="dismiss()">
-                <span ion-text color="primary" showWhen="ios">Cancelar</span>
+                <span ion-text color="hard-light" showWhen="ios">Cancelar</span>
                 <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
             </button>
         </ion-buttons>
@@ -11,9 +11,14 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-col class="text-center">
+        <h3>{{titulo}}</h3>
+        <p>{{subTitulo}}</p>
+    </ion-col>
+    <hr>
     <!-- <ion-list> -->
     <ion-item>
-        <ion-label stacked>Mensagem</ion-label>
+        <ion-label stacked>Mensagem:</ion-label>
         <ion-textarea type="text" rows="7"></ion-textarea>
     </ion-item>
     <!-- </ion-list> -->
@@ -22,9 +27,7 @@
 <ion-footer>
     <ion-row>
         <ion-col>
-            <button ion-button block>
-                Enviar
-            </button>
+            <button ion-button color="sn-dark-green" block>Enviar</button>
         </ion-col>
     </ion-row>
 </ion-footer>

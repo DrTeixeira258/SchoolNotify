@@ -1,3 +1,4 @@
+import { MyApp } from './../../../../app/app.component';
 import { Component } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NavController } from 'ionic-angular';
@@ -7,6 +8,7 @@ import { Uteis } from '../../../uteis';
 import { Usuario } from '../../../../models/usuario.model';
 import { HomePage } from '../../../home/home';
 import { UsuarioService } from '../../../../services/usuario.service';
+import { CadastroPage } from '../cadastro/cadastro';
 
 @Component({
     selector: 'page-login',
@@ -35,9 +37,10 @@ export class LoginPage extends Uteis {
         this.criarLoader();
         this.usuarioService.logar(this.usuario).subscribe(
             data => {
+                this.fecharLoader();
                 if (data) {
                     localStorage.setItem("usuario", JSON.stringify(data));
-                    this.fecharLoader();
+                    MyApp.usuario = data;
                     this.navCtrl.setRoot(HomePage);
                 } else {
                     this.exibirMensagem("Login", "Usuario e/ou senha incorreto(s).");
@@ -48,6 +51,10 @@ export class LoginPage extends Uteis {
                 this.exibirMensagem("Login", "Nao foi possivel efetuar o login.");
             }
         );
+    }
+
+    public goCadastro() {
+        this.navCtrl.push(CadastroPage);
     }
 
 }

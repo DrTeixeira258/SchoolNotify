@@ -52,10 +52,10 @@ export class SalasPage extends Uteis {
         );
     }
 
-    modalCriarNotificacao(idSala) {
+    modalCriarNotificacao(sala: Sala) {
         let modal = this.modalCtrl.create(CriarNotificacaoPage,
             {
-                idSala: idSala
+                sala: sala
             });
         modal.present();
     }

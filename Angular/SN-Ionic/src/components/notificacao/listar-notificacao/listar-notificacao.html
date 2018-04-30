@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="sn-green">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="title">Notificacoes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #eeeeee">
+  <ion-list no-lines>
+    <ion-list-header>Esse Mes</ion-list-header>
+    <ion-card *ngFor="let i of [1,2,3]" (click)="exibirNotificacao()">
+      <ion-card-header> Titulo </ion-card-header>
+      <ion-card-content>
+        Previa da mensagem pra caber um uma unica linha, sem quebra...
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-list no-lines>
+    <ion-list-header>Outras</ion-list-header>
+    <ion-card *ngFor="let i of [1,2,3]" (click)="exibirNotificacao()">
+      <ion-card-header> Titulo </ion-card-header>
+      <ion-card-content>
+        Previa da mensagem pra caber um uma unica linha, sem quebra...
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

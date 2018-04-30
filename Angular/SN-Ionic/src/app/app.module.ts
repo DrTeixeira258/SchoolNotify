@@ -1,9 +1,12 @@
+import { TelefonePipe } from './../pipe/phone';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
+
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 import { MyApp } from './app.component';
 import { LoginPage } from './../components/principal/pages/login/login';
@@ -20,6 +23,9 @@ import { SalasPage } from '../components/notificacao/salas/salas';
 import { NotificacaoPage } from '../components/notificacao/notificacao';
 import { CriarNotificacaoPage } from '../components/notificacao/criar-notificacao/criar-notificacao';
 import { AlunosPage } from '../components/notificacao/alunos/alunos';
+import { CadastroPage } from '../components/principal/pages/cadastro/cadastro';
+import { ListarNotificacaoPage } from '../components/notificacao/listar-notificacao/listar-notificacao';
+import { ExibirNotificacaoPage } from '../components/notificacao/listar-notificacao/exibir-notificacao/exibir-notificacao';
 
 
 @NgModule({
@@ -38,12 +44,17 @@ import { AlunosPage } from '../components/notificacao/alunos/alunos';
     NotificacaoPage,
     CriarNotificacaoPage,
     SalasPage,
-    AlunosPage
+    AlunosPage,
+    CadastroPage,
+    ListarNotificacaoPage,
+    ExibirNotificacaoPage,
+    TelefonePipe
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    BrMaskerModule,
+    IonicModule.forRoot(MyApp, {backButtonText: 'Voltar'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,7 +72,10 @@ import { AlunosPage } from '../components/notificacao/alunos/alunos';
     NotificacaoPage,
     CriarNotificacaoPage,
     SalasPage,
-    AlunosPage
+    AlunosPage,
+    CadastroPage,
+    ListarNotificacaoPage,
+    ExibirNotificacaoPage
   ],
   providers: [
     StatusBar,

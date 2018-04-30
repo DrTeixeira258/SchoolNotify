@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar color="sn-green">
+        <ion-title>Cadastro</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-row>
+        <ion-col col-6 class="m-auto">
+            <img src="assets/images/logo.jpg">
+        </ion-col>
+    </ion-row>
+
+    <ion-list no-lines>
+        <form #cadastroForm="ngForm">
+            <ion-item>
+                <ion-label floating>Usuário</ion-label>
+                <ion-input type="text" class="cadastro" name="usuario" [(ngModel)]="usuario.login" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Senha</ion-label>
+                <ion-input type="password" class="cadastro" name="senha" [(ngModel)]="usuario.senha" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Confirmar Senha</ion-label>
+                <ion-input type="password" class="cadastro" name="senha2" [(ngModel)]="confirmarSenha" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Telefone</ion-label>
+                <ion-input type="text" class="cadastro" name="telefone" [(ngModel)]="telefone" required [brmasker]="{phone: true}"></ion-input>
+            </ion-item>
+        </form>
+    </ion-list>
+
+    <button ion-button block (click)="cadastrar(cadastroForm.valid)" color="sn-dark-green">Cadastrar</button>
+</ion-content>

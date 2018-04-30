@@ -17,5 +17,6 @@
         </ion-item>
     </ion-list>
 
-    <button ion-button (click)="(usuario.login != '' && usuario.senha != '') ? logar() : exibirMensagem('Campos obrigatórios','Informe um usuario e senha para entrar.')" color="dark-gray" class="text-blue" block>Entrar</button>
+    <button ion-button (click)="(usuario.login != '' && usuario.senha != '') ? logar() : exibirMensagem('Campos obrigatórios','Informe um usuario e senha para entrar.')" color="sn-dark-green" block>Entrar</button>
+    <p class="text-center">Não possui cadasro?<a (click)="goCadastro()"> Cadastrar-se</a></p>
 </ion-content>

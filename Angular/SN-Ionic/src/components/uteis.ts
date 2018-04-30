@@ -39,4 +39,8 @@ export class Uteis {
         this.alert.present();
     }
 
+    converterTelefone(telefone: string) {
+        let telefoneAux: number = Number.parseInt(telefone.replace("(", "").replace(")", "").replace(" ", "").replace("-", ""));
+        return telefoneAux;
+    }
 }

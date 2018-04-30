@@ -8,6 +8,8 @@ import { ResponsavelPage } from '../components/responsavel/responsavel';
 import { AlunoPage } from '../components/aluno/aluno';
 import { ProfessorPage } from '../components/professor/professor';
 import { NotificacaoPage } from '../components/notificacao/notificacao';
+import { Usuario } from '../models/usuario.model';
+import { ListarNotificacaoPage } from '../components/notificacao/listar-notificacao/listar-notificacao';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,12 +19,18 @@ export class MyApp {
 
   @ViewChild('content') navCtrl: NavController
 
+  pages = [
+    { title: 'Home', component: HomePage },
+    { title: 'Notificar', component: NotificacaoPage },
+    { title: 'Notificacoes', component: ListarNotificacaoPage },
+    { title: 'Sair', component: LoginPage }
+  ];
+
   rootPage: any = LoginPage;
+  public static usuario: Usuario = new Usuario();
 
   constructor(public platform: Platform, statusBar: StatusBar) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
     });
     // this.initializeApp();
@@ -41,8 +49,13 @@ export class MyApp {
     });
   }
 
-  home() {
-    this.navCtrl.setRoot(HomePage);
+  get buscarUsuario() {
+    // debugger
+    return MyApp.usuario;
+  }
+
+  goTo(page) {
+    this.navCtrl.setRoot(page);
   }
 
   professor() {
@@ -59,14 +72,6 @@ export class MyApp {
 
   aluno() {
     this.navCtrl.setRoot(AlunoPage);
-  }
-
-  notificacao() {
-    this.navCtrl.setRoot(NotificacaoPage);
-  }
-
-  sair() {
-    this.navCtrl.setRoot(LoginPage);
   }
 
 }

@@ -3,15 +3,12 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Uteis } from '../uteis';
-import { SalaService } from '../../services/sala.service';
 import { SalasPage } from './salas/salas';
-import { HomePage } from '../home/home';
 import { AlunosPage } from './alunos/alunos';
 
 @Component({
     selector: 'notificacao-page',
-    templateUrl: 'notificacao.html',
-    providers: [SalaService]
+    templateUrl: 'notificacao.html'
 })
 
 export class NotificacaoPage extends Uteis {
@@ -21,8 +18,7 @@ export class NotificacaoPage extends Uteis {
 
     constructor(public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
-        public splashScreen: SplashScreen,
-        private salaService: SalaService) {
+        public splashScreen: SplashScreen) {
         super(loadingCtrl, alertCtrl);
     }
 

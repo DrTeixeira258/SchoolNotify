@@ -1,15 +1,13 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="sn-green">
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title class="title">Criar Notificacao</ion-title>
+        <ion-title class="title">Alunos</ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <h3>Alunos</h3>
-
+<ion-content>
     <ion-searchbar class="pesquisa" [(ngModel)]="myInput" (ionInput)="onInput($event)"></ion-searchbar>
 
     <ion-list no-lines>
@@ -19,7 +17,7 @@
             </ion-thumbnail> -->
             <h2>{{aluno.nome}}</h2>
             <p>{{aluno.sala.nome}}</p>
-            <button ion-button clear item-end (click)="modalCriarNotificacao(aluno.id)">Selecionar</button>
+            <button ion-button clear item-end (click)="modalCriarNotificacao(aluno)">Selecionar</button>
         </ion-item>
     </ion-list>
 
