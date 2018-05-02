@@ -18,5 +18,6 @@ namespace SchoolNotify.Domain.Entities
 
         public virtual Responsavel Responsavel { get; set; }
         public virtual Sala Sala { get; set; }
+        public virtual ICollection<Notificacao> Notificacoes { get; set; }
     }
 }

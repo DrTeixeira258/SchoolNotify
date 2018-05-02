@@ -73,5 +73,25 @@ create table Usuario
 )
 GO
 
+create table Notificacao
+(
+	id int identity(1,1) primary key,
+	idProfessor int not null,
+	idSala int null,
+	idAluno int null,
+	titulo varchar(30) not null,
+	assunto varchar(30) not null,
+	mensagem varchar(500) not null,
+	data date not null,
+	
+	CONSTRAINT FK_Professor_Notificacao FOREIGN KEY (idProfessor)
+	REFERENCES Professor (id),
+	CONSTRAINT FK_Sala_Notificacao FOREIGN KEY (idSala)
+	REFERENCES Sala (id),
+	CONSTRAINT FK_Aluno_Notificacao FOREIGN KEY (idAluno)
+	REFERENCES Aluno (id)
+)
+GO
+
 insert into Usuario values('admin','admin',null,0,0,1)
 GO

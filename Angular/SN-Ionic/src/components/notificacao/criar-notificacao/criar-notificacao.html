@@ -11,23 +11,32 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-col class="text-center">
-        <h3>{{titulo}}</h3>
-        <p>{{subTitulo}}</p>
-    </ion-col>
-    <hr>
-    <!-- <ion-list> -->
+    <ion-card class="text-center" style="background-color: #eeeeee">
+        <ion-card-header> {{titulo}} </ion-card-header>
+        <ion-card-content>
+            {{subTitulo}}
+        </ion-card-content>
+    </ion-card>
     <ion-item>
-        <ion-label stacked>Mensagem:</ion-label>
-        <ion-textarea type="text" rows="7"></ion-textarea>
+        <ion-label floating>Titulo</ion-label>
+        <ion-input type="text" [(ngModel)]="notificacao.titulo"></ion-input>
     </ion-item>
-    <!-- </ion-list> -->
+
+    <ion-item>
+        <ion-label floating>Assunto</ion-label>
+        <ion-input type="text" [(ngModel)]="notificacao.assunto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Mensagem</ion-label>
+        <ion-textarea type="text" rows="7" [(ngModel)]="notificacao.mensagem"></ion-textarea>
+    </ion-item>
 </ion-content>
 
 <ion-footer>
     <ion-row>
         <ion-col>
-            <button ion-button color="sn-dark-green" block>Enviar</button>
+            <button ion-button color="sn-dark-green" block (click)="salvarNotificacao()">Enviar</button>
         </ion-col>
     </ion-row>
 </ion-footer>

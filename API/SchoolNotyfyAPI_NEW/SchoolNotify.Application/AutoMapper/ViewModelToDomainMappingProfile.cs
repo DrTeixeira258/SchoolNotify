@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Domain.Entities;
 using SchoolNotify.Application.ViewModels;
 using SchoolNotify.Domain.Entities;
 
@@ -10,12 +9,12 @@ namespace SchoolNotify.Application.AutoMapper
         protected override void Configure()
         {
             #region SchoolNotify
-            Mapper.CreateMap<CelulaViewModel, Celula>();
             Mapper.CreateMap<SalaViewModel, Sala>();
             Mapper.CreateMap<ProfessorViewModel, Professor>();
             Mapper.CreateMap<ResponsavelViewModel, Responsavel>();
             Mapper.CreateMap<AlunoViewModel, Aluno>();
             Mapper.CreateMap<UsuarioViewModel, Usuario>();
+            Mapper.CreateMap<NotificacaoViewModel, Notificacao>();
             #endregion
         }
     }

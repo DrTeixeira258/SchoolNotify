@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using SchoolNotify.Domain.Entities;
 using SchoolNotify.Domain.Interfaces.Repository.Base;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 
 namespace SchoolNotify.Domain.Interfaces.Repository
 {
-    public interface ICelulaRepository : IBaseRepository<Celula>
+    public interface INotificacaoRepository : IBaseRepository<Notificacao>
     {
-        Task<IEnumerable<Celula>> BuscarCelulasPorUnidade(int id);
-        Task<IEnumerable<Celula>> BuscarCelulasValidas();
     }
 }

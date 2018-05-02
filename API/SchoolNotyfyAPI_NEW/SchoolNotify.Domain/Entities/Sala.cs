@@ -13,5 +13,6 @@ namespace SchoolNotify.Domain.Entities
         public string Serie { get; set; }
         public virtual ICollection<SalaProfessorRelacional> SalaProfessorRelacional { get; set; }
         public virtual ICollection<Aluno> Alunos { get; set; }
+        public virtual ICollection<Notificacao> Notificacoes { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using SchoolNotify.Application.AutoMapper.CustomProfiles.ModelToViewModel;
 
 namespace SchoolNotify.Application.AutoMapper
 {
@@ -10,7 +9,7 @@ namespace SchoolNotify.Application.AutoMapper
             Mapper.Initialize(x =>
             {
                 #region Custom Configuration
-                x.AddProfile<ColaboradorParaColaboradorPorInstituicaoViewModelCustomProfile>();
+
                 #endregion
 
                 #region Sample Configuration

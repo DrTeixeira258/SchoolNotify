@@ -1,3 +1,4 @@
+import { NotificacaoService } from './../../../services/notificacao.service';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -6,15 +7,18 @@ import { Uteis } from '../../uteis';
 import { ResponsavelService } from '../../../services/responsavel.service';
 import { Sala } from '../../../models/sala.model';
 import { Aluno } from '../../../models/aluno.model';
+import { Notificacao } from '../../../models/notificacao.model';
+import { MyApp } from '../../../app/app.component';
 
 @Component({
     selector: 'criar-notificacao-page',
     templateUrl: 'criar-notificacao.html',
-    providers: [ResponsavelService]
+    providers: [ResponsavelService, NotificacaoService]
 })
 
 export class CriarNotificacaoPage extends Uteis {
 
+    notificacao: Notificacao = new Notificacao();
     sala: Sala = null;
     aluno: Aluno = null;
     telefonesResps: number[] = [];
@@ -27,7 +31,8 @@ export class CriarNotificacaoPage extends Uteis {
         public navCtrl: NavController,
         public viewCtrl: ViewController,
         public navParams: NavParams,
-        private responsavelService: ResponsavelService) {
+        private responsavelService: ResponsavelService,
+        private notificacaoService: NotificacaoService) {
         super(loadingCtrl, alertCtrl);
         if (this.navParams.get("sala")) {
             this.sala = this.navParams.get("sala");
@@ -76,6 +81,25 @@ export class CriarNotificacaoPage extends Uteis {
                 this.telefonesResps.push(data);
                 console.log(this.telefonesResps);
                 this.fecharLoader();
+            },
+            error => {
+                this.fecharLoader();
+                this.exibirMensagem("Ops!", "Ocorreu um erro.");
+            }
+        );
+    }
+
+    salvarNotificacao() {
+        this.criarLoader();
+        this.notificacao.idProfessor = MyApp.usuario.idProfessor;
+        if (this.aluno)
+            this.notificacao.idAluno = this.aluno.id;
+        else
+            this.notificacao.idSala = this.sala.id;
+        this.notificacaoService.SalvarNotificacao(this.notificacao).subscribe(
+            data => {
+                this.fecharLoader();
+                this.exibirMensagem("Sucesso", "Mensagem enviada com sucesso!");
             },
             error => {
                 this.fecharLoader();

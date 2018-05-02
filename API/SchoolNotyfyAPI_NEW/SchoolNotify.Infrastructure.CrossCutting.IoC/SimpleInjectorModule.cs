@@ -16,7 +16,6 @@ namespace SchoolNotify.Infrastructure.CrossCutting.IoC
         public static void RegisterServices(Container container)
         {
             #region Application Service
-            container.Register<ICelulaApplicationService, CelulaApplicationService>(Lifestyle.Scoped);
             container.Register<IUploadImagemApplicationService, UploadImagemApplicationService>(Lifestyle.Scoped);
 
             container.Register<IResponsavelApplicationService, ResponsavelApplicationService>(Lifestyle.Scoped);
@@ -24,6 +23,7 @@ namespace SchoolNotify.Infrastructure.CrossCutting.IoC
             container.Register<IProfessorApplicationService, ProfessorApplicationService>(Lifestyle.Scoped);
             container.Register<IAlunoApplicationService, AlunoApplicationService>(Lifestyle.Scoped);
             container.Register<IUsuarioApplicationService, UsuarioApplicationService>(Lifestyle.Scoped);
+            container.Register<INotificacaoApplicationService, NotificacaoApplicationService>(Lifestyle.Scoped);
             #endregion
 
             #region Service
@@ -31,15 +31,13 @@ namespace SchoolNotify.Infrastructure.CrossCutting.IoC
             #endregion
 
             #region Repository
-            container.Register<ICelulaRepository, CelulaRepository>(Lifestyle.Scoped);
-            container.Register<ICelulaUnidadeRelacionalRepository, CelulaUnidadeRelacionalRepository>(Lifestyle.Scoped);
-
             container.Register<IResponsavelRepository, ResponsavelRepository>(Lifestyle.Scoped);
             container.Register<ISalaRepository, SalaRepository>(Lifestyle.Scoped);
             container.Register<ISalaProfessorRelacionalRepository, SalaProfessorRelacionalRepository>(Lifestyle.Scoped);
             container.Register<IProfessorRepository, ProfessorRepository>(Lifestyle.Scoped);
             container.Register<IAlunoRepository, AlunoRepository>(Lifestyle.Scoped);
             container.Register<IUsuarioRepository, UsuarioRepository>(Lifestyle.Scoped);
+            container.Register<INotificacaoRepository, NotificacaoRepository>(Lifestyle.Scoped);
             #endregion
 
             #region Data Config
