@@ -5,18 +5,28 @@
 </ion-header>
 
 <ion-content padding style="background-color: #eeeeee">
-    <ion-card>
+    <ion-card *ngIf="notificacao != null">
         <ion-card-header>
             <ion-grid>
-                <ion-row>Atividade 01/05</ion-row>
-                <ion-row>Atividade para dia 01 de maio</ion-row>
-                <ion-row>Prof. Alexandre Lovisi</ion-row>
+                <ion-row>
+                    <ion-col>
+                        {{notificacao.titulo}}
+                    </ion-col>
+                    <ion-col item-end>
+                        {{notificacao.professor.nome}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <h3>{{notificacao.assunto}}</h3>
+                    </ion-col>
+                </ion-row>
             </ion-grid>
         </ion-card-header>
         <ion-card-content>
             <ion-grid>
                 <ion-row>
-                    <p>Srs. Responsaveis, no dia 01 de maio de 2018 havera uma atividade em sala para os alunos da sala FON, para realizar essa atividade eh necessario que os alunos tragam forminhas em formato de estrela, porpurina e giz de cera em cores variadas.</p><p>Obrigado Prof. Lovisi</p>
+                    <p>{{notificacao.mensagem}}</p>
                 </ion-row>
             </ion-grid>
         </ion-card-content>

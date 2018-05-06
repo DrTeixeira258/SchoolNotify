@@ -8,6 +8,7 @@ export class Aluno {
     nome: string = null;
     sexo: string = null;
     idade: number = null;
+    matricula: number = null;
 
     responsavel: Responsavel = new Responsavel();
     sala: Sala = new Sala();

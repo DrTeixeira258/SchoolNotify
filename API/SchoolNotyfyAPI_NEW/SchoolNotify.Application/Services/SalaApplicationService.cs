@@ -44,6 +44,18 @@ namespace SchoolNotify.Application.Services
             return salasVM;
         }
 
+        public async Task<IEnumerable<SalaViewModel>> ObterSalasPorAlunos(IEnumerable<AlunoViewModel> alunos)
+        {
+            List<Sala> salas = new List<Sala>();
+            foreach (var aluno in alunos)
+            {
+                var sala = (await _salaRepository.GetReadOnly(x => x.Id == aluno.IdSala)).FirstOrDefault();
+                salas.Add(sala);
+            }
+            var salasVM = Mapper.Map<IEnumerable<SalaViewModel>>(salas);
+            return salasVM;
+        }
+
         public async Task<SalaViewModel> ObterSalaPorId(int idSala)
         {
             var salaDB = await _salaRepository.Get(x => x.Id == idSala, new[] { "SalaProfessorRelacional" });

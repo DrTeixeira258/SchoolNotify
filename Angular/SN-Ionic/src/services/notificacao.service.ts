@@ -12,8 +12,20 @@ export class NotificacaoService extends BaseService {
         super(http, 'notificacao/');
     }
 
-    public SalvarNotificacao(notificacao: Notificacao) : Observable<boolean> {
+    public SalvarNotificacao(notificacao: Notificacao): Observable<boolean> {
         return this.http.post(this.apiControllerUrl + 'SalvarNotificacao', notificacao, this.requestOptions)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    public BuscarNotificacoesResponsavel(idResponsavel): Observable<Notificacao[]> {
+        return this.http.get(this.apiControllerUrl + 'BuscarNotificacoesResponsavel/' + idResponsavel, this.requestOptions)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    public BuscarNotificacaoPorId(idNotificacao): Observable<Notificacao> {
+        return this.http.get(this.apiControllerUrl + 'ObterNotificacaoPorId/' + idNotificacao, this.requestOptions)
             .map(res => res.json())
             .catch(this.handleError);
     }

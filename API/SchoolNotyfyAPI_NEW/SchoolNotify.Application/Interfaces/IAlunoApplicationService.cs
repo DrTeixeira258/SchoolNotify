@@ -14,5 +14,6 @@ namespace SchoolNotify.Application.Interfaces
         Task<AlunoViewModel> ObterAlunoPorId(int idAluno);
         Task<bool> SalvarAluno(AlunoViewModel alunoVM);
         Task<bool> DeletarAluno(AlunoViewModel alunoVM);
+        Task<IEnumerable<AlunoViewModel>> ObterAlunoPorResponsavel(int idResponsavel);
     }
 }

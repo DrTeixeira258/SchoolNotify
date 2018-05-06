@@ -92,5 +92,12 @@ namespace SchoolNotify.Application.Services
             }
 
         }
+
+        public async Task<IEnumerable<AlunoViewModel>> ObterAlunoPorResponsavel(int idResponsavel)
+        {
+            var alunosDB = await _alunoRepository.GetReadOnly(x => x.IdResponsavel == idResponsavel);
+            var alunosVM = Mapper.Map<IEnumerable<AlunoViewModel>>(alunosDB);
+            return alunosVM;
+        }
     }
 }

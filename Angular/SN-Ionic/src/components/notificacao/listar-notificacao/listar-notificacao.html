@@ -10,20 +10,42 @@
 <ion-content style="background-color: #eeeeee">
   <ion-list no-lines>
     <ion-list-header>Esse Mes</ion-list-header>
-    <ion-card *ngFor="let i of [1,2,3]" (click)="exibirNotificacao()">
-      <ion-card-header> Titulo </ion-card-header>
+    <ion-card *ngFor="let notificacaoMesAtual of notificacoesMesAtual" (click)="exibirNotificacao(notificacaoMesAtual.id)">
+      <ion-card-header>
+        <ion-row>
+          <ion-col>
+            <h2>{{notificacaoMesAtual.titulo}}</h2>
+            <p>{{notificacaoMesAtual.data | date: 'dd/MM/yyyy'}}</p>
+          </ion-col>
+          <ion-col subtitulo>
+            <h2>{{notificacaoMesAtual.idAluno ? notificacaoMesAtual.aluno.nome : notificacaoMesAtual.sala.nome}}</h2>
+            <p>{{notificacaoMesAtual.idAluno ? notificacaoMesAtual.aluno.matricula : notificacaoMesAtual.sala.serie}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-header>
       <ion-card-content>
-        Previa da mensagem pra caber um uma unica linha, sem quebra...
+        {{notificacaoMesAtual.mensagem | slice:0:80}}...
       </ion-card-content>
     </ion-card>
   </ion-list>
 
-  <ion-list no-lines>
+  <ion-list no-lines *ngIf="notificacoesOutras.length > 0">
     <ion-list-header>Outras</ion-list-header>
-    <ion-card *ngFor="let i of [1,2,3]" (click)="exibirNotificacao()">
-      <ion-card-header> Titulo </ion-card-header>
+    <ion-card *ngFor="let notificacaoOutras of notificacoesOutras" (click)="exibirNotificacao(notificacaoOutras.id)">
+      <ion-card-header>
+        <ion-row>
+          <ion-col>
+            <h2>{{notificacaoOutras.titulo}}</h2>
+            <p>{{notificacaoOutras.data | date: 'dd/MM/yyyy'}}</p>
+          </ion-col>
+          <ion-col subtitulo>
+            <h4>{{notificacaoOutras.idAluno ? notificacaoOutras.aluno.nome : notificacaoOutras.sala.nome}}</h4>
+            <p>{{notificacaoOutras.idAluno ? notificacaoOutras.aluno.matricula : notificacaoOutras.sala.serie}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-header>
       <ion-card-content>
-        Previa da mensagem pra caber um uma unica linha, sem quebra...
+        {{notificacaoOutras.mensagem}}
       </ion-card-content>
     </ion-card>
   </ion-list>

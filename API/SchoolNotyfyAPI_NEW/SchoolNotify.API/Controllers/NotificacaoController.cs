@@ -35,6 +35,36 @@ namespace SchoolNotify.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("Notificacao/BuscarNotificacoesResponsavel/{idResponsavel}")]
+        [ResponseType(typeof(IEnumerable<NotificacaoViewModel>))]
+        public async Task<IHttpActionResult> BuscarNotificacoesResponsavel(int idResponsavel)
+        {
+            try
+            {
+                return Ok(await _notificacaoAppService.BuscarNotificacoesResponsavel(idResponsavel));
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpGet]
+        [Route("Notificacao/ObterNotificacaoPorId/{idNotificacao}")]
+        [ResponseType(typeof(NotificacaoViewModel))]
+        public async Task<IHttpActionResult> ObterNotificacaoPorId(int idNotificacao)
+        {
+            try
+            {
+                return Ok(await _notificacaoAppService.ObterNotificacaoPorId(idNotificacao));
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
         [HttpPost]
         [Route("Notificacao/SalvarNotificacao")]
         [ResponseType(typeof(bool))]
