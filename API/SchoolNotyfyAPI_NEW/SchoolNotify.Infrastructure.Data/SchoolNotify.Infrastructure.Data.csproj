@@ -76,6 +76,7 @@
     <Compile Include="EntityConfiguration\ResponsavelMap.cs" />
     <Compile Include="EntityConfiguration\SalaMap.cs" />
     <Compile Include="EntityConfiguration\SalaProfessorRelacionalMap.cs" />
+    <Compile Include="EntityConfiguration\TokenMap.cs" />
     <Compile Include="EntityConfiguration\UsuarioMap.cs" />
     <Compile Include="Files\FileDAO.cs" />
     <Compile Include="Files\Interfaces\IFileDAO.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Repositories\ResponsavelRepository.cs" />
     <Compile Include="Repositories\SalaProfessorRelacionalRepository.cs" />
     <Compile Include="Repositories\SalaRepository.cs" />
+    <Compile Include="Repositories\TokenRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>

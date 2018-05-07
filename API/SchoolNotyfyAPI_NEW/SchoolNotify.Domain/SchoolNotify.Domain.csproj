@@ -43,6 +43,7 @@
     <Compile Include="Entities\Responsavel.cs" />
     <Compile Include="Entities\Sala.cs" />
     <Compile Include="Entities\SalaProfessorRelacional.cs" />
+    <Compile Include="Entities\Token.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Enums\TipoPessoaEnum.cs" />
     <Compile Include="Interfaces\Repository\Base\IBaseRepository.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Interfaces\Repository\IResponsavelRepository.cs" />
     <Compile Include="Interfaces\Repository\ISalaProfessorRelacionalRepository.cs" />
     <Compile Include="Interfaces\Repository\ISalaRepository.cs" />
+    <Compile Include="Interfaces\Repository\ITokenRepository.cs" />
     <Compile Include="Interfaces\Repository\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Specification\ISpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

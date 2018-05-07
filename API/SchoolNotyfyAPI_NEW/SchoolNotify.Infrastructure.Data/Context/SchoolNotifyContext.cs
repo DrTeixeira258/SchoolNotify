@@ -21,6 +21,7 @@ namespace SchoolNotify.Infrastructure.Data.Context
         public DbSet<SalaProfessorRelacional> SalaProfessorRelacional { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Notificacao> Notificacao { get; set; }
+        public DbSet<Token> Token { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -39,6 +40,7 @@ namespace SchoolNotify.Infrastructure.Data.Context
             modelBuilder.Configurations.Add(new SalaProfessorRelacionalMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new NotificacaoMap());
+            modelBuilder.Configurations.Add(new TokenMap());
             #endregion
 
             base.OnModelCreating(modelBuilder);

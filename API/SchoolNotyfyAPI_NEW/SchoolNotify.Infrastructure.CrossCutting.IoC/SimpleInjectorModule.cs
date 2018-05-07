@@ -24,6 +24,7 @@ namespace SchoolNotify.Infrastructure.CrossCutting.IoC
             container.Register<IAlunoApplicationService, AlunoApplicationService>(Lifestyle.Scoped);
             container.Register<IUsuarioApplicationService, UsuarioApplicationService>(Lifestyle.Scoped);
             container.Register<INotificacaoApplicationService, NotificacaoApplicationService>(Lifestyle.Scoped);
+            container.Register<ITokenApplicationService, TokenApplicationService>(Lifestyle.Scoped);
             #endregion
 
             #region Service
@@ -38,6 +39,7 @@ namespace SchoolNotify.Infrastructure.CrossCutting.IoC
             container.Register<IAlunoRepository, AlunoRepository>(Lifestyle.Scoped);
             container.Register<IUsuarioRepository, UsuarioRepository>(Lifestyle.Scoped);
             container.Register<INotificacaoRepository, NotificacaoRepository>(Lifestyle.Scoped);
+            container.Register<ITokenRepository, TokenRepository>(Lifestyle.Scoped);
             #endregion
 
             #region Data Config

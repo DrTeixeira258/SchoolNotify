@@ -16,7 +16,7 @@
                 <h2>{{buscarUsuario.nome}}</h2>
                 <p>{{buscarUsuario.telefone?.toString() | phone}}</p>
             </ion-item>
-            <button menuClose ion-item *ngFor="let page of pages" (click)="goTo(page.component)">
+            <button menuClose ion-item *ngFor="let page of menu" (click)="goTo(page.component)">
                 {{page.title}}
             </button>
         </ion-list>

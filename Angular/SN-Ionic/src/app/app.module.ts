@@ -26,6 +26,7 @@ import { AlunosPage } from '../components/notificacao/alunos/alunos';
 import { CadastroPage } from '../components/principal/pages/cadastro/cadastro';
 import { ListarNotificacaoPage } from '../components/notificacao/listar-notificacao/listar-notificacao';
 import { ExibirNotificacaoPage } from '../components/notificacao/listar-notificacao/exibir-notificacao/exibir-notificacao';
+import { OneSignal } from '@ionic-native/onesignal';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { ExibirNotificacaoPage } from '../components/notificacao/listar-notifica
   providers: [
     StatusBar,
     SplashScreen,
+    OneSignal,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

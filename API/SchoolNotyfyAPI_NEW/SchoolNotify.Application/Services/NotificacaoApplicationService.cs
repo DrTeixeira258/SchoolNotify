@@ -42,16 +42,16 @@ namespace SchoolNotify.Application.Services
             return notificacaoVM;
         }
 
-        public async Task<bool> SalvarNotificacoes(NotificacaoViewModel notificacaoVM)
+        public async Task<int> SalvarNotificacoes(NotificacaoViewModel notificacaoVM)
         {
             try
             {
                 var notificacaoBD = Mapper.Map<Notificacao>(notificacaoVM);
                 notificacaoBD.Data = DateTime.Now.Date;
                 await BeginTransaction();
-                await Task.Run(() => _notificacaoRepository.Add(notificacaoBD));
+                var notificacao = await Task.Run(() => _notificacaoRepository.AddReturn(notificacaoBD));
                 await Commit();
-                return true;
+                return notificacao.Id;
             }
             catch (Exception e)
             {

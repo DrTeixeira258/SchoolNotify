@@ -93,5 +93,13 @@ create table Notificacao
 )
 GO
 
+create table Token
+(
+	id int identity(1,1) primary key,
+	userId varchar(50) not null,
+	telefoneResp bigint not null
+)
+GO
+
 insert into Usuario values('admin','admin',null,0,0,1)
 GO

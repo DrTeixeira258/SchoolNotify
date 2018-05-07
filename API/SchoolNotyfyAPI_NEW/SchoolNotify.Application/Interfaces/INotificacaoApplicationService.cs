@@ -11,7 +11,7 @@ namespace SchoolNotify.Application.Interfaces
     {
         Task<IEnumerable<NotificacaoViewModel>> ObterNotificacoes();
         Task<NotificacaoViewModel> ObterNotificacaoPorId(int idNotificacao);
-        Task<bool> SalvarNotificacoes(NotificacaoViewModel notificacaoVM);
+        Task<int> SalvarNotificacoes(NotificacaoViewModel notificacaoVM);
         Task<IEnumerable<NotificacaoViewModel>> BuscarNotificacoesResponsavel(int idResponsavel);
     }
 }

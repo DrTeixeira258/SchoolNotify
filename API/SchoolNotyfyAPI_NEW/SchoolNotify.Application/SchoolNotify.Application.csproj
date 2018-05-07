@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\IProfessorApplicationService.cs" />
     <Compile Include="Interfaces\IResponsavelApplicationService.cs" />
     <Compile Include="Interfaces\ISalaApplicationService.cs" />
+    <Compile Include="Interfaces\ITokenApplicationService.cs" />
     <Compile Include="Interfaces\IUploadImagemApplicationService.cs" />
     <Compile Include="Interfaces\IUsuarioApplicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Services\ProfessorApplicationService.cs" />
     <Compile Include="Services\ResponsavelApplicationService.cs" />
     <Compile Include="Services\SalaApplicationService.cs" />
+    <Compile Include="Services\TokenApplicationService.cs" />
     <Compile Include="Services\UploadImagemApplicationService.cs" />
     <Compile Include="Services\UsuarioApplicationService.cs" />
     <Compile Include="Validation\ValidationApplicationResult.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="ViewModels\ProfessorViewModel.cs" />
     <Compile Include="ViewModels\ResponsavelViewModel.cs" />
     <Compile Include="ViewModels\SalaViewModel.cs" />
+    <Compile Include="ViewModels\TokenViewModel.cs" />
     <Compile Include="ViewModels\UploadImagemViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
   </ItemGroup>

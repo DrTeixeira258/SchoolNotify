@@ -67,7 +67,7 @@ namespace SchoolNotify.API.Controllers
 
         [HttpPost]
         [Route("Notificacao/SalvarNotificacao")]
-        [ResponseType(typeof(bool))]
+        [ResponseType(typeof(int))]
         public async Task<IHttpActionResult> SalvarNotificacao(NotificacaoViewModel notificacaoVM)
         {
             try

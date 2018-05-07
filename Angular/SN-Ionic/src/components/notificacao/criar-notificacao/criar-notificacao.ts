@@ -9,11 +9,14 @@ import { Sala } from '../../../models/sala.model';
 import { Aluno } from '../../../models/aluno.model';
 import { Notificacao } from '../../../models/notificacao.model';
 import { MyApp } from '../../../app/app.component';
+import { TokenService } from '../../../services/token.service';
+import { OneSignalService } from '../../../services/oneSignal.service';
+import { Token } from '../../../models/token.model';
 
 @Component({
     selector: 'criar-notificacao-page',
     templateUrl: 'criar-notificacao.html',
-    providers: [ResponsavelService, NotificacaoService]
+    providers: [ResponsavelService, NotificacaoService, TokenService, OneSignalService]
 })
 
 export class CriarNotificacaoPage extends Uteis {
@@ -25,14 +28,15 @@ export class CriarNotificacaoPage extends Uteis {
     titulo: string = "";
     subTitulo: string = "";
 
-
     constructor(public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public navCtrl: NavController,
         public viewCtrl: ViewController,
         public navParams: NavParams,
         private responsavelService: ResponsavelService,
-        private notificacaoService: NotificacaoService) {
+        private notificacaoService: NotificacaoService,
+        private tokenService: TokenService,
+        private oneSignalService: OneSignalService) {
         super(loadingCtrl, alertCtrl);
         if (this.navParams.get("sala")) {
             this.sala = this.navParams.get("sala");
@@ -89,6 +93,40 @@ export class CriarNotificacaoPage extends Uteis {
         );
     }
 
+    buscarTokens() {
+        this.criarLoader();
+        this.tokenService.BuscarTokensPorTelefones(this.telefonesResps).subscribe(
+            data => {
+                this.enviarNotificacao(data);
+            },
+            error => {
+                this.fecharLoader();
+                this.exibirMensagem("Ops!", "Ocorreu um erro ao salvar a notificacao.");
+            }
+        )
+    }
+
+    enviarNotificacao(tokens: string[]) {
+        let osNotification = {
+            app_id: "c2efd703-7e75-475b-a138-52a1d18d571d",
+            include_player_ids: tokens,
+            contents: {
+                en: this.notificacao.assunto,
+            },
+            headings: {
+                en: "School Notify",
+            },
+            data: {
+                idNotificacao: this.notificacao.id.toString()
+            }
+        };
+        this.oneSignalService.enviarNotificacao(osNotification).subscribe(
+            data => {
+                this.dismiss();
+            }
+        );
+    }
+
     salvarNotificacao() {
         this.criarLoader();
         this.notificacao.idProfessor = MyApp.usuario.idProfessor;
@@ -98,14 +136,17 @@ export class CriarNotificacaoPage extends Uteis {
             this.notificacao.idSala = this.sala.id;
         this.notificacaoService.SalvarNotificacao(this.notificacao).subscribe(
             data => {
+                this.notificacao.id = data;
                 this.fecharLoader();
                 this.exibirMensagem("Sucesso", "Mensagem enviada com sucesso!");
             },
             error => {
                 this.fecharLoader();
-                this.exibirMensagem("Ops!", "Ocorreu um erro.");
+                this.exibirMensagem("Ops!", "Ocorreu um erro ao salvar a notificacao.");
+            },
+            () => {
+                // this.buscarTokens();
             }
         );
     }
-
 }

@@ -28,6 +28,9 @@ export class ListarNotificacaoPage extends Uteis {
     public navParams: NavParams,
     private notificacaoService: NotificacaoService) {
     super(loadingCtrl, alertCtrl);
+    if (this.navParams.get("idNotificacao")) {
+      this.exibirNotificacao(this.navParams.get("idNotificacao"));
+    }
   }
 
   ionViewDidLoad() {
@@ -36,7 +39,7 @@ export class ListarNotificacaoPage extends Uteis {
 
   obterNotificacoes() {
     this.criarLoader();
-    this.notificacaoService.BuscarNotificacoesResponsavel(MyApp.usuario.id).subscribe(
+    this.notificacaoService.BuscarNotificacoesResponsavel(MyApp.usuario.idResponsavel).subscribe(
       data => {
         this.notificacoes = data;
       },

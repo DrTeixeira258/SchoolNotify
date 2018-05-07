@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Controllers\ResponsavelController.cs" />
     <Compile Include="Controllers\SalaController.cs" />
+    <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Controllers\UploadImagemController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">

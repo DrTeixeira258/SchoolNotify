@@ -12,7 +12,7 @@ export class NotificacaoService extends BaseService {
         super(http, 'notificacao/');
     }
 
-    public SalvarNotificacao(notificacao: Notificacao): Observable<boolean> {
+    public SalvarNotificacao(notificacao: Notificacao): Observable<number> {
         return this.http.post(this.apiControllerUrl + 'SalvarNotificacao', notificacao, this.requestOptions)
             .map(res => res.json())
             .catch(this.handleError);

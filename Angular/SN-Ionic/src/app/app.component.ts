@@ -19,12 +19,7 @@ export class MyApp {
 
   @ViewChild('content') navCtrl: NavController
 
-  pages = [
-    { title: 'Home', component: HomePage },
-    { title: 'Notificar', component: NotificacaoPage },
-    { title: 'Notificacoes', component: ListarNotificacaoPage },
-    { title: 'Sair', component: LoginPage }
-  ];
+  static pages = [];
 
   rootPage: any = LoginPage;
   public static usuario: Usuario = new Usuario();
@@ -33,25 +28,24 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleDefault();
     });
-    // this.initializeApp();
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      let funcaoRetorno = (data) => {
-        console.log('Notificações: ' + JSON.stringify(data));
-      };
-
-      window["plugins"].OneSignal.startInit("c2efd703-7e75-475b-a138-52a1d18d571d",
-        "873655996905")
-        .handleNotificationOpened(funcaoRetorno)
-        .endInit();
-    });
+  static montarMenu() {
+    MyApp.pages = [];
+    MyApp.pages.push({ title: 'Home', component: HomePage });
+    if (MyApp.usuario.professor)
+      MyApp.pages.push({ title: 'Notificar', component: NotificacaoPage })
+    if (MyApp.usuario.responsavel)
+      MyApp.pages.push({ title: 'Notificacoes', component: ListarNotificacaoPage });
+    MyApp.pages.push({ title: 'Sair', component: LoginPage });
   }
 
   get buscarUsuario() {
-    // debugger
     return MyApp.usuario;
+  }
+
+  get menu() {
+    return MyApp.pages
   }
 
   goTo(page) {
