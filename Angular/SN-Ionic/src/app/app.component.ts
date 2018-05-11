@@ -36,7 +36,7 @@ export class MyApp {
     if (MyApp.usuario.professor)
       MyApp.pages.push({ title: 'Notificar', component: NotificacaoPage })
     if (MyApp.usuario.responsavel)
-      MyApp.pages.push({ title: 'Notificacoes', component: ListarNotificacaoPage });
+      MyApp.pages.push({ title: 'Notificacões', component: ListarNotificacaoPage });
     MyApp.pages.push({ title: 'Sair', component: LoginPage });
   }
 

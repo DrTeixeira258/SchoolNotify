@@ -47,7 +47,7 @@ export class SalasPage extends Uteis {
             },
             error => {
                 this.fecharLoader();
-                this.exibirMensagem("Ops!","Nao foi possivel obter as salas.");
+                this.exibirMensagem("Ops!","Não foi possivel obter as salas.");
             }
         );
     }

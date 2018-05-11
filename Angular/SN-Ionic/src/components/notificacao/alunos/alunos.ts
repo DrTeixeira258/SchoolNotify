@@ -53,7 +53,7 @@ export class AlunosPage extends Uteis {
             },
             error => {
                 this.fecharLoader();
-                this.exibirMensagem("Ops!","Nao foi possivel obter os alunos.");
+                this.exibirMensagem("Ops!","Não foi possível obter os alunos.");
             }
         );
     }

@@ -3,13 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title class="title">Notificacoes</ion-title>
+    <ion-title class="title">Notificacões</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content style="background-color: #eeeeee">
   <ion-list no-lines>
-    <ion-list-header>Esse Mes</ion-list-header>
+    <ion-list-header>Esse Mês</ion-list-header>
     <ion-card *ngFor="let notificacaoMesAtual of notificacoesMesAtual" (click)="exibirNotificacao(notificacaoMesAtual.id)">
       <ion-card-header>
         <ion-row>

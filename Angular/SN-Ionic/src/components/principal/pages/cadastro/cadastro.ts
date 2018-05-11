@@ -41,17 +41,17 @@ export class CadastroPage extends Uteis {
                         if (data) {
                             this.exibirConfirmarcao("Cadastro", "Cadastro efetuado com sucesso!");
                         } else {
-                            this.exibirMensagem("Cadastro", "Cadastro nao autorizado.");
+                            this.exibirMensagem("Cadastro", "Cadastro não autorizado.");
                         }
                     },
                     error => {
                         this.fecharLoader();
-                        this.exibirMensagem("Cadastro", "Nao foi possivel efetuar o cadastro.");
+                        this.exibirMensagem("Cadastro", "Não foi possivel efetuar o cadastro.");
                     }
                 );
             }
             else {
-                this.exibirMensagem("Atencao", "A confirmacao da senha nao confere.");
+                this.exibirMensagem("Atencao", "A confirmacão da senha não confere.");
             }
         }
         else {

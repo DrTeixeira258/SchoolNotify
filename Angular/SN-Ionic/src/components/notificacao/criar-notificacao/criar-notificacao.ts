@@ -101,7 +101,7 @@ export class CriarNotificacaoPage extends Uteis {
             },
             error => {
                 this.fecharLoader();
-                this.exibirMensagem("Ops!", "Ocorreu um erro ao salvar a notificacao.");
+                this.exibirMensagem("Ops!", "Ocorreu um erro ao salvar a notificacão.");
             }
         )
     }
@@ -142,7 +142,7 @@ export class CriarNotificacaoPage extends Uteis {
             },
             error => {
                 this.fecharLoader();
-                this.exibirMensagem("Ops!", "Ocorreu um erro ao salvar a notificacao.");
+                this.exibirMensagem("Ops!", "Ocorreu um erro ao salvar a notificacão.");
             },
             () => {
                 // this.buscarTokens();

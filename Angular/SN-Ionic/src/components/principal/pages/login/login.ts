@@ -57,7 +57,7 @@ export class LoginPage extends Uteis {
             },
             error => {
                 this.fecharLoader();
-                this.exibirMensagem("Login", "Nao foi possivel efetuar o login.");
+                this.exibirMensagem("Login", "Não foi possível efetuar o login.");
             }
         );
     }

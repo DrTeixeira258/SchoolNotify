@@ -45,7 +45,7 @@ export class ListarNotificacaoPage extends Uteis {
       },
       error => {
         this.fecharLoader();
-        this.exibirMensagem("Ops!","Nao foi possivel obter as notificacoes.");
+        this.exibirMensagem("Ops!","Nao foi possivel obter as notificacões.");
       },
       () => {
         this.filtrarNotificacoes();
