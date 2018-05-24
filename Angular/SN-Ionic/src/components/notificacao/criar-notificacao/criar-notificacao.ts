@@ -122,6 +122,7 @@ export class CriarNotificacaoPage extends Uteis {
         };
         this.oneSignalService.enviarNotificacao(osNotification).subscribe(
             data => {
+                this.fecharLoader();
                 this.dismiss();
             }
         );
@@ -145,7 +146,7 @@ export class CriarNotificacaoPage extends Uteis {
                 this.exibirMensagem("Ops!", "Ocorreu um erro ao salvar a notificacão.");
             },
             () => {
-                // this.buscarTokens();
+                this.buscarTokens();
             }
         );
     }

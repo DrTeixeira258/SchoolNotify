@@ -44,14 +44,14 @@ export class LoginPage extends Uteis {
         this.criarLoader();
         this.usuarioService.logar(this.usuario).subscribe(
             data => {
-                this.fecharLoader();
+
                 if (data) {
                     localStorage.setItem("usuario", JSON.stringify(data));
                     MyApp.usuario = data;
                     MyApp.montarMenu();
-                    // this.initializeOnesignal();
-                    this.navCtrl.setRoot(HomePage);
+                    this.initializeOnesignal();
                 } else {
+                    this.fecharLoader();
                     this.exibirMensagem("Login", "Usuario e/ou senha incorreto(s).");
                 }
             },
@@ -81,7 +81,12 @@ export class LoginPage extends Uteis {
                 let token = new Token();
                 token.userId = data.userId;
                 token.telefoneResp = MyApp.usuario.telefone;
-                this.tokenService.SalvarToken(token).subscribe();
+                this.tokenService.SalvarToken(token).subscribe(
+                    data => {
+                        this.fecharLoader();
+                        this.navCtrl.setRoot(HomePage);
+                    }
+                );
             }
         );
     }
