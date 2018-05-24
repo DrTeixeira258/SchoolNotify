@@ -20,8 +20,8 @@
                     </div>
 
                     <div class="card-content">
-                        <div class="row">
-                            <div class="col-md-8" style="left: 20%;">
+                        <div class="row" style="display: flex">
+                            <div class="col-md-8" style="margin: auto">
                                 <div class="form-group form-black label-floating" [ngClass]="{'has-success': usuario.login, 'input-error  is-empty': !usuario.login}">
                                     <label class="control-label">Login</label>
                                     <input type="text" name="login" class="form-control" [(ngModel)]="usuario.login" [autocomplete]="false">
@@ -29,8 +29,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-8" style="left: 20%;">
+                        <div class="row" style="display: flex">
+                            <div class="col-md-8" style="margin: auto">
                                 <div class="form-group form-black label-floating" [ngClass]="{'has-success': usuario.senha, 'input-error  is-empty': !usuario.senha}">
                                     <label class="control-label">Senha</label>
                                     <input type="password" name="nome" class="form-control" [(ngModel)]="usuario.senha" [autocomplete]="false" (keypress)="onKeyPress($event)">

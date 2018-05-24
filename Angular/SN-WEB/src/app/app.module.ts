@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -29,6 +29,7 @@ import { ListarAlunoComponent } from 'app/manter-aluno/listar-aluno/listar-aluno
 import { CriarAlunoComponent } from 'app/manter-aluno/criar-aluno/criar-aluno.component';
 import { LoginGuard } from 'app/guard/login.guard';
 import { UsuarioService } from 'services/usuario.service';
+import { CustomLocationStrategy } from 'app/shared/customLocationStrategy';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,12 @@ import { UsuarioService } from 'services/usuario.service';
     // NoopAnimationsModule,
     MatSelectModule
   ],
-  providers: [LoginGuard,UsuarioService],
+  providers: [
+    LoginGuard,
+    UsuarioService,
+    { provide: APP_BASE_HREF, useValue: '/SchoolNotify' },
+    { provide: LocationStrategy, useClass: CustomLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

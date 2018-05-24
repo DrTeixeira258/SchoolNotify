@@ -9,6 +9,8 @@ import { LoginComponent } from 'login/login.component';
 
 import { LoginRoutingModule } from 'login/login.routing';
 import { LoginPageComponent } from 'login/login-page/login-page.component';
+import { LocationStrategy, APP_BASE_HREF } from '@angular/common';
+import { CustomLocationStrategy } from 'app/shared/customLocationStrategy';
 
 
 @NgModule({
@@ -25,7 +27,10 @@ import { LoginPageComponent } from 'login/login-page/login-page.component';
     BrowserAnimationsModule,
     NoopAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/SchoolNotify' },
+    { provide: LocationStrategy, useClass: CustomLocationStrategy }
+  ],
   bootstrap: [LoginComponent]
 })
 export class LoginModule { }

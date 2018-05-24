@@ -41,11 +41,11 @@ export class ListarResponsavelComponent extends BaseComponent implements OnInit 
     }
 
     criarResponsavel() {
-        this.router.navigate(['apps/criar-responsavel'], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-responsavel', "Criar"], { skipLocationChange: true });
     }
 
     editarResponsavel(idResponsavel) {
-        this.router.navigate(['apps/criar-responsavel', idResponsavel], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-responsavel', "Alterar", idResponsavel], { skipLocationChange: true });
     }
 
     deletar(responsavel) {

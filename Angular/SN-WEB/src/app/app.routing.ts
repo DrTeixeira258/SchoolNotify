@@ -41,12 +41,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'criar-sala', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-sala/:operacao', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarSalaComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-sala/:idSala', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-sala/:operacao/:idSala', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarSalaComponent, outlet: 'components' },
         ]
       },
@@ -56,12 +56,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'criar-professor', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-professor/:operacao', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarProfessorComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-professor/:idProfessor', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-professor/:operacao/:idProfessor', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarProfessorComponent, outlet: 'components' },
         ]
       },
@@ -71,12 +71,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'criar-responsavel', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-responsavel/:operacao', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarResponsavelComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-responsavel/:idResponsavel', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-responsavel/:operacao/:idResponsavel', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarResponsavelComponent, outlet: 'components' },
         ]
       },
@@ -86,12 +86,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'criar-aluno', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-aluno/:operacao', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarAlunoComponent, outlet: 'components' },
         ]
       },
       {
-        path: 'criar-aluno/:idAluno', component: AppComponent, canActivate: [LoginGuard], children: [
+        path: 'criar-aluno/:operacao/:idAluno', component: AppComponent, canActivate: [LoginGuard], children: [
           { path: '', component: CriarAlunoComponent, outlet: 'components' },
         ]
       },

@@ -16,6 +16,7 @@ export class CriarProfessorComponent extends BaseComponent implements OnInit {
     professor: Professor = new Professor();
     idProfessor: number = null;
     activeLoader: boolean = false;
+    operacao: string = '';
 
     constructor(private professorService: ProfessorService,
         private router: Router,
@@ -25,6 +26,7 @@ export class CriarProfessorComponent extends BaseComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
+            this.operacao = params['operacao'];
             this.idProfessor = +params['idProfessor']; // (+) converts string 'id' to a number
 
             if (this.idProfessor) {

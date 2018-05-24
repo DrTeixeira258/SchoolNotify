@@ -103,3 +103,9 @@ GO
 
 insert into Usuario values('admin','admin',null,0,0,1)
 GO
+
+alter table Aluno add dataNascimento date not null
+GO
+
+alter table Aluno drop column idade
+GO

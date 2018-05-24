@@ -18,6 +18,7 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
   professores: Professor[] = [];
   idSala: number = null;
   activeLoader: boolean = false;
+  operacao: string = '';
 
   constructor(private salaService: SalaService,
     private professorService: ProfessorService,
@@ -29,6 +30,7 @@ export class CriarSalaComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.obterProfessores();
     this.route.params.subscribe(params => {
+      this.operacao = params['operacao'];
       this.idSala = +params['idSala']; // (+) converts string 'id' to a number
 
       if (this.idSala) {

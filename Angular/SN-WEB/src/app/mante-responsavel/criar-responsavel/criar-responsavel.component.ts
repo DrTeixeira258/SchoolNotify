@@ -15,6 +15,7 @@ export class CriarResponsavelComponent extends BaseComponent implements OnInit {
     responsavel: Responsavel = new Responsavel();
     idResponsavel: number = null;
     activeLoader: boolean = false;
+    operacao: string = '';
 
     constructor(private responsavelService: ResponsavelService,
         private router: Router,
@@ -24,6 +25,7 @@ export class CriarResponsavelComponent extends BaseComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
+            this.operacao = params['operacao'];
             this.idResponsavel = +params['idResponsavel']; // (+) converts string 'id' to a number
 
             if (this.idResponsavel) {

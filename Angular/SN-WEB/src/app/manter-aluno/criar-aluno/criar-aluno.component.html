@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="green">
-                        <h4 class="title">Cadastrar Aluno</h4>
+                        <h4 class="title">{{operacao}} Aluno</h4>
                         <!-- <p class="category">Complete your profile</p> -->
                     </div>
                     <div class="card-content">
@@ -35,12 +35,22 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-6">
                                     <div class="teste form-group form-black label-floating" [ngClass]="{'has-success': aluno.idade, 'input-error is-empty': !aluno.idade}">
                                         <label class="control-label">Idade</label>
                                         <input type="number" name="idade" class="form-control" [(ngModel)]="aluno.idade">
                                         <span class="material-icons form-control-feedback">{{aluno.idade ? 'done' : 'clear'}}</span>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="teste form-group form-black label-floating" [ngClass]="{'has-success': dataNascimento, 'input-error is-empty': !dataNascimento}">
+                                        <label class="control-label">Data de Nascimento</label>
+                                        <input type="text" name="dtNascimento" class="form-control" [textMask]="{mask: maskData}" [(ngModel)]="dataNascimento">
+                                        <span class="material-icons form-control-feedback">{{dataNascimento ? 'done' : 'clear'}}</span>
                                     </div>
                                 </div>
                             </div>

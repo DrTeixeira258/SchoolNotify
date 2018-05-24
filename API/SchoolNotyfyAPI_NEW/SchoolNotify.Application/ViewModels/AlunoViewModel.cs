@@ -13,7 +13,7 @@ namespace SchoolNotify.Application.ViewModels
         public int IdSala { get; set; }
         public string Nome { get; set; }
         public int Matricula { get; set; }
-        public int Idade { get; set; }
+        public DateTime DataNascimento { get; set; }
         public string Sexo { get; set; }
 
         public SalaViewModel Sala { get; set; }

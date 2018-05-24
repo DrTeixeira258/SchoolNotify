@@ -41,11 +41,11 @@ export class ListarSalaComponent extends BaseComponent implements OnInit {
     }
 
     criarSala() {
-        this.router.navigate(['apps/criar-sala'], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-sala', "Criar"], { skipLocationChange: true });
     }
 
     editarSala(idSala) {
-        this.router.navigate(['apps/criar-sala', idSala], { skipLocationChange: true });
+        this.router.navigate(['apps/criar-sala', "Alterar", idSala], { skipLocationChange: true });
     }
 
     deletar(sala) {

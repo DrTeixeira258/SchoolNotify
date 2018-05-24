@@ -8,7 +8,7 @@ export class Aluno {
     matricula: number = null;
     nome: string = "";
     sexo: string = "";
-    idade: number = null;
+    dataNascimento: Date = null;
 
     responsavel: Responsavel = null;
     sala: Sala = null;

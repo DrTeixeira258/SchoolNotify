@@ -29,7 +29,7 @@ namespace SchoolNotify.Infrastructure.Data.EntityConfiguration
             Property(x => x.Matricula)
                 .IsRequired();
 
-            Property(x => x.Idade)
+            Property(x => x.DataNascimento)
                 .IsRequired();
 
             HasRequired(x => x.Responsavel)

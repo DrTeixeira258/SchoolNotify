@@ -21,6 +21,11 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
     aluno: Aluno = new Aluno();
     idAluno: number = null;
     activeLoader: boolean = false;
+    operacao: string = '';
+    maskData = [/[0-9]/, /\d/, '/',/\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
+    dataNascimento: string = '';
+    teste: string = '';
+    teste3: string = '';
 
     constructor(private salaService: SalaService,
         private responsavelService: ResponsavelService,
@@ -34,12 +39,23 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
         this.obterSalas();
         this.obterResponsaveis();
         this.route.params.subscribe(params => {
+            this.operacao = params['operacao'];
             this.idAluno = +params['idAluno']; // (+) converts string 'id' to a number
 
             if (this.idAluno) {
                 this.obterAlunoPorId();
             }
         });
+    }
+
+    converterData() {
+        debugger
+        let aux = this.dataNascimento.replace(/\//g,'-');
+        this.dataNascimento = aux.substring(3,6);
+        this.dataNascimento += aux.substring(0,3);
+        this.dataNascimento += aux.substring(6);
+
+        this.aluno.dataNascimento = new Date(this.dataNascimento);
     }
 
     obterResponsaveis() {
@@ -91,8 +107,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
     }
 
     validar() {
-        if (this.aluno.nome && this.aluno.matricula && this.aluno.idade && this.aluno.sexo
-            && this.aluno.idResponsavel && this.aluno.idSala)
+        if (this.aluno.nome && this.aluno.matricula && this.aluno.sexo && this.aluno.idResponsavel && this.aluno.idSala)
             return true;
         else
             return false;
@@ -103,21 +118,26 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
     }
 
     salvar() {
+        this.converterData();
         if (this.validar()) {
-            this.activeLoader = true;
-            this.alunoService.salvarAluno(this.aluno).subscribe(
-                data => {
-                    this.aluno = new Aluno();
-                },
-                error => {
-                    this.activeLoader = false;
-                    this.showNotification("top", "right", false);
-                },
-                () => {
-                    this.activeLoader = false;
-                    this.showNotification("top", "right", true);
-                }
-            );
+            if (this.aluno.dataNascimento < new Date()) {
+                this.activeLoader = true;
+                this.alunoService.salvarAluno(this.aluno).subscribe(
+                    data => {
+                        this.aluno = new Aluno();
+                    },
+                    error => {
+                        this.activeLoader = false;
+                        this.showNotification("top", "right", false);
+                    },
+                    () => {
+                        this.activeLoader = false;
+                        this.showNotification("top", "right", true);
+                    }
+                );
+            } else {
+                this.showCustomNotification("warning","A data de nascimento deve ser menor que a data de hoje!");
+            }
         } else {
             this.showNotificationValidation();
         }
