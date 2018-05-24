@@ -25,11 +25,26 @@ namespace SchoolNotify.Application.Services
         {
             try
             {
-                var tokenDB = Mapper.Map<Token>(token);
-                await BeginTransaction();
-                await Task.Run(() => _tokenRepository.Add(tokenDB));
-                await Commit();
-                return true;
+                var tokenDB = await _tokenRepository.Get(x => x.TelefoneResp == token.TelefoneResp);
+                Token newToken = new Token();
+                if (tokenDB.Any())
+                {
+                    newToken = tokenDB.FirstOrDefault();
+                    newToken.UserId = token.UserId;
+                    await BeginTransaction();
+                    await Task.Run(() => _tokenRepository.Update(newToken));
+                    await Commit();
+                    return true;
+                }
+                else
+                {
+                    newToken = Mapper.Map<Token>(token);
+                    await BeginTransaction();
+                    await Task.Run(() => _tokenRepository.Add(newToken));
+                    await Commit();
+                    return true;
+                }
+
             }
             catch (Exception e)
             {

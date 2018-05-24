@@ -49,13 +49,12 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
     }
 
     converterData() {
-        debugger
         let aux = this.dataNascimento.replace(/\//g,'-');
-        this.dataNascimento = aux.substring(3,6);
-        this.dataNascimento += aux.substring(0,3);
-        this.dataNascimento += aux.substring(6);
-
-        this.aluno.dataNascimento = new Date(this.dataNascimento);
+        let dataAux = aux.substring(6);
+        dataAux += aux.substring(2,5);
+        dataAux += "-" + aux.substring(0,2);
+        dataAux += "T00:00:00";
+        this.aluno.dataNascimento = new Date(dataAux);
     }
 
     obterResponsaveis() {
@@ -95,6 +94,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
         this.alunoService.obterAlunoPorId(this.idAluno).subscribe(
             data => {
                 this.aluno = data;
+                this.dataNascimento = new Date(this.aluno.dataNascimento).toLocaleDateString();
             },
             error => {
                 this.activeLoader = false;
@@ -125,6 +125,7 @@ export class CriarAlunoComponent extends BaseComponent implements OnInit {
                 this.alunoService.salvarAluno(this.aluno).subscribe(
                     data => {
                         this.aluno = new Aluno();
+                        this.dataNascimento = "";
                     },
                     error => {
                         this.activeLoader = false;
