@@ -50,7 +50,7 @@
     <div class="nav-container">
         <ul class="nav">
             <li routerLinkActive="active" *ngFor="let menuItem of menuItems; let i = index" [ngClass]="{'active': teste == i}" class="{{menuItem.class}}">
-                <a [routerLink]="[menuItem.path]" (click)="teste = i">
+                <a (click)="teste = i; goTo(menuItem.path)">
                     <i [ngClass]="menuItem.material ? 'material-icons' : menuItem.classOption">{{menuItem.icon}}</i>
                     <p class="cb">{{menuItem.title}}</p>
                 </a>

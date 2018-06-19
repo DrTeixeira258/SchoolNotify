@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -10,7 +11,7 @@ declare interface RouteInfo {
     classOption: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '../dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', material: true, classOption: '' },
+    { path: 'apps/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', material: true, classOption: '' },
     // { path: '../user-profile', title: 'User Profile',  icon:'person', class: '', material: true, classOption: '' },
     // { path: '../table-list', title: 'Table List',  icon:'content_paste', class: '', material: true, classOption: '' },
     // { path: '../typography', title: 'Typography',  icon:'library_books', class: '', material: true, classOption: '' },
@@ -18,10 +19,10 @@ export const ROUTES: RouteInfo[] = [
     // { path: '../maps', title: 'Maps',  icon:'location_on', class: '', material: true, classOption: '' },
     // { path: '../notifications', title: 'Notifications',  icon:'notifications', class: '', material: true, classOption: '' },
     // { path: '../upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro', material: true, classOption: '' },
-    { path: '../professor', title: 'Professores',  icon:'', class: '', material: false, classOption: 'fa fa-group' },
-    { path: '../sala', title: 'Salas',  icon:'library_books', class: '', material: true, classOption: '' },
-    { path: '../responsavel', title: 'Responsáveis',  icon:'person', class: '', material: true, classOption: '' },
-    { path: '../aluno', title: 'Alunos',  icon:'person', class: '', material: true, classOption: '' },
+    { path: 'apps/professor', title: 'Professores',  icon:'', class: '', material: false, classOption: 'fa fa-group' },
+    { path: 'apps/sala', title: 'Salas',  icon:'library_books', class: '', material: true, classOption: '' },
+    { path: 'apps/responsavel', title: 'Responsáveis',  icon:'person', class: '', material: true, classOption: '' },
+    { path: 'apps/aluno', title: 'Alunos',  icon:'person', class: '', material: true, classOption: '' },
 ];
 
 @Component({
@@ -34,7 +35,7 @@ export class SidebarComponent implements OnInit {
   public nomeUsuario: string = "";
   
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.nomeUsuario = localStorage.getItem("nomeUsuario");
@@ -47,4 +48,8 @@ export class SidebarComponent implements OnInit {
       }
       return true;
   };
+
+  goTo(rota) {
+      this.router.navigateByUrl(rota);
+  }
 }
